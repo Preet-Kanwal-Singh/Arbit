@@ -1,0 +1,24 @@
+{
+  "script_path": "C:\\Users\\preet\\OneDrive\\Desktop\\Skool\\Arbit\\analysis\\run_cointegration_window_validation.py",
+  "git_commit": "unavailable_no_commit_or_git_error",
+  "data_source": "yfinance adjusted close, TCS.NS and INFY.NS, 2018-01-01 through 2026-06-30",
+  "snapshot_id": "none_live_yfinance_fetch_2018-01-01_2026-06-30",
+  "timestamp_utc": "2026-07-04T15:44:33.616350+00:00",
+  "validated_windows": [],
+  "evaluated_windows_part_b": [
+    60,
+    120,
+    250,
+    500,
+    730
+  ],
+  "synthetic_seeds_per_condition": 100,
+  "statsmodels_version": "0.14.6",
+  "engle_granger_method": "statsmodels.tsa.stattools.coint(trend='c', autolag='aic')",
+  "adf_method": "statsmodels.tsa.stattools.adfuller(regression='n', autolag='aic')",
+  "output_hashes": {
+    "part_a_synthetic_validation.csv": "81c4cdd6c21d36d307ef079b8a1e2017b53eae6ac07e65b3f8d04afb6b5f07ae",
+    "part_b_tcs_infy_rolling_cointegration.csv": "0ccf724402e34da4739fa320be84357d62bf3c5254cfe2321106a8b1e5c1dc9a",
+    "summary.md": "848fe9788ee7614d1215e4cca1e5db8002899215681c2c58a89e54f14f4314d8"
+  }
+}

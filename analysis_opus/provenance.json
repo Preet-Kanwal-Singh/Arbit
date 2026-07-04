@@ -1,0 +1,16 @@
+{
+  "script_path": "C:\\Users\\preet\\OneDrive\\Desktop\\Skool\\Arbit\\analysis_opus\\run_cointegration_window_validation.py",
+  "git_commit": "unavailable",
+  "data_source": "yfinance adjusted close, TCS.NS and INFY.NS, 2018-01-01 through 2026-06-30",
+  "snapshot_id": "none_live_yfinance_fetch_2018-01-01_2026-06-30",
+  "timestamp_utc": "2026-07-04T17:05:14.395435+00:00",
+  "n_seeds_per_condition_per_window": 100,
+  "statsmodels_version": "0.14.6",
+  "engle_granger_method": "statsmodels.tsa.stattools.coint(trend='c', autolag='aic')",
+  "adf_method": "statsmodels.tsa.stattools.adfuller(regression='n', autolag='aic')",
+  "output_hashes": {
+    "part_a_synthetic_validation.csv": "3558438be472272e03d675d4dcf281961efec4593d5e4544de7c2d259fab508a",
+    "part_b_tcs_infy_rolling_cointegration.csv": "23f6a0fcc0e18fe3c98cb5f99c94df2bb7f1df47d2474078903ad0907642c69c",
+    "summary.md": "93db9a9ec27d8ac7bc0b9059045f3819a92970032a6c8fc6328d1ba32cda89fe"
+  }
+}
