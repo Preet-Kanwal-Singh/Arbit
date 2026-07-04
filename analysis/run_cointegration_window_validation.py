@@ -13,12 +13,15 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / ".venv" / "Lib" / "
 import numpy as np
 import pandas as pd
 import statsmodels
-import yfinance as yf
 from statsmodels.tsa.stattools import adfuller, coint
 
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "analysis"
+SNAPSHOT_ID = "tcs_infy_v1_2026-07-04"
+SNAPSHOT_DIR = ROOT / "data" / "snapshots" / SNAPSHOT_ID
+SNAPSHOT_CLOSE_CSV = SNAPSHOT_DIR / "adjusted_close.csv"
+SNAPSHOT_METADATA_JSON = SNAPSHOT_DIR / "metadata.json"
 WINDOWS = [60, 120, 250, 500, 730]
 ALPHAS = [0.01, 0.05, 0.10]
 PHI_REGIMES = [
@@ -169,27 +172,24 @@ def run_part_a() -> tuple[pd.DataFrame, list[int]]:
     return summary, validated
 
 
-def fetch_prices() -> pd.DataFrame:
-    data = yf.download(
-        ["TCS.NS", "INFY.NS"],
-        start="2018-01-01",
-        end="2026-07-01",
-        auto_adjust=True,
-        progress=False,
-        threads=False,
-    )
-    if data.empty:
-        raise RuntimeError("yfinance returned an empty dataframe")
-    if isinstance(data.columns, pd.MultiIndex):
-        close = data["Close"].copy()
-    else:
-        close = data[["Close"]].copy()
+def load_snapshot_prices() -> pd.DataFrame:
+    if not SNAPSHOT_CLOSE_CSV.exists():
+        raise FileNotFoundError(f"missing snapshot adjusted close data: {SNAPSHOT_CLOSE_CSV}")
+    if not SNAPSHOT_METADATA_JSON.exists():
+        raise FileNotFoundError(f"missing snapshot metadata: {SNAPSHOT_METADATA_JSON}")
+
+    metadata = json.loads(SNAPSHOT_METADATA_JSON.read_text(encoding="utf-8"))
+    if metadata.get("snapshot_id") != SNAPSHOT_ID:
+        raise RuntimeError(f"metadata snapshot_id mismatch: {metadata.get('snapshot_id')} != {SNAPSHOT_ID}")
+
+    close = pd.read_csv(SNAPSHOT_CLOSE_CSV, parse_dates=["date"]).set_index("date")
     expected = {"TCS.NS", "INFY.NS"}
-    if not expected.issubset(set(close.columns)):
-        raise RuntimeError(f"missing expected adjusted close columns: {expected - set(close.columns)}")
+    missing = expected - set(close.columns)
+    if missing:
+        raise RuntimeError(f"missing adjusted close columns in snapshot: {sorted(missing)}")
     close = close[["TCS.NS", "INFY.NS"]].dropna()
     if close.empty:
-        raise RuntimeError("adjusted close dataframe is empty after dropping missing values")
+        raise RuntimeError("snapshot adjusted close dataframe is empty after dropping missing values")
     return close
 
 
@@ -415,6 +415,7 @@ def write_summary(
 - Git commit: `{provenance["git_commit"]}`
 - Data source: `{provenance["data_source"]}`
 - Snapshot ID: `{provenance["snapshot_id"]}`
+- Snapshot adjusted close SHA256: `{provenance["snapshot_adjusted_close_sha256"]}`
 - Timestamp UTC: `{provenance["timestamp_utc"]}`
 - `part_a_synthetic_validation.csv` SHA256: `{hashes["part_a_synthetic_validation.csv"]}`
 - `part_b_tcs_infy_rolling_cointegration.csv` SHA256: `{hashes["part_b_tcs_infy_rolling_cointegration.csv"]}`
@@ -429,7 +430,7 @@ def write_summary(
 
 ## Method Notes
 
-Engle-Granger p-values come from `statsmodels.tsa.stattools.coint(..., trend="c", autolag="aic")`. Standalone residual/spread ADF p-values come from `statsmodels.tsa.stattools.adfuller(..., regression="n", autolag="aic")`. TCS is the dependent variable and INFY is the hedge-ratio regressor in the real-data rolling beta estimates.
+Part B loads adjusted close data from frozen snapshot `{provenance["snapshot_id"]}` rather than downloading fresh market data. Engle-Granger p-values come from `statsmodels.tsa.stattools.coint(..., trend="c", autolag="aic")`. Standalone residual/spread ADF p-values come from `statsmodels.tsa.stattools.adfuller(..., regression="n", autolag="aic")`. TCS is the dependent variable and INFY is the hedge-ratio regressor in the real-data rolling beta estimates.
 """
     summary_path.write_text(content, encoding="utf-8")
     return summary_path
@@ -437,7 +438,7 @@ Engle-Granger p-values come from `statsmodels.tsa.stattools.coint(..., trend="c"
 
 def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    close = fetch_prices()
+    close = load_snapshot_prices()
     part_a, validated_windows = run_part_a()
     evaluated_windows = validated_windows if validated_windows else WINDOWS
     part_b = run_part_b(close, evaluated_windows)
@@ -455,8 +456,9 @@ def main() -> None:
     provenance = {
         "script_path": str(Path(__file__).resolve()),
         "git_commit": git_commit(),
-        "data_source": "yfinance adjusted close, TCS.NS and INFY.NS, 2018-01-01 through 2026-06-30",
-        "snapshot_id": "none_live_yfinance_fetch_2018-01-01_2026-06-30",
+        "data_source": str(SNAPSHOT_CLOSE_CSV.relative_to(ROOT)),
+        "snapshot_id": SNAPSHOT_ID,
+        "snapshot_adjusted_close_sha256": file_sha256(SNAPSHOT_CLOSE_CSV),
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "validated_windows": validated_windows_check,
         "evaluated_windows_part_b": evaluated_windows,

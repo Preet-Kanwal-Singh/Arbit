@@ -1,0 +1,31 @@
+{
+  "snapshot_id": "tcs_infy_v1_2026-07-04",
+  "creation_timestamp_utc": "2026-07-04T17:28:14.803329+00:00",
+  "created_by": "Codex",
+  "tickers": [
+    "TCS.NS",
+    "INFY.NS"
+  ],
+  "start_date": "2018-01-01",
+  "end_date_inclusive": "2026-06-30",
+  "yfinance_download_end_exclusive": "2026-07-01",
+  "first_data_date": "2018-01-01",
+  "last_data_date": "2026-06-30",
+  "row_count": 2099,
+  "columns": [
+    "date",
+    "TCS.NS",
+    "INFY.NS"
+  ],
+  "source": "Yahoo Finance via yfinance.download",
+  "adjustment_policy": "auto_adjust=True in yfinance; saved the adjusted Close columns for TCS.NS and INFY.NS; no manual corporate-action handling.",
+  "yfinance_version": "1.5.1",
+  "git_commit": "606cc817c1de5fda7b57dc5814239e36592cc70e",
+  "generated_by_script": "C:\\Users\\preet\\OneDrive\\Desktop\\Skool\\Arbit\\analysis\\create_tcs_infy_snapshot.py",
+  "files": {
+    "adjusted_close.csv": {
+      "path": "data\\snapshots\\tcs_infy_v1_2026-07-04\\adjusted_close.csv",
+      "sha256": "7f2b69cc3c2030bb10c6e7a6f9a727743bff8d7003f7db2f36fa3661bbd60959"
+    }
+  }
+}

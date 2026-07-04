@@ -3,12 +3,13 @@
 ## Provenance
 
 - Script path: `C:\Users\preet\OneDrive\Desktop\Skool\Arbit\analysis\run_cointegration_window_validation.py`
-- Git commit: `unavailable_no_commit_or_git_error`
-- Data source: `yfinance adjusted close, TCS.NS and INFY.NS, 2018-01-01 through 2026-06-30`
-- Snapshot ID: `none_live_yfinance_fetch_2018-01-01_2026-06-30`
-- Timestamp UTC: `2026-07-04T15:44:33.616350+00:00`
+- Git commit: `606cc817c1de5fda7b57dc5814239e36592cc70e`
+- Data source: `data\snapshots\tcs_infy_v1_2026-07-04\adjusted_close.csv`
+- Snapshot ID: `tcs_infy_v1_2026-07-04`
+- Snapshot adjusted close SHA256: `7f2b69cc3c2030bb10c6e7a6f9a727743bff8d7003f7db2f36fa3661bbd60959`
+- Timestamp UTC: `2026-07-04T17:30:14.109071+00:00`
 - `part_a_synthetic_validation.csv` SHA256: `81c4cdd6c21d36d307ef079b8a1e2017b53eae6ac07e65b3f8d04afb6b5f07ae`
-- `part_b_tcs_infy_rolling_cointegration.csv` SHA256: `0ccf724402e34da4739fa320be84357d62bf3c5254cfe2321106a8b1e5c1dc9a`
+- `part_b_tcs_infy_rolling_cointegration.csv` SHA256: `801fb88207cdccc253a0863f649d797bde65f169db6f976274b8a024df313411`
 
 ## Part A
 
@@ -26,4 +27,4 @@ Using the longer 500d/730d diagnostics and only the supplied quarterly boundary 
 
 ## Method Notes
 
-Engle-Granger p-values come from `statsmodels.tsa.stattools.coint(..., trend="c", autolag="aic")`. Standalone residual/spread ADF p-values come from `statsmodels.tsa.stattools.adfuller(..., regression="n", autolag="aic")`. TCS is the dependent variable and INFY is the hedge-ratio regressor in the real-data rolling beta estimates.
+Part B loads adjusted close data from frozen snapshot `tcs_infy_v1_2026-07-04` rather than downloading fresh market data. Engle-Granger p-values come from `statsmodels.tsa.stattools.coint(..., trend="c", autolag="aic")`. Standalone residual/spread ADF p-values come from `statsmodels.tsa.stattools.adfuller(..., regression="n", autolag="aic")`. TCS is the dependent variable and INFY is the hedge-ratio regressor in the real-data rolling beta estimates.
