@@ -74,3 +74,51 @@ completed work. Maintained by Desktop Claude A (Ledger Keeper).
     extra x-noise term, and the spread-sigma grid)? Right now a future
     disagreement between the two can't be distinguished from sampling
     variance, because the underlying simulations aren't the same experiment.
+
+## From Claim 002 — Healthy Episode Characterization (2026-07-05)
+
+14. **Provenance-stamping design gap, now seen twice.** In both Claim 001 and
+    Claim 002, the git commit hash recorded in a candidate's `provenance.json`
+    reflects HEAD at the moment the script ran, not the commit whose tree
+    actually contains the output files being described — because outputs get
+    committed *after* the run, sometimes hours after. Worth fixing upstream:
+    stamp provenance with the commit made immediately after committing
+    outputs, not the pre-run HEAD. See `worklog.md`, both claim entries.
+15. **Tier classification of Claim 002 is ambiguous, same pattern as Claim
+    001's #6/#7.** `opus/evaluate_claim_002.py`'s own docstring says
+    "Antigravity/Opus -- Tier B," but Preet's review request invoked the full
+    Tier A checklist (provenance, snapshot consistency, commit references,
+    `VERIFIED_FACTS.md` admission). Not resolved — needs Preet's explicit
+    call, the same way #6 got resolved for Claim 001. If Tier A: no Spec
+    Block exists yet either (see #16), so nothing here is admissible until
+    Desktop Claude B writes one.
+16. Was a Spec Block ever written for Claim 002, with a pre-declared
+    tolerance? None exists anywhere in the repo as of this session. Same
+    situation as Claim 001's (now-moot) #7 — except Claim 002's numbers are,
+    on inspection, largely in agreement, which makes the missing Spec Block a
+    real gap rather than an afterthought: there's no pre-committed standard
+    to check the agreement against, even though the agreement looks good.
+17. **Q4 (internal sub-regime significance) is genuinely DISPUTED, not just
+    unresolved on process.** Codex's blind optimal-split search (6 variables,
+    including transformed EG/ADF "strength" terms) finds the 500d core's
+    sub-regime split significant (p ≈ 0.0005). Opus's independent blind
+    search (4 variables, raw p-values) does not (p = 0.108 at a different,
+    earlier split point). Traced to the variable set, not a vague
+    methodology disagreement. Should the two scripts be re-run with a
+    standardized variable set before this is decided either way? Separately:
+    Opus's own search *does* find the 730d core's split significant
+    (2021-02-28, p = 0.011) — has Codex's search been checked against that
+    specific 730d boundary, to see if it agrees there even though the 500d
+    case is disputed?
+18. **Q5 — Opus's "split-signal period" (EG failure precedes ADF failure by
+    ~23 months, 2022-01-31 to 2023-12-29) is numerically solid (verified
+    directly against Codex's own raw rows) but is not something Codex
+    independently flagged or named.** Does Codex agree this gap is real and
+    worth treating as a named phenomenon, or is this Opus noticing something
+    in shared data that Codex would frame differently? Worth putting to Codex
+    directly before treating it as more than a single-source observation.
+19. `VERIFIED_FACTS.md` still does not exist anywhere in this repo, now
+    spanning two reviewed claims where the underlying numbers were often in
+    close agreement. At what point does the absence of a Spec Block become
+    the actual bottleneck on this project's progress, rather than a one-off
+    gap to flag and move past?
