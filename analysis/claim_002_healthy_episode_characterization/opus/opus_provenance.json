@@ -1,0 +1,15 @@
+{
+  "script_path": "C:\\Users\\preet\\OneDrive\\Desktop\\Skool\\Arbit\\analysis_opus\\evaluate_claim_002.py",
+  "git_commit": "8452b6849ee79050d213ebfc5de84b3e127fd4ef",
+  "snapshot_id": "tcs_infy_v1_2026-07-04",
+  "timestamp_utc": "2026-07-05T13:01:31.135427+00:00",
+  "statsmodels_version": "0.14.6",
+  "methods": {
+    "engle_granger": "coint(trend='c', autolag='aic')",
+    "adf": "adfuller(regression='n', autolag='aic')",
+    "subregime_test": "multivariate RSS optimal-split with 2000 permutations"
+  },
+  "output_hashes": {
+    "opus_rolling_metrics.csv": "6a5feb148d3c1a19531b9172452fd218f9c705049999fd2a571b5873f7505082"
+  }
+}

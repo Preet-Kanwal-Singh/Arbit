@@ -1,0 +1,66 @@
+<!--
+script_path: C:\Users\preet\OneDrive\Desktop\Skool\Arbit\analysis\claim_002_healthy_episode_characterization\codex\characterize_episode_1.py
+git_commit: 8452b6849ee79050d213ebfc5de84b3e127fd4ef
+snapshot_id: tcs_infy_v1_2026-07-04
+timestamp_utc: 2026-07-05T12:35:58.046603+00:00
+output_content_sha256: 9b37650144f8922e4dcaed985fffb18e6d5d6c27d375f16a654ed8014a183c12
+output_hash_scope: bytes after this provenance header
+final_file_sha256: recorded in output_manifest.csv and provenance.json
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="470" viewBox="0 0 980 470">
+<rect width="100%" height="100%" fill="#ffffff" />
+<text x="60.0" y="34.0" font-family="Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#111827">500d strict core split after 2020-06-30</text>
+<line x1="70" y1="385" x2="275" y2="385" stroke="#111827" />
+<line x1="70" y1="78" x2="70" y2="385" stroke="#111827" />
+<line x1="140" y1="268.6" x2="140" y2="118.6" stroke="#2563eb" />
+<rect x="122" y="152.0" width="36" height="98.4" fill="#2563eb" opacity="0.22" stroke="#2563eb" />
+<line x1="119" y1="212.8" x2="161" y2="212.8" stroke="#2563eb" stroke-width="2" />
+<text x="140.0" y="403.0" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="middle" fill="#111827">left</text>
+<line x1="210" y1="344.4" x2="210" y2="281.2" stroke="#dc2626" />
+<rect x="192" y="284.5" width="36" height="25.3" fill="#dc2626" opacity="0.22" stroke="#dc2626" />
+<line x1="189" y1="288.1" x2="231" y2="288.1" stroke="#dc2626" stroke-width="2" />
+<text x="210.0" y="403.0" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="middle" fill="#111827">right</text>
+<text x="172.5" y="62.0" font-family="Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle" fill="#111827">Beta</text>
+<text x="63.0" y="82.0" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="end" fill="#111827">1.055</text>
+<text x="63.0" y="385.0" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="end" fill="#111827">0.467</text>
+<line x1="300" y1="385" x2="505" y2="385" stroke="#111827" />
+<line x1="300" y1="78" x2="300" y2="385" stroke="#111827" />
+<line x1="370" y1="344.4" x2="370" y2="118.6" stroke="#2563eb" />
+<rect x="352" y="201.9" width="36" height="112.4" fill="#2563eb" opacity="0.22" stroke="#2563eb" />
+<line x1="349" y1="299.0" x2="391" y2="299.0" stroke="#2563eb" stroke-width="2" />
+<text x="370.0" y="403.0" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="middle" fill="#111827">left</text>
+<line x1="440" y1="299.0" x2="440" y2="167.4" stroke="#dc2626" />
+<rect x="422" y="202.9" width="36" height="48.1" fill="#dc2626" opacity="0.22" stroke="#dc2626" />
+<line x1="419" y1="222.3" x2="461" y2="222.3" stroke="#dc2626" stroke-width="2" />
+<text x="440.0" y="403.0" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="middle" fill="#111827">right</text>
+<text x="402.5" y="62.0" font-family="Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle" fill="#111827">Half-life</text>
+<text x="293.0" y="82.0" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="end" fill="#111827">15.389</text>
+<text x="293.0" y="385.0" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="end" fill="#111827">9.751</text>
+<line x1="530" y1="385" x2="735" y2="385" stroke="#111827" />
+<line x1="530" y1="78" x2="530" y2="385" stroke="#111827" />
+<line x1="600" y1="294.8" x2="600" y2="118.6" stroke="#2563eb" />
+<rect x="582" y="143.6" width="36" height="147.4" fill="#2563eb" opacity="0.22" stroke="#2563eb" />
+<line x1="579" y1="234.8" x2="621" y2="234.8" stroke="#2563eb" stroke-width="2" />
+<text x="600.0" y="403.0" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="middle" fill="#111827">left</text>
+<line x1="670" y1="344.4" x2="670" y2="250.4" stroke="#dc2626" />
+<rect x="652" y="260.9" width="36" height="35.4" fill="#dc2626" opacity="0.22" stroke="#dc2626" />
+<line x1="649" y1="276.6" x2="691" y2="276.6" stroke="#dc2626" stroke-width="2" />
+<text x="670.0" y="403.0" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="middle" fill="#111827">right</text>
+<text x="632.5" y="62.0" font-family="Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle" fill="#111827">Spread vol</text>
+<text x="523.0" y="82.0" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="end" fill="#111827">0.060</text>
+<text x="523.0" y="385.0" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="end" fill="#111827">0.038</text>
+<line x1="760" y1="385" x2="965" y2="385" stroke="#111827" />
+<line x1="760" y1="78" x2="760" y2="385" stroke="#111827" />
+<line x1="830" y1="344.4" x2="830" y2="329.2" stroke="#2563eb" />
+<rect x="812" y="335.0" width="36" height="5.1" fill="#2563eb" opacity="0.22" stroke="#2563eb" />
+<line x1="809" y1="337.1" x2="851" y2="337.1" stroke="#2563eb" stroke-width="2" />
+<text x="830.0" y="403.0" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="middle" fill="#111827">left</text>
+<line x1="900" y1="336.7" x2="900" y2="118.6" stroke="#dc2626" />
+<rect x="882" y="273.1" width="36" height="50.2" fill="#dc2626" opacity="0.22" stroke="#dc2626" />
+<line x1="879" y1="317.4" x2="921" y2="317.4" stroke="#dc2626" stroke-width="2" />
+<text x="900.0" y="403.0" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="middle" fill="#111827">right</text>
+<text x="862.5" y="62.0" font-family="Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle" fill="#111827">EG p</text>
+<text x="753.0" y="82.0" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="end" fill="#111827">0.057</text>
+<text x="753.0" y="385.0" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="end" fill="#111827">-0.009</text>
+<text x="60.0" y="436.0" font-family="Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start" fill="#111827">Exploratory split test uses standardized beta, half-life, spread volatility, and p-value strength metrics.</text>
+</svg>

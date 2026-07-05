@@ -1,0 +1,12 @@
+# script_path: C:\Users\preet\OneDrive\Desktop\Skool\Arbit\analysis\claim_002_healthy_episode_characterization\codex\characterize_episode_1.py
+# git_commit: 8452b6849ee79050d213ebfc5de84b3e127fd4ef
+# snapshot_id: tcs_infy_v1_2026-07-04
+# timestamp_utc: 2026-07-05T12:35:58.046603+00:00
+# output_content_sha256: a31faca178667aae54a74a5017c23cd5fd497bcc81f207472540f35a0fee3c55
+# output_hash_scope: bytes after this provenance header
+# final_file_sha256: recorded in output_manifest.csv and provenance.json
+episode_id,rule,candidate_status,start_date,end_date,n_month_ends,window_lengths,eg_p_range,adf_p_range,half_life_range,beta_range,caveat
+500d_strict,500d Engle-Granger p < 0.05 and residual ADF p < 0.05 at month-end,sustained_run,2020-01-31,2021-12-31,24,500,6.59511e-05 to 0.0480517,4.02816e-07 to 0.000819445,10.497 to 14.643,0.545092 to 0.977381,Shorter and more responsive long-window boundary; it ends before the 730d boundary.
+730d_strict,730d Engle-Granger p < 0.05 and residual ADF p < 0.05 at month-end,sustained_run,2020-12-31,2023-03-31,28,730,1.86518e-05 to 0.0131582,1.0924e-07 to 0.000153341,11.711 to 17.704,0.647704 to 0.749515,Longer lookback boundary; it can lag degradation because each row includes 730 trailing trading days.
+500d_730d_consensus_strict,Both 500d and 730d strict rules pass on the same month-end,sustained_run,2020-12-31,2021-12-31,13,500730,0.00168738 to 0.0480517,1.35553e-05 to 0.000819445,12.093 to 17.704,0.621906 to 0.666108,"Consensus starts only when the 730d window becomes available, so it cannot date the earlier 500d-only portion."
+500d_borderline_tolerant,500d Engle-Granger p < 0.10 and residual ADF p < 0.05 at month-end,sustained_run,2020-01-31,2023-01-31,37,500,6.59511e-05 to 0.0963681,4.02816e-07 to 0.00218446,10.497 to 17.730,0.545092 to 0.977381,"This is a degradation shoulder, not the strict healthy core."

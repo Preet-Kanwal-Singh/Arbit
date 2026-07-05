@@ -1,0 +1,37 @@
+<!--
+script_path: C:\Users\preet\OneDrive\Desktop\Skool\Arbit\analysis\claim_002_healthy_episode_characterization\codex\characterize_episode_1.py
+git_commit: 8452b6849ee79050d213ebfc5de84b3e127fd4ef
+snapshot_id: tcs_infy_v1_2026-07-04
+timestamp_utc: 2026-07-05T12:35:58.046603+00:00
+output_content_sha256: a9a4ee34dd2f73642e9995d6df3f10bcff57d2e722bf11f0435b40c6c2660335
+output_hash_scope: bytes after this provenance header
+final_file_sha256: recorded in output_manifest.csv and provenance.json
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="560" viewBox="0 0 1100 560">
+<rect width="100%" height="100%" fill="#ffffff" />
+<text x="80.0" y="30.0" font-family="Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#111827">Episode 1 boundary diagnostics: Engle-Granger p-values</text>
+<rect x="80.0" y="55" width="539.3" height="430" fill="#dbeafe" opacity="0.35" />
+<rect x="338.1" y="55" width="631.8" height="430" fill="#dcfce7" opacity="0.35" />
+<rect x="338.1" y="55" width="281.2" height="430" fill="#fde68a" opacity="0.35" />
+<line x1="80" y1="485" x2="1040" y2="485" stroke="#111827" stroke-width="1" />
+<line x1="80" y1="55" x2="80" y2="485" stroke="#111827" stroke-width="1" />
+<line x1="80" y1="305.8" x2="1040" y2="305.8" stroke="#6b7280" stroke-width="1" stroke-dasharray="" />
+<text x="70.0" y="309.8" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="end" fill="#111827">0.05</text>
+<line x1="80" y1="126.7" x2="1040" y2="126.7" stroke="#6b7280" stroke-width="1" stroke-dasharray="6 4" />
+<text x="70.0" y="130.7" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="end" fill="#111827">0.10</text>
+<polyline points="80.0,473.2 101.6,477.3 126.2,484.8 149.3,481.9 171.7,480.0 196.3,478.5 220.2,440.5 244.1,420.7 267.2,439.0 290.3,466.4 311.9,468.8 338.1,470.4 360.4,468.4 382.0,473.2 407.4,479.0 430.6,462.3 454.4,472.3 477.6,459.0 500.7,427.6 525.3,468.3 548.4,382.2 570.8,466.1 595.4,312.8 619.3,330.1 643.2,288.6 664.8,398.2 688.7,293.1 711.0,209.1 735.7,248.1 758.8,294.1 781.1,318.6 805.8,427.0 829.7,331.7 853.5,139.7 876.7,191.8 899.8,178.4 924.4,342.2 946.0,110.6 969.9,81.9 991.5,55.0 1016.9,55.0 1040.0,55.0" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" />
+<text x="930.0" y="75.0" font-family="Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start" fill="#111827">500d EG p</text>
+<line x1="885" y1="71" x2="922" y2="71" stroke="#2563eb" stroke-width="2.4" />
+<polyline points="338.1,462.9 360.4,478.5 382.0,484.9 407.4,484.6 430.6,483.8 454.4,484.6 477.6,484.5 500.7,483.0 525.3,483.9 548.4,482.1 570.8,483.5 595.4,483.2 619.3,484.4 643.2,484.6 664.8,484.7 688.7,484.4 711.0,484.8 735.7,484.7 758.8,484.7 781.1,484.7 805.8,484.6 829.7,479.7 853.5,474.0 876.7,479.8 899.8,477.1 924.4,473.2 946.0,453.4 969.9,437.8 991.5,150.2 1016.9,55.0 1040.0,154.5" fill="none" stroke="#16a34a" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" />
+<text x="930.0" y="95.0" font-family="Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start" fill="#111827">730d EG p</text>
+<line x1="885" y1="91" x2="922" y2="91" stroke="#16a34a" stroke-width="2.4" />
+<line x1="80.0" y1="485" x2="80.0" y2="490" stroke="#111827" />
+<text x="80.0" y="507.0" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="middle" fill="#111827">2020</text>
+<line x1="360.4" y1="485" x2="360.4" y2="490" stroke="#111827" />
+<text x="360.4" y="507.0" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="middle" fill="#111827">2021</text>
+<line x1="643.2" y1="485" x2="643.2" y2="490" stroke="#111827" />
+<text x="643.2" y="507.0" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="middle" fill="#111827">2022</text>
+<line x1="924.4" y1="485" x2="924.4" y2="490" stroke="#111827" />
+<text x="924.4" y="507.0" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="middle" fill="#111827">2023</text>
+<text x="80.0" y="536.0" font-family="Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start" fill="#111827">Shaded spans show candidate sustained healthy intervals; p-values clipped at 0.12 for readability.</text>
+</svg>

@@ -1,0 +1,138 @@
+{
+  "script_path": "C:\\Users\\preet\\OneDrive\\Desktop\\Skool\\Arbit\\analysis\\claim_002_healthy_episode_characterization\\codex\\characterize_episode_1.py",
+  "git_commit": "8452b6849ee79050d213ebfc5de84b3e127fd4ef",
+  "snapshot_id": "tcs_infy_v1_2026-07-04",
+  "timestamp_utc": "2026-07-05T12:35:58.046603+00:00",
+  "snapshot_adjusted_close_sha256": "7f2b69cc3c2030bb10c6e7a6f9a727743bff8d7003f7db2f36fa3661bbd60959",
+  "snapshot_metadata": {
+    "snapshot_id": "tcs_infy_v1_2026-07-04",
+    "creation_timestamp_utc": "2026-07-04T17:28:14.803329+00:00",
+    "created_by": "Codex",
+    "tickers": [
+      "TCS.NS",
+      "INFY.NS"
+    ],
+    "start_date": "2018-01-01",
+    "end_date_inclusive": "2026-06-30",
+    "yfinance_download_end_exclusive": "2026-07-01",
+    "first_data_date": "2018-01-01",
+    "last_data_date": "2026-06-30",
+    "row_count": 2099,
+    "columns": [
+      "date",
+      "TCS.NS",
+      "INFY.NS"
+    ],
+    "source": "Yahoo Finance via yfinance.download",
+    "adjustment_policy": "auto_adjust=True in yfinance; saved the adjusted Close columns for TCS.NS and INFY.NS; no manual corporate-action handling.",
+    "yfinance_version": "1.5.1",
+    "git_commit": "606cc817c1de5fda7b57dc5814239e36592cc70e",
+    "generated_by_script": "C:\\Users\\preet\\OneDrive\\Desktop\\Skool\\Arbit\\analysis\\create_tcs_infy_snapshot.py",
+    "files": {
+      "adjusted_close.csv": {
+        "path": "data\\snapshots\\tcs_infy_v1_2026-07-04\\adjusted_close.csv",
+        "sha256": "7f2b69cc3c2030bb10c6e7a6f9a727743bff8d7003f7db2f36fa3661bbd60959"
+      }
+    }
+  },
+  "statsmodels_version": "0.14.6",
+  "python_executable": "C:\\Python314\\python.exe",
+  "method": {
+    "rolling_windows": [
+      60,
+      120,
+      250,
+      500,
+      730
+    ],
+    "primary_windows": [
+      500,
+      730
+    ],
+    "strict_rule": "Engle-Granger p < 0.05 and residual ADF p < 0.05",
+    "borderline_rule": "Engle-Granger p < 0.10 and residual ADF p < 0.05",
+    "half_life": "-log(2) / log(phi), where phi is AR(1) coefficient of OLS residual spread",
+    "spread_volatility": "sample standard deviation of OLS log residual spread within each rolling window",
+    "subregime_test": "best one-change split on standardized metrics, with month-order permutation p-value; exploratory only"
+  },
+  "outputs": [
+    {
+      "path": "analysis\\claim_002_healthy_episode_characterization\\codex\\rolling_metrics.csv",
+      "content_sha256": "76a2785d4597d2d068c99e39e8aa261c172944201ac2f8acc1e6f414a096877e",
+      "final_file_sha256": "1cd07736e6e721220694d5bff4b1bee86407c7854bf02a0db36ca907d17e60e9",
+      "hash_scope": "bytes after commented provenance header",
+      "description": "Month-end rolling cointegration metrics"
+    },
+    {
+      "path": "analysis\\claim_002_healthy_episode_characterization\\codex\\episode_boundary_candidates.csv",
+      "content_sha256": "a31faca178667aae54a74a5017c23cd5fd497bcc81f207472540f35a0fee3c55",
+      "final_file_sha256": "9233cef86b3a7c08dfe34a1eee43c62eaa83a94ed10db79b33762c57e5e7f8cc",
+      "hash_scope": "bytes after commented provenance header",
+      "description": "Episode boundary candidates"
+    },
+    {
+      "path": "analysis\\claim_002_healthy_episode_characterization\\codex\\all_pass_runs.csv",
+      "content_sha256": "5fce62eb96ea05e4a5edfcf083dd1f1c8fa9dabe8b585e7a313e5b390be1afa7",
+      "final_file_sha256": "b9e477f2d8f3d10526335f3ad0aaab3aed1acb3db53e839ca197e4691089a06f",
+      "hash_scope": "bytes after commented provenance header",
+      "description": "All pass/fail runs used for boundary ambiguity"
+    },
+    {
+      "path": "analysis\\claim_002_healthy_episode_characterization\\codex\\episode_regime_summary.csv",
+      "content_sha256": "247b3a425230ce7f97198922704052b8e5b50f04391b79719c8653f9872512cf",
+      "final_file_sha256": "c79ff7cb578409ce51994948ca46fcd96efa88b2e249f66f60aca8ac5b3f1032",
+      "hash_scope": "bytes after commented provenance header",
+      "description": "Distribution and drift summaries"
+    },
+    {
+      "path": "analysis\\claim_002_healthy_episode_characterization\\codex\\subregime_tests.csv",
+      "content_sha256": "a9b437606a8dd392b4cdd93d2631a3e82ec8616adfb156b87b9b1869623da964",
+      "final_file_sha256": "ad2616a994e5161c195194c596c84d656474310a8347116c1304bf23afa3e3b5",
+      "hash_scope": "bytes after commented provenance header",
+      "description": "Exploratory change-point diagnostics"
+    },
+    {
+      "path": "analysis\\claim_002_healthy_episode_characterization\\codex\\degradation_diagnostics.csv",
+      "content_sha256": "25379799c19088984fbb3253a6cc8b6b63d84145f607088ea5b773538bd7c00d",
+      "final_file_sha256": "617ac0d9111effb727444131efb70ffb731a8a3bdcf024bb3007600ba9d957f3",
+      "hash_scope": "bytes after commented provenance header",
+      "description": "Gradual degradation diagnostics"
+    },
+    {
+      "path": "analysis\\claim_002_healthy_episode_characterization\\codex\\plot_boundary_diagnostics.svg",
+      "content_sha256": "a9a4ee34dd2f73642e9995d6df3f10bcff57d2e722bf11f0435b40c6c2660335",
+      "final_file_sha256": "0f010b21739996a00f54b918c3ecc30e89dc05828bea826f5b9e59aeb431f927",
+      "hash_scope": "bytes after SVG provenance comment",
+      "description": "Boundary p-value diagnostic plot"
+    },
+    {
+      "path": "analysis\\claim_002_healthy_episode_characterization\\codex\\plot_episode_metrics.svg",
+      "content_sha256": "3496fe52f67b1593e0c2b21dedb4bac3fbc45b8ba6a69e040c8683b1d663698b",
+      "final_file_sha256": "98e45be5bf6103e2d93ff3fefef5a80dda1eaaa93f4a501fc260b03b45fc452d",
+      "hash_scope": "bytes after SVG provenance comment",
+      "description": "Episode 1 metric time-series plot"
+    },
+    {
+      "path": "analysis\\claim_002_healthy_episode_characterization\\codex\\plot_subregime_boxplots.svg",
+      "content_sha256": "9b37650144f8922e4dcaed985fffb18e6d5d6c27d375f16a654ed8014a183c12",
+      "final_file_sha256": "c244961a8ad0a3cb6bbda54d6ab1e4a5ae8cbd8e451b5a03b841cb49d94be4b4",
+      "hash_scope": "bytes after SVG provenance comment",
+      "description": "Sub-regime distribution plot"
+    },
+    {
+      "path": "analysis\\claim_002_healthy_episode_characterization\\codex\\summary.md",
+      "content_sha256": "7b9781c82cdcd58baa0af12efc151f4d4cf4cd3b7fcc5257600fdc6c9add685d",
+      "final_file_sha256": "33fe3e0a8cd0f1cdc22c9db0d0c69554300e2efd3c3aacbbccfe8946541a2668",
+      "hash_scope": "bytes after HTML provenance comment",
+      "description": "Concise Episode 1 characterization"
+    },
+    {
+      "path": "analysis\\claim_002_healthy_episode_characterization\\codex\\output_manifest.csv",
+      "content_sha256": "2876ae016e365ba6ef7b59efb4a37d3e5d2de21122d862cc2ae34b53b4adcc01",
+      "final_file_sha256": "ec25d03f5298017edd5d7b37c226928b6863996565813c9583fd0d58b0dfad31",
+      "hash_scope": "bytes after commented provenance header",
+      "description": "Exact final SHA256 manifest for generated outputs"
+    }
+  ],
+  "self_hash_note": "Text outputs embed content hashes excluding their provenance headers. Exact final file hashes are recorded here and in output_manifest.csv."
+}

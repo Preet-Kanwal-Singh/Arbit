@@ -1,0 +1,11 @@
+# script_path: C:\Users\preet\OneDrive\Desktop\Skool\Arbit\analysis\claim_002_healthy_episode_characterization\codex\characterize_episode_1.py
+# git_commit: 8452b6849ee79050d213ebfc5de84b3e127fd4ef
+# snapshot_id: tcs_infy_v1_2026-07-04
+# timestamp_utc: 2026-07-05T12:35:58.046603+00:00
+# output_content_sha256: a9b437606a8dd392b4cdd93d2631a3e82ec8616adfb156b87b9b1869623da964
+# output_hash_scope: bytes after this provenance header
+# final_file_sha256: recorded in output_manifest.csv and provenance.json
+episode_id,n_month_ends,best_split_after_date,left_start,left_end,right_start,right_end,metrics_used,rss_improvement_ratio,permutation_p_value,left_beta_mean,right_beta_mean,left_half_life_mean,right_half_life_mean,left_spread_std_mean,right_spread_std_mean,left_eg_p_median,right_eg_p_median,interpretation
+500d_strict,24,2020-06-30,2020-01-31,2020-06-30,2020-07-31,2021-12-31,"beta,half_life,spread_std,spread_daily_change_std,eg_strength,adf_strength",0.38844203662303955,0.0004997501249375312,0.8191646442263177,0.6351858585337575,12.077912542911806,12.69790703041987,0.05003322509891359,0.04534842168637573,0.0016051157015479602,0.00579876140704155,natural_split_supported
+730d_strict,28,2022-08-30,2020-12-31,2022-08-30,2022-09-30,2023-03-31,"beta,half_life,spread_std,spread_daily_change_std,eg_strength,adf_strength",0.3922898751635837,0.0004997501249375312,0.6733884562646137,0.6633099100365388,13.8445894140178,14.518603097088066,0.04580366348164052,0.03831887823867508,0.00012729137221810584,0.003077479925969799,natural_split_supported
+500d_borderline_tolerant,37,2021-10-29,2020-01-31,2021-10-29,2021-11-30,2023-01-31,"beta,half_life,spread_std,spread_daily_change_std,eg_strength,adf_strength",0.552047325814397,0.0004997501249375312,0.682676193057164,0.6509533167413261,12.457431538177339,15.50428113603367,0.04698836495398374,0.03863215739211409,0.0045743100384899055,0.05326391373561568,natural_split_supported

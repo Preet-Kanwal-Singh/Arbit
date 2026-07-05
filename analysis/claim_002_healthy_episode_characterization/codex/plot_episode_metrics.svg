@@ -1,0 +1,51 @@
+<!--
+script_path: C:\Users\preet\OneDrive\Desktop\Skool\Arbit\analysis\claim_002_healthy_episode_characterization\codex\characterize_episode_1.py
+git_commit: 8452b6849ee79050d213ebfc5de84b3e127fd4ef
+snapshot_id: tcs_infy_v1_2026-07-04
+timestamp_utc: 2026-07-05T12:35:58.046603+00:00
+output_content_sha256: 3496fe52f67b1593e0c2b21dedb4bac3fbc45b8ba6a69e040c8683b1d663698b
+output_hash_scope: bytes after this provenance header
+final_file_sha256: recorded in output_manifest.csv and provenance.json
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="760" viewBox="0 0 1100 760">
+<rect width="100%" height="100%" fill="#ffffff" />
+<text x="80.0" y="34.0" font-family="Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#111827">500d Episode 1 metrics: strict core plus borderline shoulder</text>
+<rect x="82.0" y="70" width="611.9" height="135" fill="#dbeafe" opacity="0.28" />
+<line x1="82" y1="205" x2="1040" y2="205" stroke="#111827" />
+<line x1="82" y1="70" x2="82" y2="205" stroke="#111827" />
+<polyline points="82.0,83.1 106.5,93.8 134.4,115.1 160.7,141.8 186.0,148.2 214.0,155.4 241.1,176.3 268.2,191.9 294.4,189.0 320.6,176.5 345.1,176.1 374.8,172.6 400.2,166.1 424.6,163.0 453.5,164.7 479.7,164.2 506.8,163.0 533.0,162.1 559.3,164.9 587.2,166.1 613.4,163.1 638.8,163.2 666.8,162.2 693.9,161.5 721.0,158.7 745.4,157.6 772.5,159.2 797.9,161.5 825.8,160.3 852.1,156.0 877.4,156.0 905.4,164.4 932.5,171.7 959.6,172.0 985.8,177.5 1012.0,181.9 1040.0,178.5" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" />
+<text x="22.0" y="90.0" font-family="Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start" fill="#111827">500d beta</text>
+<text x="74.0" y="74.0" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="end" fill="#111827">1.029</text>
+<text x="74.0" y="205.0" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="end" fill="#111827">0.493</text>
+<rect x="82.0" y="247" width="611.9" height="135" fill="#dbeafe" opacity="0.28" />
+<line x1="82" y1="382" x2="1040" y2="382" stroke="#111827" />
+<line x1="82" y1="247" x2="82" y2="382" stroke="#111827" />
+<polyline points="82.0,321.4 106.5,306.5 134.4,353.9 160.7,368.9 186.0,361.2 214.0,358.9 241.1,338.7 268.2,329.6 294.4,334.8 320.6,330.5 345.1,331.8 374.8,329.0 400.2,335.8 424.6,346.9 453.5,343.2 479.7,343.9 506.8,344.1 533.0,356.4 559.3,335.6 587.2,330.4 613.4,323.0 638.8,342.9 666.8,320.0 693.9,328.0 721.0,330.9 745.4,327.8 772.5,292.3 797.9,273.7 825.8,274.3 852.1,284.8 877.4,285.0 905.4,322.5 932.5,299.7 959.6,260.7 985.8,261.7 1012.0,260.1 1040.0,282.2" fill="none" stroke="#7c3aed" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" />
+<text x="22.0" y="267.0" font-family="Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start" fill="#111827">Spread half-life</text>
+<text x="74.0" y="251.0" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="end" fill="#111827">18.597</text>
+<text x="74.0" y="382.0" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="end" fill="#111827">9.630</text>
+<rect x="82.0" y="424" width="611.9" height="135" fill="#dbeafe" opacity="0.28" />
+<line x1="82" y1="559" x2="1040" y2="559" stroke="#111827" />
+<line x1="82" y1="424" x2="82" y2="559" stroke="#111827" />
+<polyline points="82.0,437.1 106.5,441.5 134.4,460.6 160.7,499.1 186.0,501.0 214.0,501.9 241.1,495.8 268.2,491.5 294.4,490.7 320.6,487.3 345.1,489.1 374.8,488.0 400.2,485.6 424.6,488.0 453.5,494.7 479.7,498.4 506.8,500.6 533.0,505.8 559.3,504.1 587.2,500.6 613.4,494.1 638.8,503.1 666.8,515.1 693.9,520.2 721.0,527.3 745.4,525.0 772.5,522.2 797.9,523.8 825.8,522.5 852.1,525.1 877.4,530.2 905.4,542.2 932.5,545.9 959.6,543.0 985.8,542.7 1012.0,542.7 1040.0,545.1" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" />
+<text x="22.0" y="444.0" font-family="Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start" fill="#111827">Spread volatility</text>
+<text x="74.0" y="428.0" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="end" fill="#111827">0.060</text>
+<text x="74.0" y="559.0" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="end" fill="#111827">0.033</text>
+<rect x="82.0" y="601" width="611.9" height="135" fill="#dbeafe" opacity="0.28" />
+<line x1="82" y1="736" x2="1040" y2="736" stroke="#111827" />
+<line x1="82" y1="601" x2="82" y2="736" stroke="#111827" />
+<polyline points="82.0,719.4 106.5,720.6 134.4,722.9 160.7,722.0 186.0,721.4 214.0,721.0 241.1,709.4 268.2,703.4 294.4,709.0 320.6,717.3 345.1,718.0 374.8,718.5 400.2,717.9 424.6,719.4 453.5,721.1 479.7,716.1 506.8,719.1 533.0,715.0 559.3,705.5 587.2,717.9 613.4,691.7 638.8,717.2 666.8,670.6 693.9,675.9 721.0,663.3 745.4,696.6 772.5,664.6 797.9,639.1 825.8,651.0 852.1,664.9 877.4,672.4 905.4,705.3 932.5,676.4 959.6,618.0 985.8,633.9 1012.0,629.8 1040.0,679.5" fill="none" stroke="#059669" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="82" y1="668.5" x2="1040" y2="668.5" stroke="#6b7280" stroke-dasharray="5 4" />
+<text x="22.0" y="621.0" font-family="Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start" fill="#111827">Engle-Granger p-value</text>
+<text x="74.0" y="605.0" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="end" fill="#111827">0.112</text>
+<text x="74.0" y="736.0" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="end" fill="#111827">-0.012</text>
+<line x1="82.0" y1="700" x2="82.0" y2="705" stroke="#111827" />
+<text x="82.0" y="722.0" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="middle" fill="#111827">2020</text>
+<line x1="400.2" y1="700" x2="400.2" y2="705" stroke="#111827" />
+<text x="400.2" y="722.0" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="middle" fill="#111827">2021</text>
+<line x1="721.0" y1="700" x2="721.0" y2="705" stroke="#111827" />
+<text x="721.0" y="722.0" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="middle" fill="#111827">2022</text>
+<line x1="1040.0" y1="700" x2="1040.0" y2="705" stroke="#111827" />
+<text x="1040.0" y="722.0" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="middle" fill="#111827">2023</text>
+<text x="82.0" y="746.0" font-family="Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start" fill="#111827">Blue shading marks the 500d strict healthy core; unshaded right tail is the borderline shoulder.</text>
+</svg>
