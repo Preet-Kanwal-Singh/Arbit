@@ -122,3 +122,45 @@ completed work. Maintained by Desktop Claude A (Ledger Keeper).
     close agreement. At what point does the absence of a Spec Block become
     the actual bottleneck on this project's progress, rather than a one-off
     gap to flag and move past?
+
+## From Claim 003 — EG/Half-Life Ordering Robustness (2026-07-06)
+
+20. **Real spec gap: the study-level decision tree in Spec Block v6 has no
+    branch for "a window length is withheld from the study-level conclusion
+    due to a cross-implementation cell dispute."** This isn't hypothetical
+    — it happened on the very first claim that used this spec. The tree's
+    three branches (CONTRADICTED-if-either, ROBUST-if-both,
+    INCONCLUSIVE-family) all assume valid classifications for both window
+    lengths are available. Needs Desktop Claude B to patch this (v7) with an
+    explicit rule before it recurs on a future multi-window claim. See
+    `worklog.md`, 2026-07-06.
+21. Window 730d, config C2 (EG p≥0.03 threshold, HL>20d): Codex P̂=0.7842,
+    Opus P̂=0.8533, difference 0.0691, exceeding the spec's 0.05 tolerance,
+    even though both call it ROBUST. Worth investigating why this specific
+    cell (and only this one, out of ten) diverges beyond tolerance — possibly
+    something about the C2 threshold interacting with the bootstrap
+    resampling near a boundary case — before deciding whether it's re-run,
+    accepted as noise, or the tolerance itself was too tight for this cell.
+22. Is a 500d-only admission to `VERIFIED_FACTS.md` (scoped explicitly as
+    "500d window only, study-level conclusion pending on the 730d gap")
+    something Preet wants for this claim, given all five 500d cells pass
+    cleanly? Or should the whole claim wait for #20/#21 to resolve before
+    anything is admitted? This would be the first-ever `VERIFIED_FACTS.md`
+    entry, so worth deciding deliberately rather than defaulting.
+23. The 500d window's ROBUST classification carries a PARAMETER-UNSTABLE
+    flag because phi_post's 95% CI upper bound (1.0043, both implementations)
+    exceeds 1.0 — the unit-root boundary, where half-life is undefined
+    (`inf`). Does this mean the 500d "EG-first" finding is partly a
+    mechanical consequence of a possibly-non-stationary post-transition
+    regime rather than a clean behavioral signal? Worth someone checking how
+    sensitive the 500d P̂ values are to phi_post specifically, before this is
+    used for anything beyond "the ordering holds under these thresholds."
+24. `analysis/claim003/` is named inconsistently with `claim_001_window_validation`
+    and `claim_002_healthy_episode_characterization` — doesn't match the
+    actual claim_id (`claim_003_eg_halflife_ordering_robustness`). Minor,
+    worth a rename for consistency.
+25. Are the `PROJECT_BASE_CONTEXT.md` §3 edit and my `decisions.md` GLM-policy
+    edit from earlier in this session actually committed to git yet? Codex's
+    `claim003` provenance captured both as locally modified/uncommitted
+    (`git_status_short_at_run`) at 2026-07-06T09:30:39Z. I have no git
+    status/diff tool to check the current state directly.
