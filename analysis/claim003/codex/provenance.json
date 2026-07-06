@@ -1,0 +1,135 @@
+{
+  "claim_id": "claim_003_eg_halflife_ordering_robustness",
+  "classification_rule": {
+    "cell": "ROBUST if 95% Clopper-Pearson CI is entirely > 0.5; CONTRADICTED if entirely < 0.5; otherwise INCONCLUSIVE; N=0 is INCONCLUSIVE with no CI.",
+    "study": "Spec v6 ordered rule with parameter-stability qualifiers applied before unqualified ROBUST/CONTRADICTED exits.",
+    "window": "CONTRADICTED if any threshold cell is CONTRADICTED; ROBUST if all five threshold cells are ROBUST; otherwise INCONCLUSIVE."
+  },
+  "cross_implementation_agreement_rule": "Per cell, |P_hat_Codex - P_hat_Opus| <= 0.05 and identical classification including qualifiers; otherwise DISPUTED for that cell and window withheld from study-level conclusion.",
+  "git_commit": "dcd5f465aff03bbcf448a8e845767d364cfae098",
+  "git_status_short_at_run": "M PROJECT_BASE_CONTEXT.md\n M ledger/decisions.md\n?? analysis/claim003/",
+  "method_assumption": "The residual spread for ADF and half-life is intercept-inclusive OLS residual, matching claim 002 core-boundary generation. The spec's beta-only spread formula is treated as shorthand.",
+  "numpy_version": "2.5.0",
+  "outputs": [
+    {
+      "content_sha256": "1b77e5c5557a597424382fcd7a150195d43fd1607292e109dcc569d62af36e81",
+      "description": "Per-window and per-threshold simulation counts, rates, intervals, and classifications",
+      "final_file_sha256": "683d190c2558323b24a0c4a4720eebc365d8631f49ca39a67037c01e75b68408",
+      "hash_scope": "bytes after this provenance header",
+      "path": "analysis\\claim003\\codex\\cell_results.csv"
+    },
+    {
+      "content_sha256": "f09dd982ef9ef421577f64573e90cbc9f7229e4b330891ebcd45b3c37fd98d17",
+      "description": "Per-window classification and power/stability status",
+      "final_file_sha256": "27eba15ad123428cd70fa978d94e6860ad751df82fe9aea4752c15c6d4cc359f",
+      "hash_scope": "bytes after this provenance header",
+      "path": "analysis\\claim003\\codex\\window_summary.csv"
+    },
+    {
+      "content_sha256": "d99669ce3b8985c1a3245dc4818f60cd7048ffdaf485a8c79bbfadce9b2cd0d0",
+      "description": "Pre-core and degradation fixed-transition model parameters",
+      "final_file_sha256": "5ae961ac68099e6fdbd132378e2b818e27739b4101ba2ee4e1e40e88bef20250",
+      "hash_scope": "bytes after this provenance header",
+      "path": "analysis\\claim003\\codex\\regime_parameters.csv"
+    },
+    {
+      "content_sha256": "99970038a3c2c6bc88108320a39abc8becbc5191172169e08f4e1c1783fe778a",
+      "description": "Real-data crossing anchors, excluded from classification",
+      "final_file_sha256": "a4f41dc3d4f75b3959800ca36fa2d39eefab33f84b706af054881546f1a70bf4",
+      "hash_scope": "bytes after this provenance header",
+      "path": "analysis\\claim003\\codex\\real_data_anchors.csv"
+    },
+    {
+      "content_sha256": "6d196cb9a957c14de74b7dc0152f40a738613c8895fe1edc98632010fc7a3419",
+      "description": "Real-data rolling diagnostics over each degradation window",
+      "final_file_sha256": "497d9246ce66b6fd2e4253249c4faa260b897e839deb765918ac73d96c0814cf",
+      "hash_scope": "bytes after this provenance header",
+      "path": "analysis\\claim003\\codex\\real_rolling_metrics.csv"
+    }
+  ],
+  "pandas_version": "3.0.3",
+  "python_executable": "C:\\Users\\preet\\OneDrive\\Desktop\\Skool\\Arbit\\.venv\\Scripts\\python.exe",
+  "replicates": 2000,
+  "script_path": "C:\\Users\\preet\\OneDrive\\Desktop\\Skool\\Arbit\\analysis\\claim003\\codex\\run_claim003_eg_halflife_ordering_robustness.py",
+  "script_sha256": "087c5fa572e28153123601645c81e4d9b93c09b6edda8ea07e29a73151e10da1",
+  "seed": 42,
+  "snapshot_adjusted_close_sha256": "7f2b69cc3c2030bb10c6e7a6f9a727743bff8d7003f7db2f36fa3661bbd60959",
+  "snapshot_id": "tcs_infy_v1_2026-07-04",
+  "snapshot_metadata": {
+    "adjustment_policy": "auto_adjust=True in yfinance; saved the adjusted Close columns for TCS.NS and INFY.NS; no manual corporate-action handling.",
+    "columns": [
+      "date",
+      "TCS.NS",
+      "INFY.NS"
+    ],
+    "created_by": "Codex",
+    "creation_timestamp_utc": "2026-07-04T17:28:14.803329+00:00",
+    "end_date_inclusive": "2026-06-30",
+    "files": {
+      "adjusted_close.csv": {
+        "path": "data\\snapshots\\tcs_infy_v1_2026-07-04\\adjusted_close.csv",
+        "sha256": "7f2b69cc3c2030bb10c6e7a6f9a727743bff8d7003f7db2f36fa3661bbd60959"
+      }
+    },
+    "first_data_date": "2018-01-01",
+    "generated_by_script": "C:\\Users\\preet\\OneDrive\\Desktop\\Skool\\Arbit\\analysis\\create_tcs_infy_snapshot.py",
+    "git_commit": "606cc817c1de5fda7b57dc5814239e36592cc70e",
+    "last_data_date": "2026-06-30",
+    "row_count": 2099,
+    "snapshot_id": "tcs_infy_v1_2026-07-04",
+    "source": "Yahoo Finance via yfinance.download",
+    "start_date": "2018-01-01",
+    "tickers": [
+      "TCS.NS",
+      "INFY.NS"
+    ],
+    "yfinance_download_end_exclusive": "2026-07-01",
+    "yfinance_version": "1.5.1"
+  },
+  "statsmodels_version": "0.14.6",
+  "study_status": "CONTRADICTED",
+  "threshold_configs": [
+    {
+      "config_id": "C1",
+      "description": "baseline",
+      "eg_p_threshold": 0.05,
+      "half_life_threshold": 20.0
+    },
+    {
+      "config_id": "C2",
+      "description": "EG p >= 0.03",
+      "eg_p_threshold": 0.03,
+      "half_life_threshold": 20.0
+    },
+    {
+      "config_id": "C3",
+      "description": "EG p >= 0.10",
+      "eg_p_threshold": 0.1,
+      "half_life_threshold": 20.0
+    },
+    {
+      "config_id": "C4",
+      "description": "HL > 15d",
+      "eg_p_threshold": 0.05,
+      "half_life_threshold": 15.0
+    },
+    {
+      "config_id": "C5",
+      "description": "HL > 25d",
+      "eg_p_threshold": 0.05,
+      "half_life_threshold": 25.0
+    }
+  ],
+  "timestamp_utc": "2026-07-06T09:30:39.968404+00:00",
+  "window_specs": {
+    "500": {
+      "core_end": "2021-12-31",
+      "core_start": "2020-01-31"
+    },
+    "730": {
+      "core_end": "2023-03-31",
+      "core_start": "2020-12-31"
+    }
+  },
+  "workers": 4
+}

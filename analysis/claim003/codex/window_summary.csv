@@ -1,0 +1,10 @@
+# script_path: C:\Users\preet\OneDrive\Desktop\Skool\Arbit\analysis\claim003\codex\run_claim003_eg_halflife_ordering_robustness.py
+# git_commit: dcd5f465aff03bbcf448a8e845767d364cfae098
+# snapshot_id: tcs_infy_v1_2026-07-04
+# timestamp_utc: 2026-07-06T09:30:39.968404+00:00
+# output_content_sha256: f09dd982ef9ef421577f64573e90cbc9f7229e4b330891ebcd45b3c37fd98d17
+# output_hash_scope: bytes after this provenance header
+# final_file_sha256: recorded in output_manifest.csv
+window_length,classification,well_powered,parameter_stable,parameter_unstable,unstable_cells,min_effective_N,max_effective_N,phi_pre,phi_pre_se,phi_post,phi_post_se,phi_post_ci_low,phi_post_ci_high
+500,ROBUST,True,False,True,"C1,C2,C3,C4,C5",351,1118,0.9503511162511916,0.01435870229330931,0.988011742909168,0.008303330082983684,0.9717372159465201,1.004286269871816
+730,CONTRADICTED,True,True,False,,255,455,0.9618479776771665,0.011450388716486138,0.8833252635285977,0.030395369435760138,0.8237503394345079,0.9429001876226876

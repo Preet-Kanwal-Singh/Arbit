@@ -1,0 +1,19 @@
+{
+  "script_path": "C:\\Users\\preet\\OneDrive\\Desktop\\Skool\\Arbit\\analysis\\claim003\\antigravity_opus\\claim_003.py",
+  "git_commit": "dcd5f465aff03bbcf448a8e845767d364cfae098",
+  "snapshot_id": "tcs_infy_v1_2026-07-04",
+  "timestamp_utc": "2026-07-06T11:33:46.807691+00:00",
+  "B": 2000,
+  "seed": 42,
+  "statsmodels_version": "0.14.6",
+  "methods": {
+    "engle_granger": "coint(trend='c', autolag='aic')",
+    "half_life": "-log(2)/log(phi_hat) from AR(1) with intercept on OLS residuals",
+    "simulation": "regime-switching AR(1) on spread and INFY returns, bootstrap residuals",
+    "ci": "Clopper-Pearson exact binomial 95%"
+  },
+  "output_hashes": {
+    "cell_results.csv": "f27fcec61bc3e2dd970defb541343a30ef28985f1f0b15aae80b6d97893af822",
+    "summary.md": "39a63afd6e0aace94b793c56f2105c9bcfa5770d8d986c4c54394ce2b8747c2a"
+  }
+}

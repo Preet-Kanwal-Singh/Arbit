@@ -48,6 +48,8 @@ documented" — also unverified). Nothing GLM says about this project, including
 itself, is evidence of anything. No tool should ever paste GLM's output into
 `VERIFIED_FACTS.md` or cite it as having verified a project-specific claim.
 
+Exception logged 2026-07-06: qualitative/directional findings (no tickers, no computed values) may be disclosed to GLM when load-bearing for framing a question. See decisions.md, 2026-07-06.
+
 ## 4. Work tiers
 
 **Tier A — decision-gating.** The finding would change what ARBIT actually does
