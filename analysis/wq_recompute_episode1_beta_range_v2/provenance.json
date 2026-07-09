@@ -1,0 +1,11 @@
+{
+  "snapshot_id": "tcs_infy_v1_2026-07-04",
+  "git_commit": "1717ffb3ed62e6b502d7c6ef2791545737673d89",
+  "script_path": "C:\\Users\\preet\\OneDrive\\Desktop\\Skool\\Arbit\\analysis\\wq_recompute_episode1_beta_range_v2\\recompute_episode1_beta_range_v2.py",
+  "execution_timestamp_utc": "2026-07-09T04:19:17.692341+00:00",
+  "outputs": {
+    "beta_series_500d_core.csv": "b03a144333ced16ab61275768a9eb3760d0f169d6c264596432f5b4aab4abc3c",
+    "beta_series_730d_core.csv": "148e9079ae92b2306a370d070c11b5f8e24710cc9943bf0198e7dae310ec795f",
+    "summary.md": "0726281b720108c90a0c9be9052bc03e96ca0b2b821b79d3c0f9309cc173b564"
+  }
+}

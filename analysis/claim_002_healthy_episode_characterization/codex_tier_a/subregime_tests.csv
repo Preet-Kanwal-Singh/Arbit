@@ -1,0 +1,11 @@
+# script_path: C:\Users\preet\OneDrive\Desktop\Skool\Arbit\analysis\claim_002_healthy_episode_characterization\codex_tier_a\run_claim_002_healthy_episode_characterization.py
+# git_commit: 1717ffb3ed62e6b502d7c6ef2791545737673d89
+# snapshot_id: tcs_infy_v1_2026-07-04
+# execution_timestamp_utc: 2026-07-09T09:55:42.568069+00:00
+# output_name: subregime_tests.csv
+# output_content_sha256: 8c18f325c4e764caf5ad6f9f293939e6b8cb901317535868a2906c6c9eae397f
+# output_hash_scope: bytes after this provenance header
+# final_file_sha256: recorded in provenance.json
+basis,window_length,fixed_start_date,fixed_end_date,observation_count,min_seg,best_split_index,left_segment_count,right_segment_count,split_after_date,split_before_date,total_rss,best_rss,rss_improvement_ratio,permutation_count,permutation_p_value,interpretation,rng_seed,rng_call_pattern,zscore_ddof,gap_handling
+500d_strict,500,2020-01-31,2021-12-31,24,6,6,6,18,2020-06-30,2020-07-31,144,88.0643467262823,0.38844203662304,2000,0.000499750124937531,natural_split_supported,20260705,"single default_rng seeded once; 2000 row-level permutations for 500d_strict, then 2000 for 730d_strict; one rng.permutation call per permutation",0,linear interpolation with both-direction endpoint fill before z-scoring
+730d_strict,730,2020-12-31,2023-03-31,28,6,21,21,7,2022-08-30,2022-09-30,168,102.095300972518,0.392289875163584,2000,0.000499750124937531,natural_split_supported,20260705,"single default_rng seeded once; 2000 row-level permutations for 500d_strict, then 2000 for 730d_strict; one rng.permutation call per permutation",0,linear interpolation with both-direction endpoint fill before z-scoring

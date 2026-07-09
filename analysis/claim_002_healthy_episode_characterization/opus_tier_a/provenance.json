@@ -1,0 +1,28 @@
+{
+  "snapshot_id": "tcs_infy_v1_2026-07-04",
+  "snapshot_sha256": "7f2b69cc3c2030bb10c6e7a6f9a727743bff8d7003f7db2f36fa3661bbd60959",
+  "git_commit": "1717ffb3ed62e6b502d7c6ef2791545737673d89",
+  "script_path": "analysis\\claim_002_healthy_episode_characterization\\opus_tier_a\\run_claim_002.py",
+  "execution_timestamp_utc": "2026-07-09T10:41:43.721168+00:00",
+  "python_version": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]",
+  "statsmodels_version": "0.14.6",
+  "numpy_version": "2.5.0",
+  "pandas_version": "3.0.3",
+  "method_notes": {
+    "z_scoring_ddof": 1,
+    "p_value_floor_for_neg_log10": 1e-300,
+    "rng_seed": 20260705,
+    "n_permutations": 2000,
+    "rng_call_order": "500d_strict then 730d_strict",
+    "first_half_convention": "first max(1, n // 2) observations",
+    "split_candidate_range": "range(min_seg, n - min_seg + 1)"
+  },
+  "output_sha256": {
+    "rolling_metrics.csv": "55e8d9c4b0933026e8901a2e95ef105051d2eacba1ccd0b30d42f24a6457acaa",
+    "episode_boundary_candidates.csv": "478074a582ca05c0c1f88ed49339bd90aa56bd4a9d01115a662099ce54651ef0",
+    "episode_regime_summary.csv": "5e877bc9efc00ddb7cb4ac3acb96acf68018feeff2e58586dc8a64e8ff0b898f",
+    "subregime_tests.csv": "ec9bb7e46a6dc7e7d74ba4ca3c759bf9afd1304252883ecb3e5eccf5a1b1245f",
+    "degradation_diagnostics.csv": "fc0609a77a027045a8e040abb5ee68f8530386cd542d84200b48d4d26c060fae",
+    "summary.md": "a7d74e8ee9de7b0cb73b4082fabc275f2560ae49d4158375438087697b84cc81"
+  }
+}

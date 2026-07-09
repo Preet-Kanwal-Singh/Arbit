@@ -1,0 +1,11 @@
+{
+  "snapshot_id": "tcs_infy_v1_2026-07-04",
+  "git_commit": "1717ffb3ed62e6b502d7c6ef2791545737673d89",
+  "script_path": "C:\\Users\\preet\\OneDrive\\Desktop\\Skool\\Arbit\\analysis\\claim_004_episode1_beta_range\\antigravity_opus\\claim_004.py",
+  "execution_timestamp_utc": "2026-07-09T05:32:51.932797+00:00",
+  "output_sha256": {
+    "beta_series_500d_core.csv": "ac8e7bd2e994ac04b4b2b4aff2594605f8dd67d1925b93753e5cafcba5c3aab4",
+    "beta_series_730d_core.csv": "e258a1a00552953d61cb8e8bd06794a0024724560f99e2d850492f4268dc0712",
+    "summary.md": "c7c567dfe97731d47a82484474d6cdd9597f57916c11b3262c7938565df5addc"
+  }
+}

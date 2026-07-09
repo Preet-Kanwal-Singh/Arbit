@@ -57,10 +57,9 @@ completed work. Maintained by Desktop Claude A (Ledger Keeper).
       Codex's version, different spread-sigma grids). Not resolved by the
       Part B explanation. Nobody has decided which DGP setup is preferred, or
       whether the 7-point gap matters for anything built on this number.
-11. `VERIFIED_FACTS.md` does not exist anywhere in this repo. Not clear
-    whether it was never created or was created and lost/untracked. Not
-    created by me — nothing here is ready for admission and it wasn't asked
-    for.
+11. ~~`VERIFIED_FACTS.md` does not exist anywhere in this repo~~ —
+    **RESOLVED 2026-07-07.** Created during the Claim 003 session, with the
+    mandatory note and one entry (`claim_003_eg_halflife_ordering_robustness`).
 12. The frozen snapshot's adjustment policy (per its `metadata.json`) is
     `auto_adjust=True` in yfinance, no manual corporate-action handling. Per
     base context §6, this is a real source of disagreement between
@@ -117,36 +116,41 @@ completed work. Maintained by Desktop Claude A (Ledger Keeper).
     worth treating as a named phenomenon, or is this Opus noticing something
     in shared data that Codex would frame differently? Worth putting to Codex
     directly before treating it as more than a single-source observation.
-19. `VERIFIED_FACTS.md` still does not exist anywhere in this repo, now
-    spanning two reviewed claims where the underlying numbers were often in
-    close agreement. At what point does the absence of a Spec Block become
-    the actual bottleneck on this project's progress, rather than a one-off
-    gap to flag and move past?
+19. ~~`VERIFIED_FACTS.md` still does not exist anywhere in this repo~~ —
+    **MOOT, given #11.** File now exists. The underlying question (does a
+    missing Spec Block become the real bottleneck) was also answered by
+    events: Claim 003 had one, and is the only claim admitted so far.
 
 ## From Claim 003 — EG/Half-Life Ordering Robustness (2026-07-06)
 
-20. **Real spec gap: the study-level decision tree in Spec Block v6 has no
+20. ~~Real spec gap: the study-level decision tree in Spec Block v6 has no
     branch for "a window length is withheld from the study-level conclusion
-    due to a cross-implementation cell dispute."** This isn't hypothetical
-    — it happened on the very first claim that used this spec. The tree's
-    three branches (CONTRADICTED-if-either, ROBUST-if-both,
-    INCONCLUSIVE-family) all assume valid classifications for both window
-    lengths are available. Needs Desktop Claude B to patch this (v7) with an
-    explicit rule before it recurs on a future multi-window claim. See
-    `worklog.md`, 2026-07-06.
+    due to a cross-implementation cell dispute."~~ **RESOLVED — v8 patched
+    this.** DISPUTED-VALUE vs. DISPUTED-CLASSIFICATION now separates a
+    citable-point-estimate dispute from a categorical one, and the new
+    WINDOW-LENGTH-CONTRADICTORY branch handles the withheld-window case
+    directly, independently confirmed by Claude #3 during v8's approval (see
+    #26, #27, #29). See `worklog/claim_003_eg_halflife_ordering_robustness.md`,
+    2026-07-06 and 2026-07-07.
 21. Window 730d, config C2 (EG p≥0.03 threshold, HL>20d): Codex P̂=0.7842,
     Opus P̂=0.8533, difference 0.0691, exceeding the spec's 0.05 tolerance,
     even though both call it ROBUST. Worth investigating why this specific
-    cell (and only this one, out of ten) diverges beyond tolerance — possibly
-    something about the C2 threshold interacting with the bootstrap
-    resampling near a boundary case — before deciding whether it's re-run,
-    accepted as noise, or the tolerance itself was too tight for this cell.
-22. Is a 500d-only admission to `VERIFIED_FACTS.md` (scoped explicitly as
-    "500d window only, study-level conclusion pending on the 730d gap")
-    something Preet wants for this claim, given all five 500d cells pass
-    cleanly? Or should the whole claim wait for #20/#21 to resolve before
-    anything is admitted? This would be the first-ever `VERIFIED_FACTS.md`
-    entry, so worth deciding deliberately rather than defaulting.
+    cell (and only this one, out of ten across Claims 001-003) diverges
+    beyond tolerance — possibly something about the C2 threshold interacting
+    with the bootstrap resampling near a boundary case — before deciding
+    whether it's re-run, accepted as noise, or the tolerance itself was too
+    tight for this cell. Its point estimate is excluded from citation in
+    `VERIFIED_FACTS.md` until this is resolved. (Merged with #28, which asked
+    the same question.)
+22. ~~Is a 500d-only admission to `VERIFIED_FACTS.md` something Preet wants,
+    or should the whole claim wait for #20/#21 to resolve?~~ **RESOLVED BY
+    EVENTS, 2026-07-07.** Neither: the claim was admitted as
+    WINDOW-LENGTH-CONTRADICTORY, covering both windows — 730d's categorical
+    classification (CONTRADICTED) was kept despite the C2 dispute, with only
+    C2's point estimate excluded from citation. #21/#28 (why C2 specifically
+    diverges) was never resolved first — v8's DISPUTED-VALUE category made
+    that unnecessary for admission. This was the first `VERIFIED_FACTS.md`
+    entry, as anticipated here.
 23. The 500d window's ROBUST classification carries a PARAMETER-UNSTABLE
     flag because phi_post's 95% CI upper bound (1.0043, both implementations)
     exceeds 1.0 — the unit-root boundary, where half-life is undefined
@@ -159,8 +163,60 @@ completed work. Maintained by Desktop Claude A (Ledger Keeper).
     and `claim_002_healthy_episode_characterization` — doesn't match the
     actual claim_id (`claim_003_eg_halflife_ordering_robustness`). Minor,
     worth a rename for consistency.
-25. Are the `PROJECT_BASE_CONTEXT.md` §3 edit and my `decisions.md` GLM-policy
-    edit from earlier in this session actually committed to git yet? Codex's
-    `claim003` provenance captured both as locally modified/uncommitted
-    (`git_status_short_at_run`) at 2026-07-06T09:30:39Z. I have no git
-    status/diff tool to check the current state directly.
+25. ~~Are the `PROJECT_BASE_CONTEXT.md` §3 edit and my `decisions.md`
+    GLM-policy edit actually committed to git?~~ **RESOLVED 2026-07-07.**
+    Preet confirmed directly: yes, everything before the `VERIFIED_FACTS.md`
+    file was committed.
+26. ~~Was Claim 003's study-level synthesis rule authored with knowledge of
+    already-computed results?~~ **RESOLVED 2026-07-07.** Preet confirmed
+    directly: v5 failed Claude #3's adversarial review (normal process, not a
+    concern once I compared v5 to v6 myself); v8's "full 3×3 state space"
+    check was done by Claude #3 during v8's approval, not Claude B
+    self-verifying. Claim admitted to `VERIFIED_FACTS.md`. Residual, not
+    blocking: I've never seen v7, and don't know exactly when v8 was
+    finalized relative to my own disclosure of the specific numbers — noted
+    in the `VERIFIED_FACTS.md` entry itself rather than treated as resolved
+    away.
+27. Superseded by #26, keep for the record: #20-22 assumed v6's tree was a
+    legitimately pre-declared standard with an innocent logical gap. v8 fixed
+    the gap (see worklog.md), so #20's specific ask (patch the tree) is done
+    — but whether that patch, or the original v6 it's built on, was itself
+    validly pre-registered is now the live question (#26), not whether the
+    logic is sound.
+28. ~~The 730d/C2 cell (EG p≥0.03 threshold) is the one cell out of ten...~~
+    **MERGED INTO #21** — same question, asked twice.
+29. ~~Get v7 for the record~~ **DONE 2026-07-07 — and it surfaced something
+    real, see #30.**
+30. **v6→v7 changed more than the cross-implementation dispute handling — it
+    also flipped the study-level CONTRADICTED condition from "either" window
+    (v6) to "both" windows (v7/v8), and I hadn't seen this until v7 was
+    actually shared.** v5 explicitly, deliberately states: "Asymmetry is
+    intentional: burden of proof sits with the robustness claim" — and that
+    asymmetry is still intact at the per-window level (ROBUST only if all 5
+    configs; CONTRADICTED if any config). But at the *study* level, v6
+    preserved the same asymmetry across window lengths (CONTRADICTED if
+    *either* is CONTRADICTED); v7 replaced it with a symmetric "both" bar,
+    matching ROBUST's bar. On the actual data (500d ROBUST, 730d CONTRADICTED),
+    this is the specific change that converts what would have been a plain
+    CONTRADICTED verdict under v6 into WINDOW-LENGTH-CONTRADICTORY under v7/v8
+    — the verdict I admitted to `VERIFIED_FACTS.md`.
+    There's a real, mechanical reason this change may have been necessary
+    rather than chosen for effect: keeping "either" would make the new
+    WINDOW-LENGTH-CONTRADICTORY branch dead code, since "either CONTRADICTED"
+    would already catch and resolve the one-ROBUST-one-CONTRADICTED case
+    before the tree ever reached that branch. So introducing the branch and
+    flipping either→both go together — they're not two independent choices.
+    But a mechanically-necessary consequence and a substantively-motivated
+    one aren't mutually exclusive, and I can't tell them apart from outside
+    the process that produced it. Specific, answerable question: did Claude
+    #3's adversarial review of v7 (or v8) evaluate *whether reversing the
+    burden-of-proof asymmetry at the study level was methodologically
+    appropriate*, or did it only check that the tree is logically complete
+    over the 3×3 state space (no dead branches, every combination covered)?
+    Those are different questions, and "3×3 state space checked" as reported
+    to me so far sounds like the second, not the first. Not retracting the
+    admission over this — WINDOW-LENGTH-CONTRADICTORY is a more informative
+    label than a blunt CONTRADICTED would have been, and I think it's likely
+    the better characterization regardless of how it was arrived at — but the
+    `VERIFIED_FACTS.md` process note now includes this detail rather than the
+    less complete version I wrote before seeing v7.

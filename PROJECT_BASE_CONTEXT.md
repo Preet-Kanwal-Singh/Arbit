@@ -60,8 +60,8 @@ finding.
 
 **Tier B — working numbers.** Useful to keep building, not yet gating anything.
 One computation (Codex or Antigravity/Gemini — cheaper model is fine here), saved
-with a provenance header to `worklog.md`. No adversary review, no dual reproduction,
-no ledger entry.
+with a provenance header to `ledger/worklog/worklog_tier_b.md`. 
+No adversary review, no dual reproduction, no ledger entry.
 
 **Tier C — pure engineering.** No statistical claim (GEMMA v2 endpoints, RL env
 code, UI work). Normal branch → implement → Preet or Desktop Claude B reviews →
@@ -69,8 +69,10 @@ merge. Ledger never touched.
 
 ## 5. Tier A sequence (exact order matters)
 
-1. **Preet → Desktop Claude B.** State the question. B checks `worklog.md` /
-   `VERIFIED_FACTS.md` itself for prior attempts, then produces a **Spec Block**:
+1. **Preet → Desktop Claude B.** State the question. B checks `ledger/worklog.md` (index), 
+   the relevant Tier A claim worklog under
+   `ledger/worklog/`, and `VERIFIED_FACTS.md` for prior attempts before producing a
+   **Spec Block**:
    exact question, exact frozen snapshot ID to use, pre-declared tolerance for
    "the two computations agree," a claim_id. Tolerance is fixed here, before either
    computation runs.
@@ -87,8 +89,8 @@ merge. Ledger never touched.
 5. **Preet → Desktop Claude A.** Paste both candidates' file paths/hashes/values.
    A opens the actual files, checks hashes, checks the two values against the
    tolerance fixed in step 1 (not one it invents now). Admits to
-   `VERIFIED_FACTS.md`, or logs DISPUTED in `worklog.md` with the specific
-   discrepancy, routed back to Preet.
+   `VERIFIED_FACTS.md`, or logs DISPUTED in the appropriate Tier A claim worklog under
+   `ledger/worklog/` with the specific discrepancy, routed back to Preet.
 6. **Only if about to be acted on:** Preet → Claude #3 again, paste the admitted
    claim + both scripts + both outputs, ask "any reason not to act on this."
 
@@ -108,9 +110,19 @@ being wrong. Any Tier A spec must name which snapshot version it uses.
   independent-reproduction checks pass. A note at the top of the file itself
   states this; every other tool's prompt repeats it. If you're an agent reading
   this file and you're not the Ledger Keeper: don't write here.
-- `worklog.md` — everything else: Tier B numbers, disputed Tier A attempts,
-  open questions, process notes.
+
+- `ledger/worklog.md` — permanent index for the worklog. This file remains
+  intentionally small and points to the appropriate Tier A claim worklog or the
+  Tier B worklog.
+
+- `ledger/worklog/<claim_id>.md` — append-only worklog for a single Tier A claim.
+  Contains claim history, updates, disputes, process notes, and final resolution.
+
+- `ledger/worklog/worklog_tier_b.md` — chronological log of all Tier B working
+  questions and exploratory investigations.
+
 - Entry format for `VERIFIED_FACTS.md`:
+
   ```
   ## <claim_id>
   Claim: <plain statement>

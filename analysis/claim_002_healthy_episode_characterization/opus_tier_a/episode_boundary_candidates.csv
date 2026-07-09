@@ -1,0 +1,10 @@
+# script_path: C:\Users\preet\OneDrive\Desktop\Skool\Arbit\analysis\claim_002_healthy_episode_characterization\opus_tier_a\run_claim_002.py
+# git_commit: 1717ffb3ed62e6b502d7c6ef2791545737673d89
+# snapshot_id: tcs_infy_v1_2026-07-04
+# timestamp_utc: 2026-07-09T10:41:43.721168+00:00
+# output_content_sha256: cef3e38e8768847d4028a9c34a9b0a0fe09f975c8dc7f85026c3d125bf3d6357
+candidate_name,start_date,end_date,month_end_count,status
+500d_strict,2020-01-31,2021-12-31,24,sustained_run
+730d_strict,2020-12-31,2023-03-31,28,sustained_run
+500d_730d_consensus_strict,2020-12-31,2021-12-31,13,sustained_run
+500d_borderline_tolerant,2020-01-31,2023-01-31,37,sustained_run

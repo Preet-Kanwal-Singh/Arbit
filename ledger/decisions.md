@@ -16,7 +16,7 @@ formal Tier A independent-reproduction admission.
 
 **Effect:** per `PROJECT_BASE_CONTEXT.md` §4, this work does not require a
 Spec Block, a pre-declared tolerance, adversary review, or a
-`VERIFIED_FACTS.md` entry. See `worklog.md`, 2026-07-04 entry, for supporting
+`VERIFIED_FACTS.md` entry. See `ledger/worklog/worklog_tier_b.md`, 2026-07-04 entry, for supporting
 detail and for the remaining data-hygiene items (Antigravity's use of a live
 data pull instead of the frozen snapshot; Codex's git-commit provenance
 mismatch) that are unaffected by this decision — those are about the quality
@@ -66,3 +66,31 @@ this being re-litigated with Claude #3 or anyone else who works from the
 base context rather than the ledger, §3 likely needs amending to match.
 That's a base-context edit, outside my role as Ledger Keeper — would need
 Desktop Claude B or Preet to do it directly.
+
+## 2026-07-07 — Worklog modularization
+
+**Decision (Preet, confirmed directly):** the research worklog is reorganized
+from a single monolithic file into a modular structure.
+
+**Reasoning given:** Tier A claim histories grow substantially through multiple
+review and update cycles, while Tier B investigations are short-lived and
+append-only. Filesystem-based agents (Desktop Claude A and Desktop Claude B)
+cannot search file contents directly and were increasingly forced to reread a
+large worklog for claim-specific tasks. The new structure keeps retrieval
+efficient while preserving complete append-only audit trails.
+
+**New layout:**
+
+- `ledger/worklog.md` — permanent index.
+- `ledger/worklog/<claim_id>.md` — append-only worklog for each Tier A claim.
+- `ledger/worklog/worklog_tier_b.md` — chronological log of Tier B working
+  questions and exploratory investigations.
+
+**Effect:** references throughout the project that previously pointed to
+`worklog.md` should now refer either to the worklog index or to the appropriate
+Tier A/Tier B worklog file as applicable. This is a repository-governance
+change only; it does not alter any statistical methodology, claim outcome, or
+ledger admission criteria.
+
+## 2026-07-08 - Claim 004
+claim_004 proceeds using claim_002's Q1 boundary determination as a fixed input, despite claim_002 lacking a Spec Block/admission, because Q1 is a deterministic exact-match with independent reproduction, not a judgment call. Does not extend to claim_002's other findings (Q2–Q5), which remain unresolved

@@ -1,0 +1,119 @@
+{
+  "claim_id": "claim_002_healthy_episode_characterization",
+  "execution_timestamp_utc": "2026-07-09T09:55:42.568069+00:00",
+  "fixed_inputs": {
+    "500d_post_core_shoulder": {
+      "end_date": "2023-01-31",
+      "start_after": "2021-12-31",
+      "window_length": 500
+    },
+    "500d_strict": {
+      "end_date": "2021-12-31",
+      "start_date": "2020-01-31",
+      "window_length": 500
+    },
+    "730d_strict": {
+      "end_date": "2023-03-31",
+      "start_date": "2020-12-31",
+      "window_length": 730
+    }
+  },
+  "git_commit": "1717ffb3ed62e6b502d7c6ef2791545737673d89",
+  "method": {
+    "adf": "statsmodels.tsa.stattools.adfuller(resid, regression='n', autolag='aic')",
+    "engle_granger": "statsmodels.tsa.stattools.coint(y, x, trend='c', autolag='aic')",
+    "month_end_dates": "last trading day per calendar month present in the snapshot",
+    "odd_half_split": "first half is first n//2 observations; second half is remainder",
+    "ols": "intercept included; beta is coefficient on log(INFY.NS)",
+    "phi": "OLS AR(1) coefficient of resid[1:] on resid[:-1] with intercept",
+    "price_transform": "natural log adjusted close",
+    "spread_std": "sample standard deviation, ddof=1",
+    "subregime_rng": "single numpy.random.default_rng(20260705); candidate order 500d_strict then 730d_strict; one rng.permutation call per permutation",
+    "zscore_ddof": 0
+  },
+  "numpy_version": "2.5.0",
+  "outputs": [
+    {
+      "content_sha256": "a86f4558e1e811cb71144a5acad18fc36715475e4660d5160d9d91bcfad15b61",
+      "description": "Audit-only rolling monthly metrics for all requested windows",
+      "final_file_sha256": "608bdf881eed718c4f51c78715b17532b5d5a09448691e5b67ed2abf679bb206",
+      "hash_scope": "bytes after provenance header",
+      "path": "analysis\\claim_002_healthy_episode_characterization\\codex_tier_a\\rolling_metrics.csv"
+    },
+    {
+      "content_sha256": "cf0b7f49e4d941b0f6a0acfd18e78bc2a8d706ca1476c6cb461b2ae4461536d1",
+      "description": "Part 1 selected sustained healthy run by boundary basis",
+      "final_file_sha256": "d5e96c25b59b90bd05440ba555cf6348ec13965fdfd8f99e1f95c112f8c7a696",
+      "hash_scope": "bytes after provenance header",
+      "path": "analysis\\claim_002_healthy_episode_characterization\\codex_tier_a\\episode_boundary_candidates.csv"
+    },
+    {
+      "content_sha256": "07a1e078cc64698f007aae6d8e7b0f837971eb7c66eab06c5dd991c55080a2b6",
+      "description": "Part 2 distributional statistics over fixed inputs",
+      "final_file_sha256": "41c4dfb6a167d51c2db37292489a1b669456bae6fd05b58ca95b79234d3e605d",
+      "hash_scope": "bytes after provenance header",
+      "path": "analysis\\claim_002_healthy_episode_characterization\\codex_tier_a\\episode_regime_summary.csv"
+    },
+    {
+      "content_sha256": "8c18f325c4e764caf5ad6f9f293939e6b8cb901317535868a2906c6c9eae397f",
+      "description": "Part 3 exploratory single-change-point split tests",
+      "final_file_sha256": "3dbd28f0c6caf9c54a2d60e954e5c7630bfbe0649039885df12041e983c9c0e4",
+      "hash_scope": "bytes after provenance header",
+      "path": "analysis\\claim_002_healthy_episode_characterization\\codex_tier_a\\subregime_tests.csv"
+    },
+    {
+      "content_sha256": "12704321e363158e1722dab97f27cad123ea467483c12f6f5bf87bb3d5e51165",
+      "description": "Part 4 descriptive trend statistics",
+      "final_file_sha256": "9b15fe939fd3238255ca40ba24a02d98c94a0357eeaa28c8849ae7c6afcbec53",
+      "hash_scope": "bytes after provenance header",
+      "path": "analysis\\claim_002_healthy_episode_characterization\\codex_tier_a\\degradation_diagnostics.csv"
+    },
+    {
+      "content_sha256": "694c925f0bc53babc0e4199afbc64fcf85accfe8e79e67ed016db94b40784e9b",
+      "description": "Narrative framing and output manifest",
+      "final_file_sha256": "b15f52e0f454b90dbcfd9f0344d582c3ab4126e5625b0d798de0b3e01bc97f4b",
+      "hash_scope": "bytes after provenance header",
+      "path": "analysis\\claim_002_healthy_episode_characterization\\codex_tier_a\\summary.md"
+    }
+  ],
+  "pandas_version": "3.0.3",
+  "python_executable": "C:\\Users\\preet\\OneDrive\\Desktop\\Skool\\Arbit\\.venv\\Scripts\\python.exe",
+  "python_version": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]",
+  "script_path": "C:\\Users\\preet\\OneDrive\\Desktop\\Skool\\Arbit\\analysis\\claim_002_healthy_episode_characterization\\codex_tier_a\\run_claim_002_healthy_episode_characterization.py",
+  "script_sha256": "9a05f54746ca814d9b1311f6008003a3180a03d07edf159e5ade0d4fcb89fb6e",
+  "snapshot_adjusted_close_computed_sha256": "7f2b69cc3c2030bb10c6e7a6f9a727743bff8d7003f7db2f36fa3661bbd60959",
+  "snapshot_adjusted_close_sha256": "7f2b69cc3c2030bb10c6e7a6f9a727743bff8d7003f7db2f36fa3661bbd60959",
+  "snapshot_id": "tcs_infy_v1_2026-07-04",
+  "snapshot_metadata": {
+    "adjustment_policy": "auto_adjust=True in yfinance; saved the adjusted Close columns for TCS.NS and INFY.NS; no manual corporate-action handling.",
+    "columns": [
+      "date",
+      "TCS.NS",
+      "INFY.NS"
+    ],
+    "created_by": "Codex",
+    "creation_timestamp_utc": "2026-07-04T17:28:14.803329+00:00",
+    "end_date_inclusive": "2026-06-30",
+    "files": {
+      "adjusted_close.csv": {
+        "path": "data\\snapshots\\tcs_infy_v1_2026-07-04\\adjusted_close.csv",
+        "sha256": "7f2b69cc3c2030bb10c6e7a6f9a727743bff8d7003f7db2f36fa3661bbd60959"
+      }
+    },
+    "first_data_date": "2018-01-01",
+    "generated_by_script": "C:\\Users\\preet\\OneDrive\\Desktop\\Skool\\Arbit\\analysis\\create_tcs_infy_snapshot.py",
+    "git_commit": "606cc817c1de5fda7b57dc5814239e36592cc70e",
+    "last_data_date": "2026-06-30",
+    "row_count": 2099,
+    "snapshot_id": "tcs_infy_v1_2026-07-04",
+    "source": "Yahoo Finance via yfinance.download",
+    "start_date": "2018-01-01",
+    "tickers": [
+      "TCS.NS",
+      "INFY.NS"
+    ],
+    "yfinance_download_end_exclusive": "2026-07-01",
+    "yfinance_version": "1.5.1"
+  },
+  "statsmodels_version": "0.14.6"
+}

@@ -1,0 +1,111 @@
+{
+  "claim_id": "claim_004_episode1_beta_range",
+  "cores": [
+    {
+      "core_end": "2021-12-31",
+      "core_id": "500d_core",
+      "core_start": "2020-01-31",
+      "expected_observations": 24,
+      "first_observation_beta": 0.9773806589082634,
+      "first_observation_date": "2020-01-31",
+      "last_observation_beta": 0.6661080794931697,
+      "last_observation_date": "2021-12-31",
+      "max_beta": 0.9773806589082634,
+      "mean_beta": 0.6811805549568977,
+      "median_beta": 0.6594266941050052,
+      "min_beta": 0.5450922330792083,
+      "observation_count": 24,
+      "skipped_month_ends": [],
+      "std_beta_sample_ddof1": 0.10364615615334334,
+      "window_length": 500
+    },
+    {
+      "core_end": "2023-03-31",
+      "core_id": "730d_core",
+      "core_start": "2020-12-31",
+      "expected_observations": 28,
+      "first_observation_beta": 0.7495151348775415,
+      "first_observation_date": "2020-12-31",
+      "last_observation_beta": 0.6639017263318384,
+      "last_observation_date": "2023-03-31",
+      "max_beta": 0.7495151348775415,
+      "mean_beta": 0.6708688197075954,
+      "median_beta": 0.6625919660257567,
+      "min_beta": 0.6477039640089935,
+      "observation_count": 28,
+      "skipped_month_ends": [],
+      "std_beta_sample_ddof1": 0.024954253774657455,
+      "window_length": 730
+    }
+  ],
+  "execution_timestamp_utc": "2026-07-09T05:24:31.611552+00:00",
+  "git_commit": "1717ffb3ed62e6b502d7c6ef2791545737673d89",
+  "method": {
+    "isolation": "No isolation-prohibited prior beta-range paths or antigravity_opus outputs were read by this script.",
+    "ols": "intercept included; beta is coefficient on log(INFY.NS)",
+    "price_transform": "natural log adjusted close",
+    "sampling": "last trading day of each calendar month within supplied core boundaries, inclusive",
+    "std": "sample standard deviation, ddof=1"
+  },
+  "numpy_version": "2.5.0",
+  "outputs": [
+    {
+      "content_sha256": "5c0b8be1a75c6ad60cb6880c5a16f64b9a9a03accba135565ea34bf0b129da3b",
+      "description": "Month-end rolling beta series for 500d_core",
+      "final_file_sha256": "dd5397d13ec185b6ec2298b89464084082dee21907bbc665df4f95ff2b6add72",
+      "hash_scope": "bytes after provenance header",
+      "path": "analysis\\claim_004_episode1_beta_range\\codex\\beta_series_500d_core.csv"
+    },
+    {
+      "content_sha256": "e80d83321322ac13e42d802d575c6e0951943dc705f6e22c42d0d78cf5d554e2",
+      "description": "Month-end rolling beta series for 730d_core",
+      "final_file_sha256": "e088588c9813af4862598ff38992fddfd709fbee50bc27d58d9ade5043e6a30c",
+      "hash_scope": "bytes after provenance header",
+      "path": "analysis\\claim_004_episode1_beta_range\\codex\\beta_series_730d_core.csv"
+    },
+    {
+      "content_sha256": "07eb561bf73b38871fa6962847b80e1c94389d1a2ecb45ad0c6debf1d6c93cd1",
+      "description": "Descriptive statistics and method summary",
+      "final_file_sha256": "a5fc29a9c30fc18281064bc9cd71d866a67cd8df1c47fa109e0a9c3bbc23a954",
+      "hash_scope": "bytes after provenance header",
+      "path": "analysis\\claim_004_episode1_beta_range\\codex\\summary.md"
+    }
+  ],
+  "pandas_version": "3.0.3",
+  "python_executable": "C:\\Users\\preet\\OneDrive\\Desktop\\Skool\\Arbit\\.venv\\Scripts\\python.exe",
+  "script_path": "C:\\Users\\preet\\OneDrive\\Desktop\\Skool\\Arbit\\analysis\\claim_004_episode1_beta_range\\codex\\compute_episode1_beta_range.py",
+  "script_sha256": "3a10cc40e26dbe4ccb913af50a2fcd844b6391306d173444bd85aa6a070c7a40",
+  "snapshot_adjusted_close_sha256": "7f2b69cc3c2030bb10c6e7a6f9a727743bff8d7003f7db2f36fa3661bbd60959",
+  "snapshot_id": "tcs_infy_v1_2026-07-04",
+  "snapshot_metadata": {
+    "adjustment_policy": "auto_adjust=True in yfinance; saved the adjusted Close columns for TCS.NS and INFY.NS; no manual corporate-action handling.",
+    "columns": [
+      "date",
+      "TCS.NS",
+      "INFY.NS"
+    ],
+    "created_by": "Codex",
+    "creation_timestamp_utc": "2026-07-04T17:28:14.803329+00:00",
+    "end_date_inclusive": "2026-06-30",
+    "files": {
+      "adjusted_close.csv": {
+        "path": "data\\snapshots\\tcs_infy_v1_2026-07-04\\adjusted_close.csv",
+        "sha256": "7f2b69cc3c2030bb10c6e7a6f9a727743bff8d7003f7db2f36fa3661bbd60959"
+      }
+    },
+    "first_data_date": "2018-01-01",
+    "generated_by_script": "C:\\Users\\preet\\OneDrive\\Desktop\\Skool\\Arbit\\analysis\\create_tcs_infy_snapshot.py",
+    "git_commit": "606cc817c1de5fda7b57dc5814239e36592cc70e",
+    "last_data_date": "2026-06-30",
+    "row_count": 2099,
+    "snapshot_id": "tcs_infy_v1_2026-07-04",
+    "source": "Yahoo Finance via yfinance.download",
+    "start_date": "2018-01-01",
+    "tickers": [
+      "TCS.NS",
+      "INFY.NS"
+    ],
+    "yfinance_download_end_exclusive": "2026-07-01",
+    "yfinance_version": "1.5.1"
+  }
+}
