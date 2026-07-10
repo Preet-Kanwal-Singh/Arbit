@@ -199,3 +199,130 @@ good.
 5. Consider fixing provenance stamping so it captures the commit after
    outputs are committed, not HEAD at runtime before the commit — a repeated
    pattern across two claims now.
+
+---
+
+## 2026-07-09 — Claim 002: Tier A Dual Reproduction (Spec Block v3) — ADMITTED
+
+Answers item 1 above: Preet confirmed Tier A directly. Answers item 2: Desktop
+Claude B wrote Spec Block v3, with a pre-declared tolerance table (checked
+for arithmetic and metric-coverage completeness before use — clean). Claude
+#3 reviewed and approved it (Preet recorded this directly; the spec's own
+"Next step" line still read as if review were pending, which was stale
+boilerplate, not a live status — confirmed with Preet before proceeding).
+
+Inputs: `analysis/claim_002_healthy_episode_characterization/codex_tier_a/`
+and `opus_tier_a/`, both already complete when I looked — Preet had not yet
+pasted candidate results, but filesystem access made that unnecessary this
+round.
+
+### Provenance check — one real blocker, since fixed
+
+Both `provenance.json` files self-report git_commit
+`1717ffb3ed62e6b502d7c6ef2791545737673d89` ("Restore Claim 002
+implementation script", 2026-07-06T12:14:45Z). Checked file-creation
+timestamps directly: Codex's script was created 2026-07-09T09:55:06Z (matches
+its own execution timestamp, 09:55:42Z); Opus's was created
+2026-07-09T10:40:30Z (matches 10:41:43Z). Both three days after the cited
+commit — that commit's tree cannot contain either script. Checked
+`.git/logs/HEAD` for anything later: nothing. Unlike claim_001 and claim_003,
+where a correct-but-uncited later commit existed by the time I looked, here
+there was no commit at all covering this work — fully uncommitted working-
+directory files. Flagged to Preet before doing anything else; Preet committed
+both directories (`8105c13004a96737ae15d120c93f4e62ed9ead39`, "Claim 002
+Tier A dual reproduction", 2026-07-09T12:54:48Z, current HEAD as of this
+writing). That's the commit cited in the `VERIFIED_FACTS.md` entry below.
+
+Same recurring gap otherwise: snapshot_id and snapshot sha256
+(`tcs_infy_v1_2026-07-04`, `7f2b69cc...`) match exactly between both
+provenance files. Execution timestamps are 46 minutes apart (Codex first),
+consistent with the spec's required sequencing, though only a start instant
+is recorded on either side, not a duration — can't formally rule out overlap,
+same as every prior claim. Did not recompute either candidate's sha256 —
+still no hashing tool reaches this filesystem from where I sit.
+
+### Part-by-part comparison against Spec Block v3's pre-declared tolerance
+
+Used a scripted comparison (not manual arithmetic) against the exact
+tolerance table in the spec, to avoid the error risk of checking ~280 cells
+by hand. Full breakdown:
+
+**Part 1 (boundary identification) — exact match, all 4 bases:**
+
+| Basis | Start | End | Count | Codex/Opus agree? |
+|---|---|---|---|---|
+| 500d_strict | 2020-01-31 | 2021-12-31 | 24 | Yes, and matches Fixed Input |
+| 730d_strict | 2020-12-31 | 2023-03-31 | 28 | Yes, and matches Fixed Input |
+| 500d_730d_consensus_strict | 2020-12-31 | 2021-12-31 | 13 | Yes |
+| 500d_borderline_tolerant | 2020-01-31 | 2023-01-31 | 37 | Yes |
+
+**Part 2 (regime characterization) — 168 cells (7 metrics × 12 stats × 2
+windows), zero disputes.** Largest cross-implementation gap on any cell:
+~1e-13. Expected — same fixed dates, same snapshot, same deterministic
+formulas (OLS, `coint`, `adfuller`, AR(1) fit); this checks for
+implementation bugs, not statistical agreement, and finds none.
+
+**Part 3 (sub-regime test) — both cores `natural_split_supported`, zero
+disputes:**
+
+| Core | Split date (both) | RSS improvement (Codex / Opus) | Permutation p (Codex / Opus) |
+|---|---|---|---|
+| 500d_strict | 2020-06-30 | 0.38844203662304 / 0.38844203662303955 | 0.000499750124937531 / 0.0004997501249375312 |
+| 730d_strict | 2022-08-30 | 0.392289875163584 / 0.3922898751635837 | 0.000499750124937531 / 0.0004997501249375312 |
+
+This resolves `open_questions.md` #17. The original Q4 dispute (Codex's
+6-variable search found the 500d split significant; Opus's independent
+4-variable search did not, and picked a different split point) was traced
+to the variable set, not a real disagreement about the data. v3 fixed the
+metric list, the RNG seed (`20260705`), and the exact call order (500d then
+730d permutations, one `rng` call per draw) — with those three pinned down,
+a seeded RNG is fully deterministic, so two correct implementations produce
+the same permutation draws, not just similar ones. That's *why* the
+agreement here is to machine epsilon, not evidence on its own that isolation
+was respected — noted explicitly in the `VERIFIED_FACTS.md` entry so a
+future agent doesn't misread bit-identical numbers as suspicious, or as
+proof of independence either way.
+
+Also answers the second half of #17 directly: yes, Codex's search — now
+re-run under the fixed variable set — agrees with Opus's original finding
+that 730d's split is significant, at the same date Opus found
+(implicitly, since both now report 2022-08-30 as the split — note this is a
+different date from Opus's original blind 730d finding of 2021-02-28 logged
+in #17; the fixed-variable-set split point moved once the variable set
+changed, which is expected and not itself a new discrepancy since both
+implementations now agree on the new point).
+
+**Part 4 (degradation diagnostics) — 108 cells (6 metrics × 6 stats × 3
+windows: 500d core, 730d core, shoulder), zero disputes.** Same
+floating-point-noise level of agreement as Part 2, same reason.
+
+### What this admission does and doesn't cover
+
+All four parts cleared together, so one `VERIFIED_FACTS.md` entry covers all
+of them — the staged/partial-admission mechanics the spec flagged as mine to
+decide never came up, since nothing needed to be held back.
+
+Mapping back to the original five exploratory questions:
+- **Q1 (boundaries) → Part 1.** Re-confirmed under formal tolerance.
+- **Q4 (sub-regime significance) → Part 3.** Resolved, see above.
+- **Q2 (beta step-change), Q3 (degradation ordering by specific date), Q5
+  (Opus's named EG-to-ADF gap) are NOT covered.** Parts 2 and 4 ask for
+  distributional stats and trend slopes over fixed windows, not the specific
+  dated events or step-change framing Q2/Q3/Q5 were about. These remain
+  open on their original terms — item 4 below is unchanged.
+
+### Outstanding, not blocking
+
+- The spec said prior `codex/`/`opus/` (non-Tier-A) dirs get relabeled
+  superseded-prior-work on completion. Not done yet — still plain
+  directory names, no marker.
+- Q5 (item 4 in the original next-action list) still needs Codex's own
+  confirmation before it's more than a single-source observation — untouched
+  by this spec.
+- Provenance stamping citing pre-commit HEAD instead of a commit that
+  actually contains the output happened a fourth time here, and for the
+  first time manifested as *no* commit at all rather than a stale-but-
+  findable one. Worth fixing upstream now rather than continuing to catch it
+  per claim.
+
+### Status: ADMITTED — see `VERIFIED_FACTS.md`, `claim_002_healthy_episode_characterization` entry, 2026-07-09.

@@ -76,39 +76,42 @@ completed work. Maintained by Desktop Claude A (Ledger Keeper).
 
 ## From Claim 002 — Healthy Episode Characterization (2026-07-05)
 
-14. **Provenance-stamping design gap, now seen twice.** In both Claim 001 and
-    Claim 002, the git commit hash recorded in a candidate's `provenance.json`
-    reflects HEAD at the moment the script ran, not the commit whose tree
-    actually contains the output files being described — because outputs get
-    committed *after* the run, sometimes hours after. Worth fixing upstream:
-    stamp provenance with the commit made immediately after committing
-    outputs, not the pre-run HEAD. See `worklog.md`, both claim entries.
-15. **Tier classification of Claim 002 is ambiguous, same pattern as Claim
-    001's #6/#7.** `opus/evaluate_claim_002.py`'s own docstring says
-    "Antigravity/Opus -- Tier B," but Preet's review request invoked the full
-    Tier A checklist (provenance, snapshot consistency, commit references,
-    `VERIFIED_FACTS.md` admission). Not resolved — needs Preet's explicit
-    call, the same way #6 got resolved for Claim 001. If Tier A: no Spec
-    Block exists yet either (see #16), so nothing here is admissible until
-    Desktop Claude B writes one.
-16. Was a Spec Block ever written for Claim 002, with a pre-declared
-    tolerance? None exists anywhere in the repo as of this session. Same
-    situation as Claim 001's (now-moot) #7 — except Claim 002's numbers are,
-    on inspection, largely in agreement, which makes the missing Spec Block a
-    real gap rather than an afterthought: there's no pre-committed standard
-    to check the agreement against, even though the agreement looks good.
-17. **Q4 (internal sub-regime significance) is genuinely DISPUTED, not just
-    unresolved on process.** Codex's blind optimal-split search (6 variables,
-    including transformed EG/ADF "strength" terms) finds the 500d core's
-    sub-regime split significant (p ≈ 0.0005). Opus's independent blind
-    search (4 variables, raw p-values) does not (p = 0.108 at a different,
-    earlier split point). Traced to the variable set, not a vague
-    methodology disagreement. Should the two scripts be re-run with a
-    standardized variable set before this is decided either way? Separately:
-    Opus's own search *does* find the 730d core's split significant
-    (2021-02-28, p = 0.011) — has Codex's search been checked against that
-    specific 730d boundary, to see if it agrees there even though the 500d
-    case is disputed?
+14. **Provenance-stamping design gap, now seen four times.** In Claim 001,
+    Claim 002's original non-Tier-A pass, Claim 003, and now Claim 002's
+    Tier A dual reproduction, the git commit hash recorded in a candidate's
+    `provenance.json` reflects HEAD at the moment the script ran, not the
+    commit whose tree actually contains the output files being described —
+    because outputs get committed *after* the run, sometimes hours after.
+    The Claim 002 Tier A instance (2026-07-09) was worse than the first
+    three: no later commit existed at all when checked, not just a
+    stale-but-findable one — the outputs were fully uncommitted until Preet
+    committed them on request. Worth fixing upstream now rather than
+    catching this a fifth time: stamp provenance with the commit made
+    immediately after committing outputs, not the pre-run HEAD. See
+    `worklog.md` and `worklog/claim_002_healthy_episode_characterization.md`
+    (2026-07-09 entry).
+15. ~~Tier classification of Claim 002 is ambiguous, same pattern as Claim
+    001's #6/#7~~ — **RESOLVED 2026-07-09.** Preet confirmed Tier A directly.
+    See `VERIFIED_FACTS.md`, `claim_002_healthy_episode_characterization`
+    entry.
+16. ~~Was a Spec Block ever written for Claim 002, with a pre-declared
+    tolerance?~~ — **RESOLVED 2026-07-09.** Spec Block v3 written by Desktop
+    Claude B, reviewed and approved by Claude #3, tolerance table checked for
+    arithmetic and metric-coverage completeness before use. Dual
+    reproduction by Codex and Antigravity/Opus cleared it cleanly — see
+    `VERIFIED_FACTS.md`.
+17. ~~Q4 (internal sub-regime significance) is genuinely DISPUTED, not just
+    unresolved on process~~ — **RESOLVED 2026-07-09.** Spec Block v3's Part 3
+    standardized the variable set (6 metrics, fixed), the RNG seed
+    (`20260705`), and the exact permutation call pattern. Under those fixed
+    conditions, Codex and Opus now agree to within machine epsilon on both
+    cores: 500d split 2020-06-30 (p≈0.0005), 730d split 2022-08-30
+    (p≈0.0005), both `natural_split_supported`. Note the 730d split date
+    moved from Opus's original blind finding (2021-02-28) once the variable
+    set changed — expected, not a new discrepancy, since both implementations
+    agree on the new point. See `VERIFIED_FACTS.md` and
+    `worklog/claim_002_healthy_episode_characterization.md` (2026-07-09
+    entry).
 18. **Q5 — Opus's "split-signal period" (EG failure precedes ADF failure by
     ~23 months, 2022-01-31 to 2023-12-29) is numerically solid (verified
     directly against Codex's own raw rows) but is not something Codex

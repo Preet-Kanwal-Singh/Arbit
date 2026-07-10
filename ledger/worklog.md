@@ -9,7 +9,7 @@ Detailed histories are stored separately to keep retrieval efficient for filesys
 | Claim ID | Tier | Status | Date Range | Worklog |
 |----------|------|--------|------------|---------|
 | `claim_001_window_validation` | B (confirmed by Preet, `decisions.md` 2026-07-04) | Logged — 1 open item: DGP parameter standardization (`open_questions.md` #13) | 2026-07-04 | `ledger/worklog/claim_001_window_validation.md` |
-| `claim_002_healthy_episode_characterization` | Unresolved — Tier A checklist was invoked but no tier decision made (`open_questions.md` #15) | NOT ADMITTED — blocked on missing Spec Block; Q4 also disputed on the merits | 2026-07-05 | `ledger/worklog/claim_002_healthy_episode_characterization.md` |
+| `claim_002_healthy_episode_characterization` | A (confirmed by Preet, 2026-07-09) | ADMITTED to `VERIFIED_FACTS.md` — Spec Block v3, all four parts (boundaries, regime stats, sub-regime split, degradation diagnostics) cleared with zero cell disputes | 2026-07-05 → 2026-07-09 | `ledger/worklog/claim_002_healthy_episode_characterization.md` |
 | `claim_003_eg_halflife_ordering_robustness` | A | ADMITTED to `VERIFIED_FACTS.md` — WINDOW-LENGTH-CONTRADICTORY (500d ROBUST/unit-root caveat, 730d CONTRADICTED/parameter-stable) | 2026-07-06 → 2026-07-07 | `ledger/worklog/claim_003_eg_halflife_ordering_robustness.md` |
 
 ## Tier B — Working Questions
