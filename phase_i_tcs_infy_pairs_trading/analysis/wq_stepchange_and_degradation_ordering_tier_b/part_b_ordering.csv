@@ -1,0 +1,5 @@
+core,baseline_type,beta_instability_onset,eg_loss_onset,which_first,gap_months
+500d,whole-core,2023-06-30,2022-01-31,EG-loss,17
+500d,post-split (tight),2023-05-31,2022-01-31,EG-loss,16
+730d,whole-core,2023-08-31,2023-04-28,EG-loss,4
+730d,post-split (tight),2023-07-31,2023-04-28,EG-loss,3

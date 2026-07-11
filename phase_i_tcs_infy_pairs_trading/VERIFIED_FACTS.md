@@ -1,4 +1,4 @@
-# VERIFIED_FACTS.md
+# VERIFIED_FACTS.md — Phase I: TCS/INFY Pairs Trading
 
 This file is hand-edited **only** by Desktop Claude A (Ledger Keeper), and only
 after both independent-reproduction checks (Codex, Antigravity/Opus) pass
@@ -225,3 +225,93 @@ See `ledger/worklog/claim_002_healthy_episode_characterization.md` for the
 mapping.
 
 **Admitted:** 2026-07-09 by Desktop Claude A
+
+---
+
+## claim_004_episode1_beta_range
+
+**Claim:** Month-end-sampled rolling-β range for TCS-vs-INFY across the two
+Episode 1 strict healthy cores (500d: 2020-01-31–2021-12-31; 730d:
+2020-12-31–2023-03-31), computed independently by two implementations from
+the frozen snapshot, per Spec Block v3.
+
+**Value:**
+- **500d core (24 month-end obs):** β ranges 0.5451–0.9774 (min/max), mean
+  0.6812, median 0.6594, std 0.1036. First obs 2020-01-31 (β=0.9774), last
+  obs 2021-12-31 (β=0.6661).
+- **730d core (28 month-end obs):** β ranges 0.6477–0.7495, mean 0.6709,
+  median 0.6626, std 0.0250. First obs 2020-12-31 (β=0.7495), last obs
+  2023-03-31 (β=0.6639).
+- All ten level statistics (5 stats × 2 cores) within the pre-declared
+  ±0.001 tolerance; both first/last dates exact match; both counts match
+  each other and the expected 24/28. Zero disputes.
+- **Limitation, load-bearing not a footnote (spec §2's non-goal):** these
+  are month-end sample points only — not an upper or lower bound on the
+  continuous rolling-β process. β could move outside this range between
+  sampled points. This is the same limitation the discarded "0.20 to 1.91"
+  figure had; the improvement here is a traceable, tolerance-checked
+  replacement, not an elimination of the limitation.
+
+**Codex:** `analysis/claim_004_episode1_beta_range/codex/compute_episode1_beta_range.py`
+— self-reported git_commit `1717ffb3ed62e6b502d7c6ef2791545737673d89` in
+provenance.json. Confirmed this predates the script by three days (script
+created 2026-07-09, commit dated 2026-07-06T12:14:45Z) and cannot contain
+it — same pattern as claim_002's Tier A entry above, found independently
+here via `.git/logs/HEAD` and file-creation timestamps. Current HEAD,
+`6c920dc8533b2fd46c7f5ccbb79d665ef12b884a` ("Claim 002 rework ledger
+update", 2026-07-10T05:12:02Z), postdates both runs; Preet confirmed this
+is the commit that captures this output. Tree contents not independently
+verified — no git-show/diff tool reaches this filesystem this session, same
+standing limitation as every commit citation in this project. Output:
+`beta_series_500d_core.csv`, `beta_series_730d_core.csv`, `summary.md` —
+sha256 self-reported in `provenance.json`, not independently recomputed.
+
+**Antigravity/Opus:** `analysis/claim_004_episode1_beta_range/antigravity_opus/claim_004.py`
+— same stale-commit citation and same corrected-HEAD situation as Codex
+above. Output: same three files, sha256 self-reported, not independently
+recomputed. Its own `summary.md` explicitly declares it read none of the
+paths Spec Block v3 §6 prohibits (the two `wq_recompute_episode1_beta_range*`
+dirs, `worklog_tier_b.md`, Codex's output) — but §6 never named
+`claim_002_healthy_episode_characterization/codex_tier_a/` or
+`opus_tier_a/` as prohibited, and those directories already contain this
+exact beta-range answer (see cross-check below). Not read as evidence of
+anything having gone wrong — the agreement is fully explained by both
+implementations doing the same deterministic OLS computation on the same
+fixed dates and snapshot — but worth naming as a real gap in §6's scope for
+any future claim reusing these boundaries.
+
+**Sequencing:** Codex 2026-07-09T05:24:31Z, Opus 2026-07-09T05:32:51Z, 8
+minutes apart, consistent with the required non-overlapping order. Only
+start instants are recorded, not durations, so this supports but doesn't
+formally prove non-overlap — same limitation as every prior claim.
+
+**Snapshot:** `tcs_infy_v1_2026-07-04` — identical `snapshot_id` and
+identical snapshot sha256 confirmed in both candidates' provenance files.
+
+**Cross-check against claim_002 (not required by this spec, noted for the
+record):** these values match claim_002's already-admitted Part 2 beta
+distributional stats for the same two bases to full precision (e.g. Codex's
+claim_004 500d mean_beta `0.6811805549568977` = claim_002 Part 2's Codex
+500d_strict beta mean `0.681180554956898`). Expected — same computation,
+same fixed dates — and anticipated as fine by claim_002's own non-goals
+section.
+
+**Process note — routing, stated plainly so this entry doesn't read as
+contradicting the spec it came from:** Spec Block v3 §8 states "Does not
+admit to `VERIFIED_FACTS.md` directly." This claim was originally logged
+only in `ledger/worklog/claim_004_episode1_beta_range.md` and used to close
+`open_questions.md` #1, per that non-goal and Preet's explicit confirmation
+that this was the intended routing. Preet then separately instructed this
+entry be added to `VERIFIED_FACTS.md` as well, reversing that routing
+choice. Both destinations now hold the same finding — nothing about the
+underlying check changed between the two, only where it's recorded.
+
+Separately: this claim's boundaries (§1) trace to `claim_002`'s Part 1,
+which was un-admitted when Spec Block v3 was drafted and is now admitted —
+spec §1's provenance argument and its "Preet's call" question are both
+stale as a result, not incorrect at time of writing. See
+`ledger/worklog/claim_004_episode1_beta_range.md` for full detail on this,
+the commit-timing check, and the isolation-scope gap.
+
+**Admitted:** 2026-07-10 by Desktop Claude A, per Preet's explicit
+instruction.

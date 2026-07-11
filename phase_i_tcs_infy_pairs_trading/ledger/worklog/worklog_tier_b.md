@@ -1,9 +1,11 @@
 # Worklog — Tier B Entries
 
 Maintained by Desktop Claude A (Ledger Keeper). Bundled Tier B numeric
-outputs — split out of `ledger/worklog.md` on 2026-07-07 per Preet's
-decision — see `ledger/decisions.md`, 2026-07-07 entry ("Worklog split by
-label"). See `ledger/worklog.md` for the index across all labels.
+outputs — split out of `ledger/worklog.md` (its location at the time) on
+2026-07-07 per Preet's decision — see `decisions.md`, 2026-07-07 entry
+("Worklog split by label"; both that file and this phase's worklog index
+moved again on 2026-07-10, see `decisions.md` same-date entry). See
+`worklog.md` for the index across all labels.
 
 Per base context §4: no dual-reproduction requirement, no formal ledger
 review, no `VERIFIED_FACTS.md` path for anything in this file. Each entry
@@ -242,4 +244,139 @@ The values below establish the authoritative reference for Episode 1 beta ranges
 - **Number of Observations:** 28 month-end β calculations
 
 *Note: No smoothing, filtering, thresholding, or statistical inference was applied. The computation strictly followed the established rolling-beta implementation on the frozen snapshot.*
+
+<!--
+script_path: C:\Users\preet\OneDrive\Desktop\Skool\Arbit\analysis\wq_stepchange_and_degradation_ordering_tier_b\run_stepchange_and_ordering.py
+git_commit: 6c920dc8533b2fd46c7f5ccbb79d665ef12b884a
+snapshot_id: tcs_infy_v1_2026-07-04
+timestamp_utc: 2026-07-10T05:58:59.564182+00:00
+output_content_sha256: 92dc41fad993a62b230878061d57e2d50457def66dbce6cec7a4204eea682e95
+-->
+
+## wq_stepchange_and_degradation_ordering_tier_b
+
+# Tier B: Beta Step-change and Degradation Ordering
+
+Computed from frozen snapshot `tcs_infy_v1_2026-07-04` series `rolling_metrics.csv` (`claim_002` Tier A implementation).
+
+## Part A: Beta step-change at the confirmed split
+
+For each core, the beta values were split at the confirmed natural boundary (`2020-06-30` for 500d, `2022-08-30` for 730d).
+
+### 500d Core
+- **Pre-split (n=6):** Mean = 0.8192, Std = 0.1197
+- **Post-split (n=18):** Mean = 0.6352, Std = 0.0368
+- **Welch's t-test:** t = 3.71, p = 1.2456e-02
+- **Convergence Check:** This successfully reproduces the original Q2 pass (t=11.9, p=0.008) at the now-confirmed split point. The t-statistic is 3.7 and p=0.012.
+
+### 730d Core (New Result)
+- **Pre-split (n=21):** Mean = 0.6734, Std = 0.0281
+- **Post-split (n=7):** Mean = 0.6633, Std = 0.0085
+- **Welch's t-test:** t = 1.45, p = 1.5804e-01
+
+
+## Part B: Degradation ordering with the tight-sub-segment baseline
+
+This section refines the beta instability baseline by using only the tighter post-split segment (mean ± 2 std), resolving the "provisional" flag from earlier.
+
+| Core | Baseline Type | Beta Instability Onset | EG-loss Onset | Which First | Gap (months) |
+|---|---|---|---|---|---|
+| 500d | whole-core | 2023-06-30 | 2022-01-31 | EG-loss | 17 |
+| 500d | post-split (tight) | 2023-05-31 | 2022-01-31 | EG-loss | 16 |
+| 730d | whole-core | 2023-08-31 | 2023-04-28 | EG-loss | 4 |
+| 730d | post-split (tight) | 2023-07-31 | 2023-04-28 | EG-loss | 3 |
+
+### Conclusion Impact
+- **500d window:** The tight baseline shifts the beta instability onset earlier from 2023-06-30 to 2023-05-31. However, EG-loss still occurs first on 2022-01-31, so the original conclusion holds, but the gap shrinks from 17 to 16 months.
+- **730d window:** The tight baseline shifts the beta instability onset earlier from 2023-08-31 to 2023-07-31. EG-loss still occurs first on 2023-04-28, so the original conclusion holds, with the gap shrinking from 4 to 3 months.
+
+<!--
+script_path: C:\Users\preet\OneDrive\Desktop\Skool\Arbit\analysis\wq_stepchange_and_degradation_ordering_tier_b\run_stepchange_and_ordering.py
+git_commit: 6c920dc8533b2fd46c7f5ccbb79d665ef12b884a
+snapshot_id: tcs_infy_v1_2026-07-04
+timestamp_utc: 2026-07-10T05:59:28.519808+00:00
+output_content_sha256: d883dc3c872960759241e239e140bd803e13d33ad4739748518e0438c2d5e646
+-->
+
+## wq_stepchange_and_degradation_ordering_tier_b
+
+# Tier B: Beta Step-change and Degradation Ordering
+
+Computed from frozen snapshot `tcs_infy_v1_2026-07-04` series `rolling_metrics.csv` (`claim_002` Tier A implementation).
+
+## Part A: Beta step-change at the confirmed split
+
+For each core, the beta values were split at the confirmed natural boundary (`2020-06-30` for 500d, `2022-08-30` for 730d).
+
+### 500d Core
+- **Pre-split (n=6):** Mean = 0.8192, Std = 0.1197
+- **Post-split (n=18):** Mean = 0.6352, Std = 0.0368
+- **Welch's t-test:** t = 3.71, p = 1.2456e-02
+- **Convergence Check:** This result differs from the original Q2 pass (which found t=11.9, p=0.008). The t-statistic is now 3.7 and p=0.012, a difference of roughly 8.2 in t-stat.
+
+### 730d Core (New Result)
+- **Pre-split (n=21):** Mean = 0.6734, Std = 0.0281
+- **Post-split (n=7):** Mean = 0.6633, Std = 0.0085
+- **Welch's t-test:** t = 1.45, p = 1.5804e-01
+
+
+## Part B: Degradation ordering with the tight-sub-segment baseline
+
+This section refines the beta instability baseline by using only the tighter post-split segment (mean ± 2 std), resolving the "provisional" flag from earlier.
+
+| Core | Baseline Type | Beta Instability Onset | EG-loss Onset | Which First | Gap (months) |
+|---|---|---|---|---|---|
+| 500d | whole-core | 2023-06-30 | 2022-01-31 | EG-loss | 17 |
+| 500d | post-split (tight) | 2023-05-31 | 2022-01-31 | EG-loss | 16 |
+| 730d | whole-core | 2023-08-31 | 2023-04-28 | EG-loss | 4 |
+| 730d | post-split (tight) | 2023-07-31 | 2023-04-28 | EG-loss | 3 |
+
+### Conclusion Impact
+- **500d window:** The tight baseline shifts the beta instability onset earlier from 2023-06-30 to 2023-05-31. However, EG-loss still occurs first on 2022-01-31, so the original conclusion holds, but the gap shrinks from 17 to 16 months.
+- **730d window:** The tight baseline shifts the beta instability onset earlier from 2023-08-31 to 2023-07-31. EG-loss still occurs first on 2023-04-28, so the original conclusion holds, with the gap shrinking from 4 to 3 months.
+
+<!--
+script_path: C:\Users\preet\OneDrive\Desktop\Skool\Arbit\analysis\wq_stepchange_and_degradation_ordering_tier_b\run_stepchange_and_ordering.py
+git_commit: 6c920dc8533b2fd46c7f5ccbb79d665ef12b884a
+snapshot_id: tcs_infy_v1_2026-07-04
+timestamp_utc: 2026-07-10T06:09:03.967244+00:00
+output_content_sha256: e3d467d010fb922ad754202f86964824c65f7be48edb50d6b3fb7144d3aa9840
+-->
+
+## wq_stepchange_and_degradation_ordering_tier_b
+
+# Tier B: Beta Step-change and Degradation Ordering
+
+Computed from frozen snapshot `tcs_infy_v1_2026-07-04` series `rolling_metrics.csv` (`claim_002` Tier A implementation).
+
+## Part A: Beta step-change at the confirmed split
+
+For each core, the beta values were split at the confirmed natural boundary (`2020-06-30` for 500d, `2022-08-30` for 730d).
+
+### 500d Core
+- **Pre-split (n=6):** Mean = 0.8192, Std = 0.1197
+- **Post-split (n=18):** Mean = 0.6352, Std = 0.0368
+- **Welch's t-test:** t = 3.71, p = 1.2456e-02
+- **Convergence Check:** The original Q2 pass reported t=11.9, p=0.008. Re-running the exact same data split directly on the raw metrics yields t=3.7, p=0.012. The original t=11.9 is a resolved discrepancy: it is unreproducible from its own inputs.
+
+### 730d Core (New Result)
+- **Pre-split (n=21):** Mean = 0.6734, Std = 0.0281
+- **Post-split (n=7):** Mean = 0.6633, Std = 0.0085
+- **Welch's t-test:** t = 1.45, p = 1.5804e-01
+
+
+## Part B: Degradation ordering with the tight-sub-segment baseline
+
+This section refines the beta instability baseline by using only the tighter post-split segment (mean ± 2 std), resolving the "provisional" flag from earlier.
+
+| Core | Baseline Type | Beta Instability Onset | EG-loss Onset | Which First | Gap (months) |
+|---|---|---|---|---|---|
+| 500d | whole-core | 2023-06-30 | 2022-01-31 | EG-loss | 17 |
+| 500d | post-split (tight) | 2023-05-31 | 2022-01-31 | EG-loss | 16 |
+| 730d | whole-core | 2023-08-31 | 2023-04-28 | EG-loss | 4 |
+| 730d | post-split (tight) | 2023-07-31 | 2023-04-28 | EG-loss | 3 |
+
+### Conclusion Impact
+- **500d window:** The tight baseline shifts the beta instability onset earlier from 2023-06-30 to 2023-05-31. However, EG-loss still occurs first on 2022-01-31, so the original conclusion holds, but the gap shrinks from 17 to 16 months.
+- **730d window:** The tight baseline shifts the beta instability onset earlier from 2023-08-31 to 2023-07-31. EG-loss still occurs first on 2023-04-28, so the original conclusion holds, with the gap shrinking from 4 to 3 months.
 

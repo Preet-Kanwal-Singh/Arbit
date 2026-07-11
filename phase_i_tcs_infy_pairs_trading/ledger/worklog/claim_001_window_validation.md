@@ -1,9 +1,10 @@
 # Worklog — Claim 001: Cointegration Window-Length Validation
 
 Maintained by Desktop Claude A (Ledger Keeper). Split out of `ledger/worklog.md`
-on 2026-07-07 per Preet's decision — see `ledger/decisions.md`, 2026-07-07
-entry ("Worklog split by label"). See `ledger/worklog.md` for the index
-across all labels.
+(its location at the time) on 2026-07-07 per Preet's decision — see
+`decisions.md`, 2026-07-07 entry ("Worklog split by label"; both that file
+and this phase's worklog index moved again on 2026-07-10, see `decisions.md`
+same-date entry). See `worklog.md` for the index across all labels.
 
 ---
 

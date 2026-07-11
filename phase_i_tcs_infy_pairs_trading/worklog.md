@@ -1,4 +1,4 @@
-# ARBIT Worklog Index
+# ARBIT Worklog Index — Phase I: TCS/INFY Pairs Trading
 
 This file is the permanent index for ARBIT's research worklog.
 
@@ -11,6 +11,7 @@ Detailed histories are stored separately to keep retrieval efficient for filesys
 | `claim_001_window_validation` | B (confirmed by Preet, `decisions.md` 2026-07-04) | Logged — 1 open item: DGP parameter standardization (`open_questions.md` #13) | 2026-07-04 | `ledger/worklog/claim_001_window_validation.md` |
 | `claim_002_healthy_episode_characterization` | A (confirmed by Preet, 2026-07-09) | ADMITTED to `VERIFIED_FACTS.md` — Spec Block v3, all four parts (boundaries, regime stats, sub-regime split, degradation diagnostics) cleared with zero cell disputes | 2026-07-05 → 2026-07-09 | `ledger/worklog/claim_002_healthy_episode_characterization.md` |
 | `claim_003_eg_halflife_ordering_robustness` | A | ADMITTED to `VERIFIED_FACTS.md` — WINDOW-LENGTH-CONTRADICTORY (500d ROBUST/unit-root caveat, 730d CONTRADICTED/parameter-stable) | 2026-07-06 → 2026-07-07 | `ledger/worklog/claim_003_eg_halflife_ordering_robustness.md` |
+| `claim_004_episode1_beta_range` | A (Preet's designation) | ADMITTED to `VERIFIED_FACTS.md` (2026-07-10, per Preet's explicit instruction, reversing Spec Block v3 §8's original non-goal) — closes `open_questions.md` #1; zero cell disputes | 2026-07-09 → 2026-07-10 | `ledger/worklog/claim_004_episode1_beta_range.md` |
 
 ## Tier B — Working Questions
 

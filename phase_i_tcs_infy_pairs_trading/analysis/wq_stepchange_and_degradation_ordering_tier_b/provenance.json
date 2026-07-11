@@ -1,0 +1,11 @@
+{
+  "snapshot_id": "tcs_infy_v1_2026-07-04",
+  "git_commit": "6c920dc8533b2fd46c7f5ccbb79d665ef12b884a",
+  "script_path": "C:\\Users\\preet\\OneDrive\\Desktop\\Skool\\Arbit\\analysis\\wq_stepchange_and_degradation_ordering_tier_b\\run_stepchange_and_ordering.py",
+  "execution_timestamp_utc": "2026-07-10T06:09:03.967244+00:00",
+  "outputs": {
+    "part_a_stepchange.csv": "7fc196cb14f6720993aed40472828a8b0efc5ff033048db1f6b0e1c7c114684a",
+    "part_b_ordering.csv": "0a5806493ce11a01a12b248b1737de02b99d097e2ce69cc30e577e2364b826a1",
+    "summary.md": "e3d467d010fb922ad754202f86964824c65f7be48edb50d6b3fb7144d3aa9840"
+  }
+}

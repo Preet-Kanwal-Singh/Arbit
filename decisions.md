@@ -16,11 +16,13 @@ formal Tier A independent-reproduction admission.
 
 **Effect:** per `PROJECT_BASE_CONTEXT.md` §4, this work does not require a
 Spec Block, a pre-declared tolerance, adversary review, or a
-`VERIFIED_FACTS.md` entry. See `ledger/worklog/worklog_tier_b.md`, 2026-07-04 entry, for supporting
-detail and for the remaining data-hygiene items (Antigravity's use of a live
-data pull instead of the frozen snapshot; Codex's git-commit provenance
-mismatch) that are unaffected by this decision — those are about the quality
-of the two working numbers, not about tier admission.
+`VERIFIED_FACTS.md` entry. See
+`phase_i_tcs_infy_pairs_trading/ledger/worklog/worklog_tier_b.md`,
+2026-07-04 entry (relocated 2026-07-10, see that date's entry below), for
+supporting detail and for the remaining data-hygiene items (Antigravity's
+use of a live data pull instead of the frozen snapshot; Codex's git-commit
+provenance mismatch) that are unaffected by this decision — those are about
+the quality of the two working numbers, not about tier admission.
 
 One thing worth flagging once, not re-litigating: the base context's own tool
 roster (§2) describes Antigravity-as-Opus as "Independent reproduction
@@ -79,7 +81,10 @@ cannot search file contents directly and were increasingly forced to reread a
 large worklog for claim-specific tasks. The new structure keeps retrieval
 efficient while preserving complete append-only audit trails.
 
-**New layout:**
+**New layout (as of 2026-07-07 — superseded 2026-07-10, see that entry
+below for the current phase-scoped locations; recorded here unchanged as
+the accurate historical description of what this decision actually put in
+place at the time):**
 
 - `ledger/worklog.md` — permanent index.
 - `ledger/worklog/<claim_id>.md` — append-only worklog for each Tier A claim.
@@ -94,3 +99,66 @@ ledger admission criteria.
 
 ## 2026-07-08 - Claim 004
 claim_004 proceeds using claim_002's Q1 boundary determination as a fixed input, despite claim_002 lacking a Spec Block/admission, because Q1 is a deterministic exact-match with independent reproduction, not a judgment call. Does not extend to claim_002's other findings (Q2–Q5), which remain unresolved
+
+## 2026-07-10 — Multi-phase modular restructuring
+
+**Decision (Preet, stated directly):** the project is restructured from a
+single flat TCS/INFY investigation into multiple self-contained phases, each
+with its own ledger. Phase I is the existing TCS/INFY pairs-trading work.
+Phase II is a planned RL agent built on TCS/INFY. Phase III is a planned
+pairs-trading analysis on a different pair (example given: TATASTEEL/
+JSWSTEEL). Further phases follow the same pattern.
+
+**Reasoning given:** the same problem the worklog modularization
+(2026-07-07) solved at the claim level now applies at the project level —
+phases are substantively different investigations (different research
+questions, potentially different tickers or methods entirely) that
+shouldn't share one global claim-numbering space, one global
+`VERIFIED_FACTS.md`, or one global open-questions backlog. Keeping each
+phase self-contained keeps it portable and keeps retrieval efficient the
+same way the earlier split did.
+
+**New layout (each phase fully self-contained):**
+
+    Arbit/
+    ├── PROJECT_BASE_CONTEXT.md        (process rules only, phase-agnostic)
+    ├── decisions.md                    (stays global, unsplit — see below)
+    ├── process_notes.md                (new — cross-cutting tooling/process
+    │                                     gaps that belong to no single phase)
+    ├── data/snapshots/                 (stays global — shared across phases,
+    │                                     already keyed by ticker pair + date)
+    ├── phase_i_tcs_infy_pairs_trading/
+    │   ├── PHASE_CONTEXT.md            (phase history/carry-forward status,
+    │   │                                 migrated from PROJECT_BASE_CONTEXT
+    │   │                                 §1/§8)
+    │   ├── VERIFIED_FACTS.md
+    │   ├── open_questions.md
+    │   ├── worklog.md                  (phase-level index)
+    │   ├── ledger/worklog/<claim_id>.md, worklog_tier_b.md
+    │   └── analysis/<claim_id>/, analysis/wq_*/
+    ├── phase_ii_rl_agent_tcs_infy/      (same skeleton, empty until populated)
+    └── phase_iii_tatasteel_jswsteel/    (same skeleton, empty until populated)
+
+**Claim numbering:** per-phase, not global — restarts at `claim_001` inside
+each phase folder. Phase I's existing `claim_001`–`claim_004` are
+unaffected.
+
+**`decisions.md`:** stays a single global file, not split — decision volume
+is low enough that one chronological cross-phase log is more useful than
+fragmenting it; entries name their phase where relevant.
+
+**Migration note:** `PROJECT_BASE_CONTEXT.md` §1/§8's phase-specific content
+moved to `phase_i_tcs_infy_pairs_trading/PHASE_CONTEXT.md` verbatim, with
+one deliberate exclusion (the old §8 "open Tier A questions" list, already
+duplicated and more current in that phase's `open_questions.md` — copying
+it again would have re-introduced a stale, already-resolved item). Old
+`ledger/open_questions.md` item #14 (provenance-stamping gap) moved to the
+new root `process_notes.md` #1, since it's a cross-cutting tooling issue,
+not Phase I-specific research — item left in place in `open_questions.md`
+with a pointer, not deleted, per this project's append-only convention for
+resolved/relocated items.
+
+**Effect:** every path reference in every existing ledger file that pointed
+to a project-root ledger location now points to a phase-scoped one instead.
+Repository-governance change only — no statistical methodology, claim
+outcome, or admission criteria changes for anything already admitted.
