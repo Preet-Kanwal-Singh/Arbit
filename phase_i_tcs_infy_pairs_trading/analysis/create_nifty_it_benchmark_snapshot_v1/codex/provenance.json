@@ -4,17 +4,17 @@
   "tier": "C",
   "snapshot_id": "nifty_it_benchmark_v1_2026-07-11",
   "script_path": "phase_i_tcs_infy_pairs_trading/analysis/create_nifty_it_benchmark_snapshot_v1/codex/create_nifty_it_benchmark_snapshot.py",
-  "git_commit": "ea24aad3f8f0eb07a42a1e466cadda79228ec834",
-  "stamped_at_utc": "2026-07-11T15:01:25.272155+00:00",
+  "git_commit": "7de2d3c67e1714da0f7a3b1b472dc0ea10164b95",
+  "stamped_at_utc": "2026-07-11T15:13:38.476127+00:00",
   "note": "commit hash recorded after outputs were committed, not pre-run HEAD",
   "outputs": [
     {
       "path": "data/snapshots/nifty_it_benchmark_v1_2026-07-11/ohlcv.csv",
-      "sha256": "9cae431487316844ce0d6108b53f53116c91b94c8fb4a61c97458d98ccebe30e"
+      "sha256": "fb842bcc8ed7dacf7533bc64789e0638181c8bc062095d92ae2154b53d9c542c"
     },
     {
       "path": "data/snapshots/nifty_it_benchmark_v1_2026-07-11/metadata.json",
-      "sha256": "ca3a06ba50b775dd07ba5572f1d82b8bdaee2c29112293e6a645ca14064bc135"
+      "sha256": "d19bddb1ced1cfd2b9483f757c56a22cd77ff033d47a762b2a9841f67dd56865"
     }
   ]
 }

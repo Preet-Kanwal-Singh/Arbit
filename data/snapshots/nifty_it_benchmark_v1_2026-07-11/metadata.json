@@ -128,12 +128,13 @@
     "itbees_inception_date": "ITBEES.NS data only begins on 2020-06-30. Dates before this are flagged as pre-inception rather than truncated silently."
   },
   "yfinance_version": "1.5.1",
-  "git_commit": "PENDING_POST_OUTPUT_COMMIT",
+  "git_commit": "7de2d3c67e1714da0f7a3b1b472dc0ea10164b95",
   "generated_by_script": "C:\\Users\\preet\\OneDrive\\Desktop\\Skool\\Arbit\\phase_i_tcs_infy_pairs_trading\\analysis\\create_nifty_it_benchmark_snapshot_v1\\codex\\create_nifty_it_benchmark_snapshot.py",
   "files": {
     "ohlcv.csv": {
       "path": "data\\snapshots\\nifty_it_benchmark_v1_2026-07-11\\ohlcv.csv",
       "sha256": "fb842bcc8ed7dacf7533bc64789e0638181c8bc062095d92ae2154b53d9c542c"
     }
-  }
+  },
+  "provenance_stamped_at_utc": "2026-07-11T15:13:38.474213+00:00"
 }
