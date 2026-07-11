@@ -1,0 +1,36 @@
+{
+  "snapshot_id": "tcs_infy_v2_2026-07-11",
+  "creation_timestamp_utc": "2026-07-11T05:45:41.401161+00:00",
+  "created_by": "Codex",
+  "tickers": [
+    "TCS.NS",
+    "INFY.NS"
+  ],
+  "start_date": "2018-01-01",
+  "end_date_inclusive": "2026-07-10",
+  "yfinance_download_end_exclusive": "2026-07-12",
+  "first_data_date": "2018-01-01",
+  "last_data_date": "2026-07-10",
+  "row_count": 4214,
+  "columns": [
+    "date",
+    "ticker",
+    "open",
+    "high",
+    "low",
+    "close",
+    "volume"
+  ],
+  "source": "Yahoo Finance via yfinance.download",
+  "adjustment_policy": "auto_adjust=True in yfinance; saved adjusted Open, High, Low, and Close for TCS.NS and INFY.NS; no manual corporate-action handling.",
+  "volume_policy": "Volume is as reported by Yahoo Finance via yfinance and is not split-adjusted. Open/High/Low/Close use auto_adjust=True (split- and dividend-adjusted). Volume therefore has a real discontinuity around any stock split in the 2018-2026 window and must not be treated as comparable to the adjusted price fields without explicit handling.",
+  "yfinance_version": "1.5.1",
+  "git_commit": "PENDING_POST_OUTPUT_COMMIT",
+  "generated_by_script": "C:\\Users\\preet\\OneDrive\\Desktop\\Skool\\Arbit\\phase_ii_rl_agent_tcs_infy\\analysis\\create_tcs_infy_snapshot_v2\\codex\\create_tcs_infy_snapshot.py",
+  "files": {
+    "ohlcv.csv": {
+      "path": "data\\snapshots\\tcs_infy_v2_2026-07-11\\ohlcv.csv",
+      "sha256": "28d1ef414f5973be6171649aebb0a2d3cf0dc3968564fc77961984b5b9c65ebd"
+    }
+  }
+}
