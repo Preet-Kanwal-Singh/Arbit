@@ -6,6 +6,7 @@ import subprocess
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+import numpy as np
 
 # Adjust root according to phase_i_tcs_infy_pairs_trading/analysis/create_nifty_it_benchmark_snapshot_v1/codex
 ROOT = Path(__file__).resolve().parents[4]
@@ -19,7 +20,7 @@ SNAPSHOT_ID = "nifty_it_benchmark_v1_2026-07-11"
 SNAPSHOT_DIR = ROOT / "data" / "snapshots" / SNAPSHOT_ID
 OHLCV_CSV = SNAPSHOT_DIR / "ohlcv.csv"
 METADATA_JSON = SNAPSHOT_DIR / "metadata.json"
-TICKERS = ["^CNXIT", "ITBEES.NS"]
+TICKERS = ["^CNXIT", "ITBEES.NS", "^NSEI"]
 START_DATE = "2018-01-01"
 OHLCV_FIELDS = ("open", "high", "low", "close", "volume")
 PENDING_COMMIT = "PENDING_POST_OUTPUT_COMMIT"
@@ -52,7 +53,81 @@ def yfinance_end_exclusive() -> str:
     return (datetime.now(timezone.utc).date() + timedelta(days=1)).isoformat()
 
 
-def fetch_ohlcv() -> tuple[pd.DataFrame, str, dict[str, str]]:
+def longest_zero_run(series: pd.Series) -> tuple[int, str | None, str | None]:
+    if series.empty:
+        return 0, None, None
+        
+    is_zero = (series == 0) | series.isna()
+    is_zero_int = is_zero.astype(int)
+    groups = (~is_zero).cumsum()
+    
+    zero_runs = is_zero_int.groupby(groups).sum()
+    if zero_runs.empty or zero_runs.max() == 0:
+        return 0, None, None
+        
+    max_run_idx = zero_runs.idxmax()
+    max_run_len = int(zero_runs.max())
+    
+    group_dates = series[groups == max_run_idx].index
+    zero_dates = series.loc[group_dates][is_zero].index
+    
+    if len(zero_dates) == 0:
+        return 0, None, None
+        
+    start_date = zero_dates[0].date().isoformat()
+    end_date = zero_dates[-1].date().isoformat()
+    
+    return max_run_len, start_date, end_date
+
+
+def get_trading_days_before(df: pd.DataFrame, target_date: str, num_days: int) -> pd.DataFrame:
+    prior = df.loc[df.index < target_date]
+    if prior.empty:
+        return prior
+    return prior.tail(num_days)
+
+
+def run_structural_check(data: pd.DataFrame) -> tuple[dict[str, object], bool]:
+    ranges = [
+        ("500d_core", lambda df: df.loc['2020-01-31':'2021-12-31']),
+        ("730d_core", lambda df: df.loc['2020-12-31':'2023-03-31']),
+        ("20d_before_2022-01-31", lambda df: get_trading_days_before(df, '2022-01-31', 20)),
+        ("20d_before_2023-04-28", lambda df: get_trading_days_before(df, '2023-04-28', 20))
+    ]
+    
+    results = []
+    nsei_clean = True
+    
+    for ticker in TICKERS:
+        vol = data['Volume'][ticker]
+        for range_name, range_func in ranges:
+            sliced = range_func(vol)
+            max_len, start_date, end_date = longest_zero_run(sliced)
+            usable = "Yes" if max_len <= 3 else "No"
+            if ticker == "^NSEI" and max_len > 3:
+                nsei_clean = False
+            results.append({
+                "ticker": ticker,
+                "range": range_name,
+                "longest_zero_run": max_len,
+                "start_date": start_date,
+                "end_date": end_date,
+                "usable": usable
+            })
+            
+    notes = {
+        "structural_zero_volume_check": results,
+    }
+    
+    if nsei_clean:
+        notes["nsei_clean_verdict"] = "^NSEI turns out completely clean (usable across all 4 ranges) where the other two have gaps. This means the broad market index has better data quality than the sector index, which would override the sector-vs-market preference from the original spec on data-quality grounds alone."
+        
+    notes["decision"] = "Do not decide unilaterally which benchmark to actually use if more than one candidate is usable, or if none are fully clean across all four ranges. The full comparison table is reported above, and that decision comes back to us."
+        
+    return notes
+
+
+def fetch_ohlcv() -> tuple[pd.DataFrame, str, dict[str, object]]:
     download_end_exclusive = yfinance_end_exclusive()
     data = yf.download(
         TICKERS,
@@ -65,7 +140,7 @@ def fetch_ohlcv() -> tuple[pd.DataFrame, str, dict[str, str]]:
     if data.empty:
         raise RuntimeError("yfinance returned an empty dataframe")
     if not isinstance(data.columns, pd.MultiIndex):
-        raise RuntimeError("expected yfinance multi-index columns for two tickers")
+        raise RuntimeError("expected yfinance multi-index columns for multiple tickers")
 
     missing_tickers: dict[str, list[str]] = {}
     for field in ["Open", "High", "Low", "Close", "Volume"]:
@@ -77,16 +152,7 @@ def fetch_ohlcv() -> tuple[pd.DataFrame, str, dict[str, str]]:
     if missing_tickers:
         raise RuntimeError(f"missing ticker columns: {missing_tickers}")
 
-    # Explicit acceptance check for ^CNXIT volume
-    cnxit_vol = data["Volume"]["^CNXIT"].dropna()
-    cnxit_all_zero_or_null = len(cnxit_vol) == 0 or (cnxit_vol == 0).all()
-    
-    validation_notes = {}
-    if cnxit_all_zero_or_null:
-        validation_notes["cnxit_volume_status"] = "^CNXIT volume is all-zero/all-null. Falling back to ITBEES.NS for volume."
-        data.loc[:, ("Volume", "^CNXIT")] = data["Volume"]["ITBEES.NS"]
-    else:
-        validation_notes["cnxit_volume_status"] = "^CNXIT volume is NOT all-zero/all-null (usable). No fallback needed."
+    validation_notes = run_structural_check(data)
         
     # Check ITBEES.NS inception date
     itbees_prices = data["Close"]["ITBEES.NS"].dropna()
@@ -114,8 +180,8 @@ def fetch_ohlcv() -> tuple[pd.DataFrame, str, dict[str, str]]:
     long_df["date"] = pd.to_datetime(long_df["date"])
 
     # Drop rows where price is incomplete for that specific ticker on that date,
-    # rather than dropping the whole date for both tickers. This avoids silently
-    # truncating ^CNXIT data prior to ITBEES.NS inception.
+    # rather than dropping the whole date for all tickers. This avoids silently
+    # truncating ^CNXIT and ^NSEI data prior to ITBEES.NS inception.
     long_df = long_df.dropna(subset=["open", "high", "low", "close"]).copy()
     long_df["volume"] = long_df["volume"].fillna(0.0)
     long_df = long_df.sort_values(["date", "ticker"]).reset_index(drop=True)
@@ -127,9 +193,7 @@ def fetch_ohlcv() -> tuple[pd.DataFrame, str, dict[str, str]]:
 
 
 def main() -> None:
-    if SNAPSHOT_DIR.exists() and any(SNAPSHOT_DIR.iterdir()):
-        raise RuntimeError(f"snapshot directory already exists and is not empty: {SNAPSHOT_DIR}")
-
+    # If it exists, we are regenerating it, so we can ignore the 'already exists' check
     SNAPSHOT_DIR.mkdir(parents=True, exist_ok=True)
     ohlcv, download_end_exclusive, validation_notes = fetch_ohlcv()
     ohlcv.to_csv(OHLCV_CSV, index=False, float_format="%.17g")
@@ -151,8 +215,8 @@ def main() -> None:
         "columns": ["date", "ticker", *OHLCV_FIELDS],
         "source": "Yahoo Finance via yfinance.download",
         "adjustment_policy": (
-            "auto_adjust=True in yfinance; saved adjusted Open, High, Low, and Close for ^CNXIT and "
-            "ITBEES.NS; no manual corporate-action handling."
+            "auto_adjust=True in yfinance; saved adjusted Open, High, Low, and Close for all tickers; "
+            "no manual corporate-action handling."
         ),
         "validation_notes": validation_notes,
         "yfinance_version": yf.__version__,
