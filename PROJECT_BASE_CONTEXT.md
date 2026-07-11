@@ -12,7 +12,7 @@ phase's own `PHASE_CONTEXT.md` (§0).
 | Phase | Folder | Status | One-line scope |
 |---|---|---|---|
 | I | `phase_i_tcs_infy_pairs_trading/` | Active | TCS/INFY cointegration pairs-trading track — the original investigation. |
-| II | `phase_ii_rl_agent_tcs_infy/` | Planned | RL agent built on TCS/INFY. |
+| II | `phase_ii_rl_agent_tcs_infy/` | Active | RL agent built on TCS/INFY. |
 | III | `phase_iii_tatasteel_jswsteel/` | Planned | Pairs-trading analysis on a second pair (TATASTEEL/JSWSTEEL, or whichever pair is actually chosen). |
 
 Every Spec Block, question, or task must state which phase it belongs to

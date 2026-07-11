@@ -4,8 +4,8 @@
   "tier": "C",
   "snapshot_id": "tcs_infy_v1_2026-07-04",
   "script_path": "phase_ii_rl_agent_tcs_infy/analysis/wq_env_scaffolding_v0/run_acceptance_test.py",
-  "git_commit": "5f9c7121ebd357d5f700f46c96391cd973a97901",
-  "stamped_at_utc": "2026-07-11T05:32:16.433914+00:00",
+  "git_commit": "44a899da0d3da3a5f649f981d1c2a4c4156804e8",
+  "stamped_at_utc": "2026-07-11T10:12:39.861040+00:00",
   "note": "commit hash recorded after outputs were committed, not pre-run HEAD",
   "outputs": [
     {

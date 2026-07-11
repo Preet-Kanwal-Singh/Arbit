@@ -96,6 +96,21 @@ arrived at, and admitted on that basis — but a reader relying on this entry
 should know the asymmetry question is open, not resolved. Full reasoning in
 `worklog.md`, 2026-07-06/07 entries.
 
+**Path correction note (added 2026-07-11 by Desktop Claude A, not altering the
+citations above):** the `analysis/claim003/...` paths cited above were
+correct at admission time — confirmed directly against Codex's own
+`provenance.json` for this claim, whose `git_status_short_at_run` field
+shows `?? analysis/claim003/` at the moment this script actually ran. That
+directory has since been renamed to
+`analysis/claim_003_eg_halflife_ordering_robustness/` (same `codex/` and
+`antigravity_opus/` subfolders, same files) at some point at or before the
+"Project Phase Reconstruction" commit — I did not pin down the exact
+renaming commit. The files are at the new path; I opened them there
+directly this session. I also checked `claim_002` and `claim_004`'s cited
+paths against the current repo layout: both resolve exactly as written, no
+drift. `claim_001` is Tier B and has no citation in this file to check. Full
+note at project-root `process_notes.md` §3.
+
 **Admitted:** 2026-07-07 by Desktop Claude A
 
 ---
