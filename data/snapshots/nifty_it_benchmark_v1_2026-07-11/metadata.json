@@ -1,0 +1,39 @@
+{
+  "snapshot_id": "nifty_it_benchmark_v1_2026-07-11",
+  "creation_timestamp_utc": "2026-07-11T15:00:24.893703+00:00",
+  "created_by": "Codex",
+  "tickers": [
+    "^CNXIT",
+    "ITBEES.NS"
+  ],
+  "start_date": "2018-01-01",
+  "end_date_inclusive": "2026-07-10",
+  "yfinance_download_end_exclusive": "2026-07-12",
+  "first_data_date": "2018-01-01",
+  "last_data_date": "2026-07-10",
+  "row_count": 3596,
+  "columns": [
+    "date",
+    "ticker",
+    "open",
+    "high",
+    "low",
+    "close",
+    "volume"
+  ],
+  "source": "Yahoo Finance via yfinance.download",
+  "adjustment_policy": "auto_adjust=True in yfinance; saved adjusted Open, High, Low, and Close for ^CNXIT and ITBEES.NS; no manual corporate-action handling.",
+  "validation_notes": {
+    "cnxit_volume_status": "^CNXIT volume is NOT all-zero/all-null (usable). No fallback needed.",
+    "itbees_inception_date": "ITBEES.NS data only begins on 2020-06-30. Dates before this are flagged as pre-inception rather than truncated silently."
+  },
+  "yfinance_version": "1.5.1",
+  "git_commit": "PENDING_POST_OUTPUT_COMMIT",
+  "generated_by_script": "C:\\Users\\preet\\OneDrive\\Desktop\\Skool\\Arbit\\phase_i_tcs_infy_pairs_trading\\analysis\\create_nifty_it_benchmark_snapshot_v1\\codex\\create_nifty_it_benchmark_snapshot.py",
+  "files": {
+    "ohlcv.csv": {
+      "path": "data\\snapshots\\nifty_it_benchmark_v1_2026-07-11\\ohlcv.csv",
+      "sha256": "9cae431487316844ce0d6108b53f53116c91b94c8fb4a61c97458d98ccebe30e"
+    }
+  }
+}
