@@ -1,0 +1,38 @@
+{
+  "tcs_snapshot_id": "tcs_infy_v2_2026-07-11",
+  "tcs_snapshot_sha256": "28d1ef414f5973be6171649aebb0a2d3cf0dc3968564fc77961984b5b9c65ebd",
+  "nsei_snapshot_id": "nifty_it_benchmark_v1_2026-07-11",
+  "nsei_snapshot_sha256": "fb842bcc8ed7dacf7533bc64789e0638181c8bc062095d92ae2154b53d9c542c",
+  "git_commit": "c4b24437d5c562dd064e1c2e5235a55fe88f0920",
+  "script_path": "phase_i_tcs_infy_pairs_trading\\analysis\\claim_005_volume_event_study_tcs500d\\opus_tier_a\\run_claim_005.py",
+  "execution_timestamp_utc": "2026-07-12T09:58:27.737545+00:00",
+  "python_version": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]",
+  "statsmodels_version": "0.14.6",
+  "numpy_version": "2.5.0",
+  "pandas_version": "3.0.3",
+  "method_notes": {
+    "log_base": "natural_log",
+    "robust_se": "HC3",
+    "test_direction": "one_sided_gamma_gt_0",
+    "dow_reference": "Friday",
+    "event_window": "[-20, -1] trading days before 2021-12-31",
+    "data_floor": "2018-09-06"
+  },
+  "results": {
+    "gamma": -0.15625938835119407,
+    "gamma_hc3_se": 0.06824369994149956,
+    "gamma_t_stat": -2.289726208941544,
+    "p_value_twosided": 0.022037193107045543,
+    "p_value_onesided": 0.9889814034464772,
+    "hc3_se_finite": true,
+    "n_obs": 1907,
+    "r_squared": 0.18083793578829632
+  },
+  "output_sha256": {
+    "data_quality_report.csv": "e5faebe738bb390939b782fba380c00ab3e5a64f7d62fd2e04ce2dabc328723b",
+    "event_window_dates.csv": "3daa4f847241c704dc30eb769efc111f3da7c889a17a0902636ba96a73d9bb57",
+    "dropped_zero_volume_dates.csv": "718ce0c5d31d95842c405d0786856508517deff15f544b57974f72005db0098d",
+    "regression_results.csv": "b71d4fcae60bab67a80ee51d719d405e041b7183dc01fe700d69ff30aa0c9b7b",
+    "summary.md": "134fe70736875ffbe42bb9a3e70ce3e5317ff99627a1427d1ec06504505b3be8"
+  }
+}

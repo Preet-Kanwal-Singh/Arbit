@@ -1,0 +1,27 @@
+# script_path: C:\Users\preet\OneDrive\Desktop\Skool\Arbit\phase_i_tcs_infy_pairs_trading\analysis\claim_005_volume_event_study_tcs500d\opus_tier_a\run_claim_005.py
+# git_commit: c4b24437d5c562dd064e1c2e5235a55fe88f0920
+# tcs_snapshot_id: tcs_infy_v2_2026-07-11
+# nsei_snapshot_id: nifty_it_benchmark_v1_2026-07-11
+# timestamp_utc: 2026-07-12T09:58:27.737545+00:00
+# output_content_sha256: b59af187057f0e721720d08311922a91b8cac5281d9e457d7f1f260d704c0882
+date,position
+2021-12-03,-20
+2021-12-06,-19
+2021-12-07,-18
+2021-12-08,-17
+2021-12-09,-16
+2021-12-10,-15
+2021-12-13,-14
+2021-12-14,-13
+2021-12-15,-12
+2021-12-16,-11
+2021-12-17,-10
+2021-12-20,-9
+2021-12-21,-8
+2021-12-22,-7
+2021-12-23,-6
+2021-12-24,-5
+2021-12-27,-4
+2021-12-28,-3
+2021-12-29,-2
+2021-12-30,-1

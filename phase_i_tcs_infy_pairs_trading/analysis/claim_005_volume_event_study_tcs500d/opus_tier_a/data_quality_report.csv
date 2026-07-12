@@ -1,0 +1,26 @@
+# script_path: C:\Users\preet\OneDrive\Desktop\Skool\Arbit\phase_i_tcs_infy_pairs_trading\analysis\claim_005_volume_event_study_tcs500d\opus_tier_a\run_claim_005.py
+# git_commit: c4b24437d5c562dd064e1c2e5235a55fe88f0920
+# tcs_snapshot_id: tcs_infy_v2_2026-07-11
+# nsei_snapshot_id: nifty_it_benchmark_v1_2026-07-11
+# timestamp_utc: 2026-07-12T09:58:27.737545+00:00
+# output_content_sha256: acdf4d0fa3d3e8118045915d101bf0acf472c4004185a3a50ae44ff5b9ccf528
+item,value
+tcs_snapshot_id,tcs_infy_v2_2026-07-11
+nsei_snapshot_id,nifty_it_benchmark_v1_2026-07-11
+data_floor,2018-09-06
+estimation_end,2026-07-10
+tcs_rows_before_floor,2107
+tcs_rows_dropped_by_floor,170
+tcs_only_dates_dropped,7
+nsei_only_dates_dropped,0
+merged_before_zero_drop,1930
+zero_volume_rows_dropped,23
+zero_volume_dates_dropped,"2018-09-11,2018-09-24,2018-10-10,2018-10-25,2018-11-06,2018-11-15,2018-11-26,2018-11-27,2020-02-17,2020-09-17,2021-03-08,2021-04-07,2021-05-27,2021-07-14,2022-08-16,2023-03-22,2023-08-16,2024-02-19,2024-04-01,2024-07-01,2024-07-02,2024-07-03,2025-03-18"
+zero_volume_in_event_window,0
+regression_observation_count,1907
+event_window_observations,20
+anchor_date,2021-12-31
+event_window_start,2021-12-03
+event_window_end,2021-12-30
+event_window_count,20
+log_base,natural_log
