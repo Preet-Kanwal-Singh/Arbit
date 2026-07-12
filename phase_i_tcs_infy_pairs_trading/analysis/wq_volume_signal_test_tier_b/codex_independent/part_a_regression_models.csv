@@ -1,0 +1,17 @@
+# script_path: C:\Users\preet\OneDrive\Desktop\Skool\Arbit\phase_i_tcs_infy_pairs_trading\analysis\wq_volume_signal_test_tier_b\codex_independent\run_volume_signal_independent.py
+# git_commit: 1b7aaa9b2fc9029938da29bc81210e285444ce64
+# snapshot_id: tcs_infy_v2_2026-07-11; nifty_it_benchmark_v1_2026-07-11; rolling_metrics=tcs_infy_v1_2026-07-04
+# timestamp_utc: 2026-07-12T08:03:53.741912+00:00
+# output_file: part_a_regression_models.csv
+# output_content_sha256: 1decf48f114027d54620a5fef2fd9eb0d6659dd228357b578174dace914c5d02
+# output_hash_scope: bytes after this provenance header
+# final_file_sha256: recorded in provenance.json
+ticker,core,model_type,n_obs,df_model,df_resid,r_squared,adj_r_squared,event_gamma,event_gamma_hc3_se,event_gamma_hc3_se_is_finite,event_gamma_t_stat,event_gamma_p_value_two_sided_hc3_t,event_gamma_p_value_one_sided_positive_hc3_t,event_window_start,event_window_end,event_window_trading_days
+TCS.NS,500d,with_event_dummy,1907,7,1899,0.189248734842701,0.186260183575665,0.28444941114964,0.0950317878086668,True,2.99320277676286,0.00279628451479486,0.00139814225739743,2021-12-31,2022-01-28,20
+TCS.NS,500d,without_event_dummy,1907,6,1900,0.185925558437417,0.183354797043009,,,,,,,,,
+TCS.NS,730d,with_event_dummy,1907,7,1899,0.185937527543517,0.18293677066769,0.017072759051658,inf,False,0,1,0.5,2023-03-27,2023-04-27,20
+TCS.NS,730d,without_event_dummy,1907,6,1900,0.185925558437417,0.183354797043009,,,,,,,,,
+INFY.NS,500d,with_event_dummy,1907,7,1899,0.175601082989261,0.172562224422081,0.0114835376951021,0.0816581048625058,True,0.140629490660331,0.888177564226037,0.444088782113019,2021-12-31,2022-01-28,20
+INFY.NS,500d,without_event_dummy,1907,6,1900,0.175595894535584,0.172992513149907,,,,,,,,,
+INFY.NS,730d,with_event_dummy,1907,7,1899,0.178663185270741,0.17563561407374,0.279240695772568,inf,False,0,1,0.5,2023-03-27,2023-04-27,20
+INFY.NS,730d,without_event_dummy,1907,6,1900,0.175595894535584,0.172992513149907,,,,,,,,,

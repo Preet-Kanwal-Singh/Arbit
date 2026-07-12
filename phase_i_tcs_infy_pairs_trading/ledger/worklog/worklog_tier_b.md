@@ -380,3 +380,153 @@ This section refines the beta instability baseline by using only the tighter pos
 - **500d window:** The tight baseline shifts the beta instability onset earlier from 2023-06-30 to 2023-05-31. However, EG-loss still occurs first on 2022-01-31, so the original conclusion holds, but the gap shrinks from 17 to 16 months.
 - **730d window:** The tight baseline shifts the beta instability onset earlier from 2023-08-31 to 2023-07-31. EG-loss still occurs first on 2023-04-28, so the original conclusion holds, with the gap shrinking from 4 to 3 months.
 
+<!--
+script_path: C:\Users\preet\OneDrive\Desktop\Skool\Arbit\phase_i_tcs_infy_pairs_trading\analysis\wq_volume_signal_test_tier_b\run_test.py
+git_commit: 57a32a5cbe0b595f29ef7cb08b8e4e2c2f4d6458
+snapshot_id: tcs_infy_v2_2026-07-11
+timestamp_utc: 2026-07-11T11:23:05.152537+00:00
+output_content_sha256: d4cf9e7830a7b2d6ca64e78d28fafaea592217a402f64f10404b2a8dae98c60f
+-->
+
+## wq_volume_signal_test_tier_b
+
+### Setup and Methodology
+Data snapshot used: `tcs_infy_v2_2026-07-11` (this snapshot has unadjusted volume, unlike v1).
+Data floor: Enforced `2018-09-06` boundary on all rolling windows. Any window extending prior to this date was truncated to start precisely on or after `2018-09-06`.
+Methodology: Directly mirrored the `six_way_normalized.py` script's `get_normalized_onset` (which tested and ruled out volatility). The threshold for an "onset" is exactly `mean + 2 * std` computed strictly over the core period. Values are computed at each month-end.
+
+### Pre-Declared Read on the Result
+**Tier B follow-up warranted if**: Any volume metric (TCS volume, INFY volume, or their ratio) fires a +2 STD threshold violation *before or simultaneously* with the EG breakdown date (`2022-01-31` for 500d, `2023-04-28` for 730d). This would indicate volume can act as a true leading indicator.
+**Empty, like volatility, if**: The volume metrics yield `None` (never fire) or fire *after* the EG breakdown date. This would confirm it is a lagging indicator or noise.
+
+### Results
+| Core | TCS Vol Onset | INFY Vol Onset | Ratio Onset | EG Onset (Reference) |
+|---|---|---|---|---|
+| 500d | None | None | 2022-01-31 | 2022-01-31 |
+| 730d | None | None | None | 2023-04-28 |
+
+
+<!--
+script_path: c:\Users\preet\OneDrive\Desktop\Skool\Arbit\phase_i_tcs_infy_pairs_trading\analysis\wq_volume_signal_test_tier_b\run_volume_event_study.py
+git_commit: 1b7aaa9b2fc9029938da29bc81210e285444ce64
+snapshot_id: tcs_infy_v2_2026-07-11 (Volume) & nifty_it_benchmark_v1_2026-07-11 (^NSEI)
+timestamp_utc: 2026-07-11T15:36:34.883347+00:00
+output_content_sha256: f58d83adbb56528784a1b0137304f04bb8d294c94501f3bd787af9aa686f37e2
+-->
+
+## wq_volume_signal_test_tier_b_v2
+
+### Part A: Abnormal Volume Event Study (CALT)
+| Ticker | Core | CALT (Coeff) | HC3 p-value | Result |
+|---|---|---|---|---|
+| TCS | 500d | 0.28473 | 0.00278 | Positive/Significant |
+| TCS | 730d | 0.02093 | 0.79896 | Empty (Positive, NS) |
+| INFY | 500d | 0.01527 | 0.85201 | Empty (Positive, NS) |
+| INFY | 730d | 0.27945 | 0.01727 | Positive/Significant |
+
+### Part B: Granger Causality (Volume -> logit EG p-value)
+| Ticker | Core | Bootstrap F | Bootstrap p-value | Result |
+|---|---|---|---|---|
+| TCS | 500d | 0.4337 | 0.5255 | Empty |
+| TCS | 730d | 3.0625 | 0.0955 | Empty |
+| INFY | 500d | 0.0144 | 0.9015 | Empty |
+| INFY | 730d | 0.4180 | 0.5200 | Empty |
+
+### Classification Summary
+**Verdict:** Signal detected. Part A had 2 flags, Part B had 0 flags. This requires a follow-up decision.
+
+*Note: `^NSEI` is a broad-market control, not a sector control. The original reasoning — that TCS/INFY's volume is more likely contaminated by IT-sector-specific common factors than by generic market-wide volume — still holds and is not addressed by this substitution (`^CNXIT` and `ITBEES.NS` both failed a structural data-quality check and were dropped, not judged less relevant). Any result from this pass, positive or negative, is a market-adjusted finding only. It does not rule out a sector-specific volume relationship a market-wide control can't isolate — that channel remains genuinely untested, not settled by this result, and should not be cited as closed.*
+
+*Post-hoc note, 2026-07-11 (Desktop Claude A; per Preet, spec by Desktop
+Claude B, executed by Antigravity/Gemini): applying a Bonferroni correction
+across the family of tests above — a deviation from the pre-declared read
+above, not itself pre-declared — TCS-500d (CALT=0.28473, p=0.00278)
+survives at family sizes 4, 6, and 8 (α/4=0.0125, α/6=0.00833,
+α/8=0.00625, all above 0.00278; I recomputed these thresholds myself).
+INFY-730d (CALT=0.27945, p=0.01727) does not survive at family=4
+(α/4=0.0125 < 0.01727). The Part B Granger null does not contradict the
+TCS-500d Part A result: they examine non-overlapping date ranges by
+construction — I checked `run_volume_event_study.py` directly — the Granger
+series is restricted to each core's healthy-core window (2020-01-31 to
+2021-12-31 for 500d, via inner join against `claim_002`'s
+`rolling_metrics.csv`), while Part A's 500d event window is the 20 trading
+days before 2022-01-31. Neither can corroborate or contradict the other
+here by the test's own construction, not by coincidence.
+
+One correction before this goes further: this was relayed to me as
+unreplicated with no saved regression output on disk. I opened this file
+directly — the CALT coefficient, HC3 p-value, bootstrap F-stat, and
+bootstrap p-value for all four ticker/core combinations are saved in the
+table above, with the same provenance header (script path, git commit,
+snapshot IDs, timestamp, content hash) as every other entry in this file.
+What isn't separately persisted — consistent with every other Tier B entry
+here, not an exception — are per-regression standard errors, n_obs, R², and
+the raw 2000-replicate bootstrap distribution; those exist only in the
+script's runtime memory. The script itself is on disk and git-committed
+(`git_commit` above), so it's re-runnable, but that finer-grained output was
+never materialized to a file. "Unauditable" isn't accurate here; "the
+fine-grained diagnostics weren't saved, same as everywhere else in this
+ledger" is.
+
+
+
+<!--
+script_path: C:\Users\preet\OneDrive\Desktop\Skool\Arbit\phase_i_tcs_infy_pairs_trading\analysis\wq_volume_signal_test_tier_b\codex_independent\run_volume_signal_independent.py
+git_commit: 1b7aaa9b2fc9029938da29bc81210e285444ce64
+snapshot_id: tcs_infy_v2_2026-07-11; nifty_it_benchmark_v1_2026-07-11; rolling_metrics=tcs_infy_v1_2026-07-04
+timestamp_utc: 2026-07-12T08:03:53.741912+00:00
+output_file: worklog_entry.md
+output_content_sha256: f2ce62a242591fe7597ba470cf26873e7c7afff9b2826a5511fe2ec57cb9e591
+output_hash_scope: bytes after this provenance header
+final_file_sha256: recorded in provenance.json
+-->
+## wq_volume_signal_test_tier_b_codex_independent
+
+# Independent Volume Signal Test - Codex
+
+Claim/work question: `wq_volume_signal_test_tier_b_codex_independent`
+
+## Multiple-Comparisons Family
+
+Bonferroni family size: `8`. Threshold: `0.00625000`.
+
+| Part | Ticker | Core | Raw p-value | Bonferroni threshold | Passes threshold |
+| --- | --- | --- | ---: | ---: | --- |
+| A | TCS.NS | 500d | 0.0013981422574 | 0.00625000 | True |
+| A | TCS.NS | 730d | 0.5 | 0.00625000 | False |
+| A | INFY.NS | 500d | 0.444088782113 | 0.00625000 | False |
+| A | INFY.NS | 730d | 0.5 | 0.00625000 | False |
+| B | TCS.NS | 500d | 0.146926536732 | 0.00625000 | False |
+| B | TCS.NS | 730d | 0.793103448276 | 0.00625000 | False |
+| B | INFY.NS | 500d | 0.0169915042479 | 0.00625000 | False |
+| B | INFY.NS | 730d | 0.359820089955 | 0.00625000 | False |
+
+## Part A Event Study
+
+| Ticker | Core | gamma | HC3 SE finite | HC3 t | one-sided p | n | R2 |
+| --- | --- | ---: | --- | ---: | ---: | ---: | ---: |
+| TCS.NS | 500d | 0.28444941115 | True | 2.99320277676 | 0.0013981422574 | 1907 | 0.189248734843 |
+| TCS.NS | 730d | 0.0170727590517 | False | 0 | 0.5 | 1907 | 0.185937527544 |
+| INFY.NS | 500d | 0.0114835376951 | True | 0.14062949066 | 0.444088782113 | 1907 | 0.175601082989 |
+| INFY.NS | 730d | 0.279240695773 | False | 0 | 0.5 | 1907 | 0.178663185271 |
+
+## Part B Bootstrap Granger
+
+| Ticker | Core | actual F | bootstrap p | model n |
+| --- | --- | ---: | ---: | ---: |
+| TCS.NS | 500d | 2.413059111 | 0.146926536732 | 22 |
+| TCS.NS | 730d | 0.0737248438959 | 0.793103448276 | 26 |
+| INFY.NS | 500d | 6.82426946276 | 0.0169915042479 | 22 |
+| INFY.NS | 730d | 0.882590804019 | 0.359820089955 | 26 |
+
+## Required Limitation
+
+`^NSEI` is a broad-market control, not a sector control -- it was used because `^CNXIT` and `ITBEES.NS` failed a structural data-quality check, not because sector-level confounding was judged less relevant. This result, whatever it is, doesn't settle the sector-specific question.
+
+## Method Notes
+
+- TCS/INFY volume observations before `2018-09-06` were excluded from every regression.
+- Part A uses four separate event-dummy regressions and four separate no-dummy residual regressions, one per ticker/core pair.
+- The model-level output records whether each event-dummy HC3 standard error is finite; non-finite HC3 standard errors are left visible rather than replaced.
+- Part B uses monthly mean residuals, logit-transformed EG p-values, first differences, lag 1, and a residual bootstrap under the restricted null.
+- Bootstrap RNG seed: `20260712`; replicate count per test: `2000`.

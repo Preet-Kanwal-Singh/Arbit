@@ -1,0 +1,17 @@
+# script_path: C:\Users\preet\OneDrive\Desktop\Skool\Arbit\phase_i_tcs_infy_pairs_trading\analysis\wq_volume_signal_test_tier_b\codex_independent\run_volume_signal_independent.py
+# git_commit: 1b7aaa9b2fc9029938da29bc81210e285444ce64
+# snapshot_id: tcs_infy_v2_2026-07-11; nifty_it_benchmark_v1_2026-07-11; rolling_metrics=tcs_infy_v1_2026-07-04
+# timestamp_utc: 2026-07-12T08:03:53.741912+00:00
+# output_file: multiple_comparisons.csv
+# output_content_sha256: 70ac52edeee08e753522394906e01286ae05d4e711add524fb4a6b64946d563e
+# output_hash_scope: bytes after this provenance header
+# final_file_sha256: recorded in provenance.json
+part,test,ticker,core,raw_p_value,bonferroni_family_size,bonferroni_threshold,passes_bonferroni
+A,event_window_gamma_positive,TCS.NS,500d,0.00139814225739743,8,0.00625,True
+A,event_window_gamma_positive,TCS.NS,730d,0.5,8,0.00625,False
+A,event_window_gamma_positive,INFY.NS,500d,0.444088782113019,8,0.00625,False
+A,event_window_gamma_positive,INFY.NS,730d,0.5,8,0.00625,False
+B,volume_residual_granger_causes_eg_logit,TCS.NS,500d,0.146926536731634,8,0.00625,False
+B,volume_residual_granger_causes_eg_logit,TCS.NS,730d,0.793103448275862,8,0.00625,False
+B,volume_residual_granger_causes_eg_logit,INFY.NS,500d,0.0169915042478761,8,0.00625,False
+B,volume_residual_granger_causes_eg_logit,INFY.NS,730d,0.359820089955023,8,0.00625,False

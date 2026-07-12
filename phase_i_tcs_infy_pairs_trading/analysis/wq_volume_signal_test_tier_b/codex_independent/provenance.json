@@ -1,0 +1,310 @@
+{
+  "claim_id": "wq_volume_signal_test_tier_b_codex_independent",
+  "git_branch": "codex/phase-i-volume-signal-independent",
+  "git_commit": "1b7aaa9b2fc9029938da29bc81210e285444ce64",
+  "git_ref_path_read": ".git/refs/heads/codex/phase-i-volume-signal-independent",
+  "input_files": [
+    {
+      "metadata": {
+        "adjustment_policy": "auto_adjust=True in yfinance; saved adjusted Open, High, Low, and Close for TCS.NS and INFY.NS; no manual corporate-action handling.",
+        "columns": [
+          "date",
+          "ticker",
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume"
+        ],
+        "created_by": "Codex",
+        "creation_timestamp_utc": "2026-07-11T05:45:41.401161+00:00",
+        "end_date_inclusive": "2026-07-10",
+        "files": {
+          "ohlcv.csv": {
+            "path": "data\\snapshots\\tcs_infy_v2_2026-07-11\\ohlcv.csv",
+            "sha256": "28d1ef414f5973be6171649aebb0a2d3cf0dc3968564fc77961984b5b9c65ebd"
+          }
+        },
+        "first_data_date": "2018-01-01",
+        "generated_by_script": "C:\\Users\\preet\\OneDrive\\Desktop\\Skool\\Arbit\\phase_ii_rl_agent_tcs_infy\\analysis\\create_tcs_infy_snapshot_v2\\codex\\create_tcs_infy_snapshot.py",
+        "git_commit": "44a899da0d3da3a5f649f981d1c2a4c4156804e8",
+        "last_data_date": "2026-07-10",
+        "provenance_stamped_at_utc": "2026-07-11T10:24:46.113888+00:00",
+        "row_count": 4214,
+        "snapshot_id": "tcs_infy_v2_2026-07-11",
+        "source": "Yahoo Finance via yfinance.download",
+        "start_date": "2018-01-01",
+        "tickers": [
+          "TCS.NS",
+          "INFY.NS"
+        ],
+        "volume_policy": "Volume is as reported by Yahoo Finance via yfinance and is not split-adjusted. Open/High/Low/Close use auto_adjust=True (split- and dividend-adjusted). Volume therefore has a real discontinuity around any stock split in the 2018-2026 window and must not be treated as comparable to the adjusted price fields without explicit handling.",
+        "yfinance_download_end_exclusive": "2026-07-12",
+        "yfinance_version": "1.5.1"
+      },
+      "metadata_sha256": "1af36f24cd010e5c9fb2e11ecdccfb5cf95ae960efb348dcd507f54370ad5aab",
+      "path": "data/snapshots/tcs_infy_v2_2026-07-11/ohlcv.csv",
+      "sha256": "28d1ef414f5973be6171649aebb0a2d3cf0dc3968564fc77961984b5b9c65ebd"
+    },
+    {
+      "metadata": {
+        "adjustment_policy": "auto_adjust=True in yfinance; saved adjusted Open, High, Low, and Close for all tickers; no manual corporate-action handling.",
+        "columns": [
+          "date",
+          "ticker",
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume"
+        ],
+        "created_by": "Codex",
+        "creation_timestamp_utc": "2026-07-11T15:12:06.096059+00:00",
+        "end_date_inclusive": "2026-07-10",
+        "files": {
+          "ohlcv.csv": {
+            "path": "data\\snapshots\\nifty_it_benchmark_v1_2026-07-11\\ohlcv.csv",
+            "sha256": "fb842bcc8ed7dacf7533bc64789e0638181c8bc062095d92ae2154b53d9c542c"
+          }
+        },
+        "first_data_date": "2018-01-01",
+        "generated_by_script": "C:\\Users\\preet\\OneDrive\\Desktop\\Skool\\Arbit\\phase_i_tcs_infy_pairs_trading\\analysis\\create_nifty_it_benchmark_snapshot_v1\\codex\\create_nifty_it_benchmark_snapshot.py",
+        "git_commit": "7de2d3c67e1714da0f7a3b1b472dc0ea10164b95",
+        "last_data_date": "2026-07-10",
+        "provenance_stamped_at_utc": "2026-07-11T15:13:38.474213+00:00",
+        "row_count": 5695,
+        "snapshot_id": "nifty_it_benchmark_v1_2026-07-11",
+        "source": "Yahoo Finance via yfinance.download",
+        "start_date": "2018-01-01",
+        "tickers": [
+          "^CNXIT",
+          "ITBEES.NS",
+          "^NSEI"
+        ],
+        "validation_notes": {
+          "decision": "Do not decide unilaterally which benchmark to actually use if more than one candidate is usable, or if none are fully clean across all four ranges. The full comparison table is reported above, and that decision comes back to us.",
+          "itbees_inception_date": "ITBEES.NS data only begins on 2020-06-30. Dates before this are flagged as pre-inception rather than truncated silently.",
+          "nsei_clean_verdict": "^NSEI turns out completely clean (usable across all 4 ranges) where the other two have gaps. This means the broad market index has better data quality than the sector index, which would override the sector-vs-market preference from the original spec on data-quality grounds alone.",
+          "structural_zero_volume_check": [
+            {
+              "end_date": "2020-11-25",
+              "longest_zero_run": 56,
+              "range": "500d_core",
+              "start_date": "2020-09-08",
+              "ticker": "^CNXIT",
+              "usable": "No"
+            },
+            {
+              "end_date": "2021-06-30",
+              "longest_zero_run": 40,
+              "range": "730d_core",
+              "start_date": "2021-05-05",
+              "ticker": "^CNXIT",
+              "usable": "No"
+            },
+            {
+              "end_date": null,
+              "longest_zero_run": 0,
+              "range": "20d_before_2022-01-31",
+              "start_date": null,
+              "ticker": "^CNXIT",
+              "usable": "Yes"
+            },
+            {
+              "end_date": null,
+              "longest_zero_run": 0,
+              "range": "20d_before_2023-04-28",
+              "start_date": null,
+              "ticker": "^CNXIT",
+              "usable": "Yes"
+            },
+            {
+              "end_date": "2020-09-18",
+              "longest_zero_run": 158,
+              "range": "500d_core",
+              "start_date": "2020-01-31",
+              "ticker": "ITBEES.NS",
+              "usable": "No"
+            },
+            {
+              "end_date": null,
+              "longest_zero_run": 0,
+              "range": "730d_core",
+              "start_date": null,
+              "ticker": "ITBEES.NS",
+              "usable": "Yes"
+            },
+            {
+              "end_date": null,
+              "longest_zero_run": 0,
+              "range": "20d_before_2022-01-31",
+              "start_date": null,
+              "ticker": "ITBEES.NS",
+              "usable": "Yes"
+            },
+            {
+              "end_date": null,
+              "longest_zero_run": 0,
+              "range": "20d_before_2023-04-28",
+              "start_date": null,
+              "ticker": "ITBEES.NS",
+              "usable": "Yes"
+            },
+            {
+              "end_date": "2020-02-17",
+              "longest_zero_run": 1,
+              "range": "500d_core",
+              "start_date": "2020-02-17",
+              "ticker": "^NSEI",
+              "usable": "Yes"
+            },
+            {
+              "end_date": "2021-03-08",
+              "longest_zero_run": 1,
+              "range": "730d_core",
+              "start_date": "2021-03-08",
+              "ticker": "^NSEI",
+              "usable": "Yes"
+            },
+            {
+              "end_date": null,
+              "longest_zero_run": 0,
+              "range": "20d_before_2022-01-31",
+              "start_date": null,
+              "ticker": "^NSEI",
+              "usable": "Yes"
+            },
+            {
+              "end_date": null,
+              "longest_zero_run": 0,
+              "range": "20d_before_2023-04-28",
+              "start_date": null,
+              "ticker": "^NSEI",
+              "usable": "Yes"
+            }
+          ]
+        },
+        "yfinance_download_end_exclusive": "2026-07-12",
+        "yfinance_version": "1.5.1"
+      },
+      "metadata_sha256": "d19bddb1ced1cfd2b9483f757c56a22cd77ff033d47a762b2a9841f67dd56865",
+      "path": "data/snapshots/nifty_it_benchmark_v1_2026-07-11/ohlcv.csv",
+      "sha256": "fb842bcc8ed7dacf7533bc64789e0638181c8bc062095d92ae2154b53d9c542c",
+      "ticker_filter": "^NSEI only"
+    },
+    {
+      "column_used": "eg_p",
+      "path": "phase_i_tcs_infy_pairs_trading/analysis/claim_002_healthy_episode_characterization/codex_tier_a/rolling_metrics.csv",
+      "sha256": "70153ccd186747bff148a5c49f02d87d50e02d8bf4c6206d2257b520a80337bc",
+      "window_filters": {
+        "500d": 500,
+        "730d": 730
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "content_sha256": "581b7acd42ead004e6f9caaf3ac0cc7feb741d28a915bea19a9b3f983d7f9eda",
+      "description": "HC3 coefficient tables for Part A regressions",
+      "final_file_sha256": "f79026f7ba890f3abf300ed2ed02bfbefe434c9535f56408e8c2d0a65f88f090",
+      "hash_scope": "bytes after provenance header",
+      "path": "phase_i_tcs_infy_pairs_trading/analysis/wq_volume_signal_test_tier_b/codex_independent/part_a_regression_coefficients.csv"
+    },
+    {
+      "content_sha256": "1decf48f114027d54620a5fef2fd9eb0d6659dd228357b578174dace914c5d02",
+      "description": "Model-level Part A regression statistics",
+      "final_file_sha256": "6c0355625f73470d1d9203465924b59329fa810c8ff5efeb7493612bbd8c6f55",
+      "hash_scope": "bytes after provenance header",
+      "path": "phase_i_tcs_infy_pairs_trading/analysis/wq_volume_signal_test_tier_b/codex_independent/part_a_regression_models.csv"
+    },
+    {
+      "content_sha256": "1f8ad93b9678107840da544990fe7110f84d32af6ffd547421076de21726f3e7",
+      "description": "The 20 pre-breakdown trading days used for each event dummy",
+      "final_file_sha256": "8ccc6ad1c6d37b435b78a4ea06f652c2f15b7ad9b1978086737d5fb997c1f7c5",
+      "hash_scope": "bytes after provenance header",
+      "path": "phase_i_tcs_infy_pairs_trading/analysis/wq_volume_signal_test_tier_b/codex_independent/part_a_event_windows.csv"
+    },
+    {
+      "content_sha256": "bf27e288dad86537b514e3eeb1ce8d9a0e55f7dfd65c3484ea4360da13a14755",
+      "description": "Daily residuals from no-dummy Part A regressions",
+      "final_file_sha256": "b4aa56826702c74cc7fe518899a9847badb608071468cc01ce43b94c54b9f77c",
+      "hash_scope": "bytes after provenance header",
+      "path": "phase_i_tcs_infy_pairs_trading/analysis/wq_volume_signal_test_tier_b/codex_independent/market_adjusted_volume_residuals_daily.csv"
+    },
+    {
+      "content_sha256": "51b2829ceac975ed4e52a34bded49a6097604ec2ea9f2871eccb5fc7778bc268",
+      "description": "Monthly mean residuals joined to EG p-values and first differences",
+      "final_file_sha256": "e598800a3fcd1e3d8dc0ff3bfd139e99c700ea7bba20ea148fdf78eed385c5b4",
+      "hash_scope": "bytes after provenance header",
+      "path": "phase_i_tcs_infy_pairs_trading/analysis/wq_volume_signal_test_tier_b/codex_independent/market_adjusted_volume_residuals_monthly.csv"
+    },
+    {
+      "content_sha256": "64c3c556cae4340c82b4b64501287ec927fd167b2a48940ee98607075ae5c801",
+      "description": "Bootstrap Granger results",
+      "final_file_sha256": "af5996f3d94f7eae45d1a0598e74b915564f0d3e1bb248fd17af08e29bb648ef",
+      "hash_scope": "bytes after provenance header",
+      "path": "phase_i_tcs_infy_pairs_trading/analysis/wq_volume_signal_test_tier_b/codex_independent/part_b_granger_results.csv"
+    },
+    {
+      "content_sha256": "cd2b378a268b200820c53fd487330948277638545d4594517f6b24b5e05c2aaf",
+      "description": "Full bootstrap F-statistic replicate array",
+      "final_file_sha256": "2ab99367789210eedc095e1ebc5329c56a31db023b97ea480575f8cf88c153aa",
+      "hash_scope": "bytes after provenance header",
+      "path": "phase_i_tcs_infy_pairs_trading/analysis/wq_volume_signal_test_tier_b/codex_independent/part_b_bootstrap_replicates.csv"
+    },
+    {
+      "content_sha256": "70ac52edeee08e753522394906e01286ae05d4e711add524fb4a6b64946d563e",
+      "description": "Raw p-values and Bonferroni threshold for all eight tests",
+      "final_file_sha256": "c665c6271916104affea87e00d53ceb754e7150d1431fa0bf4797f881e91554b",
+      "hash_scope": "bytes after provenance header",
+      "path": "phase_i_tcs_infy_pairs_trading/analysis/wq_volume_signal_test_tier_b/codex_independent/multiple_comparisons.csv"
+    },
+    {
+      "content_sha256": "dedbbf4a63024ecd4abcbcd9df3f991e835db113e541434ea51e477ea1be6ea4",
+      "description": "Human-readable summary",
+      "final_file_sha256": "c4c60702e9146754b3d324f0260beb1ac514f27ee534110d757502c986832524",
+      "hash_scope": "bytes after provenance header",
+      "path": "phase_i_tcs_infy_pairs_trading/analysis/wq_volume_signal_test_tier_b/codex_independent/summary.md"
+    },
+    {
+      "content_sha256": "f2ce62a242591fe7597ba470cf26873e7c7afff9b2826a5511fe2ec57cb9e591",
+      "description": "Append-ready Tier B worklog entry",
+      "final_file_sha256": "0187497828af811194b23249c405525498c349b30a26116faec92dfc9334874c",
+      "hash_scope": "bytes after provenance header",
+      "path": "phase_i_tcs_infy_pairs_trading/analysis/wq_volume_signal_test_tier_b/codex_independent/worklog_entry.md"
+    }
+  ],
+  "parameters": {
+    "data_floor": "2018-09-06",
+    "event_window": "20 trading days immediately before each core breakdown date, excluding breakdown date",
+    "multiple_comparisons": {
+      "family_size": 8,
+      "threshold": 0.00625
+    },
+    "part_a_covariance": "HC3 robust standard errors, Student-t p-values with df_resid",
+    "part_a_event_p_value": "one-sided positive p-value for event_window_dummy gamma",
+    "part_b_bootstrap": {
+      "null": "restricted AR(1) in delta EG logit without lagged volume residual",
+      "replicates": 2000,
+      "seed": 20260712
+    },
+    "part_b_transform": "logit EG p-value, first difference EG logit and monthly mean volume residual"
+  },
+  "phase": "phase_i_tcs_infy_pairs_trading",
+  "script_path": "phase_i_tcs_infy_pairs_trading/analysis/wq_volume_signal_test_tier_b/codex_independent/run_volume_signal_independent.py",
+  "script_sha256": "cc2ee4e34234374719b423a58b73f766af7b6b4f100d22f515d4fff350bc74ce",
+  "snapshot_ids": [
+    "tcs_infy_v2_2026-07-11",
+    "nifty_it_benchmark_v1_2026-07-11",
+    "tcs_infy_v1_2026-07-04"
+  ],
+  "stamp_note": "commit read directly from the checked-out branch ref named by .git/HEAD",
+  "stamped_at_utc": "2026-07-12T08:04:00.375463+00:00",
+  "tier": "B",
+  "timestamp_utc": "2026-07-12T08:03:53.741912+00:00",
+  "worklog_append": {
+    "appended": true,
+    "path": "phase_i_tcs_infy_pairs_trading/ledger/worklog/worklog_tier_b.md",
+    "sha256_after_stamp": "96d41c778542d4147ee0501d040bf03608e6e9304c88632fad8c32fecc052926"
+  }
+}
