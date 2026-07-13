@@ -12,6 +12,7 @@
    - Designed a new test suite maintaining the current NaN/Inf validations while adding dual-instance simulations (`env0` with `cost=0.0` vs `env1` with `cost=0.01`).
    - Ran an exact regression check where the new default framework (with zero cost) rigorously matched the original `placeholder_spread_pnl` at every step over thousands of loops.
    - Executed a strict-decrease sanity validation where `cost_rate=0.01` appropriately depreciated the resulting reward exclusively during steps recording non-zero positional changes.
+   - **Snapshot Choice**: Pinned to `tcs_infy_v4_2026-07-13` rather than the `v1` default named in the original spec — this reuses the buffer-extension reasoning already established in `wq_env_scaffolding_v2_extended_history` (`eg_p_trend`'s lookback requirement), not a fresh, unexplained substitution.
 
 ## Deliverables
 - `phase_ii_rl_agent_tcs_infy/env/reward_registry.py`
