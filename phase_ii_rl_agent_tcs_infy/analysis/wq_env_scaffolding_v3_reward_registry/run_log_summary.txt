@@ -1,0 +1,59 @@
+# env_scaffolding_v3_reward_registry combined acceptance summary
+# generated_at_utc: 2026-07-13T10:28:59.670341+00:00
+# snapshot_id: tcs_infy_v4_2026-07-13
+
+core_id: 500d_core
+policy: noop
+steps: 477
+episode_length: 477
+episode_start: 2020-01-31
+episode_end: 2021-12-31
+reward_min: 0
+reward_max: 0
+nan_obs_steps: 0
+inf_obs_steps: 0
+nan_reward_steps: 0
+inf_reward_steps: 0
+strict_decrease_count: 0
+
+core_id: 500d_core
+policy: random
+steps: 477
+episode_length: 477
+episode_start: 2020-01-31
+episode_end: 2021-12-31
+reward_min: -0.05868357848
+reward_max: 0.0808766025555
+nan_obs_steps: 0
+inf_obs_steps: 0
+nan_reward_steps: 0
+inf_reward_steps: 0
+strict_decrease_count: 323
+
+core_id: 730d_core
+policy: noop
+steps: 559
+episode_length: 559
+episode_start: 2020-12-31
+episode_end: 2023-03-31
+reward_min: 0
+reward_max: 0
+nan_obs_steps: 0
+inf_obs_steps: 0
+nan_reward_steps: 0
+inf_reward_steps: 0
+strict_decrease_count: 0
+
+core_id: 730d_core
+policy: random
+steps: 559
+episode_length: 559
+episode_start: 2020-12-31
+episode_end: 2023-03-31
+reward_min: -0.0272344586983
+reward_max: 0.0542040939025
+nan_obs_steps: 0
+inf_obs_steps: 0
+nan_reward_steps: 0
+inf_reward_steps: 0
+strict_decrease_count: 379
