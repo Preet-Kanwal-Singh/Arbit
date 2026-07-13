@@ -1,0 +1,32 @@
+{
+  "snapshot_id": "tcs_infy_v3_2026-07-13",
+  "creation_timestamp_utc": "2026-07-13T09:47:37.715627+00:00",
+  "created_by": "Codex",
+  "tickers": [
+    "TCS.NS",
+    "INFY.NS"
+  ],
+  "start_date": "2017-10-01",
+  "end_date_inclusive": "2026-07-13",
+  "yfinance_download_end_exclusive": "2026-07-14",
+  "first_data_date": "2017-10-03",
+  "last_data_date": "2026-07-13",
+  "row_count": 2170,
+  "columns": [
+    "date",
+    "TCS.NS",
+    "INFY.NS"
+  ],
+  "source": "Yahoo Finance via yfinance.download",
+  "adjustment_policy": "auto_adjust=True in yfinance; saved the adjusted Close columns for TCS.NS and INFY.NS; no manual corporate-action handling.",
+  "purpose": "These snapshots extend coverage backward specifically to support the eg_p_trend feature's lookback requirement \u2014 not a re-basing of the project's primary analysis window. v3's version number is sequential in the global tcs_infy snapshot family; it belongs to the close-only lineage.",
+  "yfinance_version": "1.5.1",
+  "git_commit": "PENDING_POST_OUTPUT_COMMIT",
+  "generated_by_script": "C:\\Users\\preet\\OneDrive\\Desktop\\Skool\\Arbit\\phase_ii_rl_agent_tcs_infy\\analysis\\create_tcs_infy_snapshot_v3\\codex\\create_tcs_infy_snapshot.py",
+  "files": {
+    "adjusted_close.csv": {
+      "path": "data\\snapshots\\tcs_infy_v3_2026-07-13\\adjusted_close.csv",
+      "sha256": "7a244986c7efd9329756bfd59ee354141d3b7e162e560f11960053e3376f71f8"
+    }
+  }
+}
