@@ -1,0 +1,20 @@
+{
+  "claim_id": "create_tcs_infy_snapshot_v3",
+  "phase": "phase_ii_rl_agent_tcs_infy",
+  "tier": "C",
+  "snapshot_id": "tcs_infy_v3_2026-07-13",
+  "script_path": "phase_ii_rl_agent_tcs_infy/analysis/create_tcs_infy_snapshot_v3/codex/create_tcs_infy_snapshot.py",
+  "git_commit": "3186f58b03d1137ef0e785194a2dd0c64351a15a",
+  "stamped_at_utc": "2026-07-13T09:48:38.127415+00:00",
+  "note": "commit hash recorded after outputs were committed, not pre-run HEAD",
+  "outputs": [
+    {
+      "path": "data/snapshots/tcs_infy_v3_2026-07-13/adjusted_close.csv",
+      "sha256": "7a244986c7efd9329756bfd59ee354141d3b7e162e560f11960053e3376f71f8"
+    },
+    {
+      "path": "data/snapshots/tcs_infy_v3_2026-07-13/metadata.json",
+      "sha256": "03ef5422c588ec0be919a6a7e545d3996ee8111746338ff7cabe7c9dfd7d9acb"
+    }
+  ]
+}
