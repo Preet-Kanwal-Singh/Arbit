@@ -12,6 +12,10 @@ class RewardContext(Protocol):
     previous_position: float
     position: float
     cost_rate: float
+    dsr_A: float
+    dsr_B: float
+    dsr_eta: float
+    dsr_epsilon: float
 
 
 RewardFn = Callable[[RewardContext], float]
@@ -27,6 +31,31 @@ def compute_cost_adjusted_pnl(ctx: RewardContext) -> float:
     return pnl - cost
 
 
+def compute_differential_sharpe(ctx: RewardContext) -> float:
+    R_t = compute_cost_adjusted_pnl(ctx)
+    
+    A_prev = ctx.dsr_A
+    B_prev = ctx.dsr_B
+    
+    delta_A = R_t - A_prev
+    delta_B = R_t**2 - B_prev
+    
+    A_t = A_prev + ctx.dsr_eta * delta_A
+    B_t = B_prev + ctx.dsr_eta * delta_B
+    
+    denominator = (B_prev - A_prev**2) ** 1.5
+    
+    if denominator <= ctx.dsr_epsilon:
+        reward = R_t
+    else:
+        reward = (B_prev * delta_A - 0.5 * A_prev * delta_B) / denominator
+        
+    ctx.dsr_A = A_t
+    ctx.dsr_B = B_t
+    
+    return reward
+
+
 @dataclass
 class RewardRegistry:
     rewards: dict[str, RewardFn]
@@ -36,6 +65,7 @@ class RewardRegistry:
         return cls(
             rewards={
                 "cost_adjusted_pnl": compute_cost_adjusted_pnl,
+                "differential_sharpe": compute_differential_sharpe,
             }
         )
 

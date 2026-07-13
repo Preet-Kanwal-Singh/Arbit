@@ -33,6 +33,10 @@ class _EnvRewardContext:
     previous_position: float
     position: float
     cost_rate: float
+    dsr_A: float
+    dsr_B: float
+    dsr_eta: float
+    dsr_epsilon: float
 
 
 class PairsTradingEnv:
@@ -46,6 +50,8 @@ class PairsTradingEnv:
         reward_registry: RewardRegistry | None = None,
         reward_name: str = "cost_adjusted_pnl",
         cost_rate: float = 0.0,
+        dsr_eta: float = 0.01,
+        dsr_epsilon: float = 1e-6,
         y_ticker: str = "TCS.NS",
         x_ticker: str = "INFY.NS",
         bar_frequency: str = "1d",
@@ -60,6 +66,8 @@ class PairsTradingEnv:
         self.reward_registry = reward_registry or RewardRegistry.default_v0()
         self.reward_name = reward_name
         self.cost_rate = cost_rate
+        self.dsr_eta = dsr_eta
+        self.dsr_epsilon = dsr_epsilon
         self.y_ticker = y_ticker
         self.x_ticker = x_ticker
         self.bar_frequency = bar_frequency
@@ -77,6 +85,8 @@ class PairsTradingEnv:
         self._position = 0.0
         self._previous_position = 0.0
         self._previous_spread: float | None = None
+        self._dsr_A = 0.0
+        self._dsr_B = 0.0
 
     @property
     def episode_start(self) -> pd.Timestamp:
@@ -108,6 +118,8 @@ class PairsTradingEnv:
         self._position = 0.0
         self._previous_position = 0.0
         self._previous_spread = None
+        self._dsr_A = 0.0
+        self._dsr_B = 0.0
 
         timestamp = self._episode_timestamps[self._step_idx]
         obs = self.feature_registry.compute_vector(self._make_context(timestamp))
@@ -138,9 +150,15 @@ class PairsTradingEnv:
             previous_position=previous_position,
             position=self._position,
             cost_rate=self.cost_rate,
+            dsr_A=self._dsr_A,
+            dsr_B=self._dsr_B,
+            dsr_eta=self.dsr_eta,
+            dsr_epsilon=self.dsr_epsilon,
         )
         reward = self.reward_registry.compute(self.reward_name, reward_ctx)
         
+        self._dsr_A = reward_ctx.dsr_A
+        self._dsr_B = reward_ctx.dsr_B
         self._previous_position = self._position
         self._previous_spread = spread
 
