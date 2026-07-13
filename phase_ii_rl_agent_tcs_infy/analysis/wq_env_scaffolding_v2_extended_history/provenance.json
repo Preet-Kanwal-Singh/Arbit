@@ -1,0 +1,32 @@
+{
+  "claim_id": "wq_env_scaffolding_v2_extended_history",
+  "phase": "phase_ii_rl_agent_tcs_infy",
+  "tier": "C",
+  "snapshot_id": "tcs_infy_v4_2026-07-13",
+  "script_path": "phase_ii_rl_agent_tcs_infy/analysis/wq_env_scaffolding_v2_extended_history/run_acceptance_test.py",
+  "git_commit": "10f77910a4463dfc0de6dcd2d954e2f208b12ff2",
+  "stamped_at_utc": "2026-07-13T09:54:29.325316+00:00",
+  "note": "commit hash recorded after outputs were committed, not pre-run HEAD",
+  "outputs": [
+    {
+      "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_env_scaffolding_v2_extended_history/run_log_500d_core_noop.txt",
+      "sha256": "c74f927fba78055a896eda2e8421753cc9bacc09e266506596edf12c2eb712e9"
+    },
+    {
+      "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_env_scaffolding_v2_extended_history/run_log_500d_core_random.txt",
+      "sha256": "65cb18d8baaf428226e863ec38e209e52b75f8ae2cfb04a6455cfc46c9785f05"
+    },
+    {
+      "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_env_scaffolding_v2_extended_history/run_log_730d_core_noop.txt",
+      "sha256": "1ca77b4f4229cb513cce8362942a58b07eedc20bbc736208085b5684cab83fae"
+    },
+    {
+      "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_env_scaffolding_v2_extended_history/run_log_730d_core_random.txt",
+      "sha256": "5aaab4fa6e7899eeef4070dda52306fee220eedf8c554b29ae204251dbe20a43"
+    },
+    {
+      "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_env_scaffolding_v2_extended_history/run_log_summary.txt",
+      "sha256": "e4a06aad8ce5bf65f4ab7017472fb5ce445585b36af8e5b0c6fe8cf1c0b9193f"
+    }
+  ]
+}
