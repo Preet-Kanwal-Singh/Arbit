@@ -41,17 +41,7 @@ def _log_price_window(
     bar_frequency: str,
 ) -> tuple[np.ndarray, np.ndarray]:
     closes = loader.close_panel()
-    try:
-        window_index = slice_trailing_bars(closes.index, timestamp, span, bar_frequency)
-    except ValueError as e:
-        if "insufficient history" in str(e):
-            # Pre-episode seeding fallback: use all available history
-            eligible = closes.index[closes.index <= timestamp]
-            if len(eligible) < 20:
-                raise
-            window_index = eligible
-        else:
-            raise
+    window_index = slice_trailing_bars(closes.index, timestamp, span, bar_frequency)
     window = closes.loc[window_index]
     y = np.log(window[y_ticker].to_numpy(dtype=float))
     x = np.log(window[x_ticker].to_numpy(dtype=float))
