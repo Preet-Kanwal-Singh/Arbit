@@ -12,6 +12,7 @@ Detailed histories are stored separately to keep retrieval efficient for filesys
 | `claim_002_healthy_episode_characterization` | A (confirmed by Preet, 2026-07-09) | ADMITTED to `VERIFIED_FACTS.md` — Spec Block v3, all four parts (boundaries, regime stats, sub-regime split, degradation diagnostics) cleared with zero cell disputes | 2026-07-05 → 2026-07-09 | `ledger/worklog/claim_002_healthy_episode_characterization.md` |
 | `claim_003_eg_halflife_ordering_robustness` | A | ADMITTED to `VERIFIED_FACTS.md` — WINDOW-LENGTH-CONTRADICTORY (500d ROBUST/unit-root caveat, 730d CONTRADICTED/parameter-stable) | 2026-07-06 → 2026-07-07 | `ledger/worklog/claim_003_eg_halflife_ordering_robustness.md` |
 | `claim_004_episode1_beta_range` | A (Preet's designation) | ADMITTED to `VERIFIED_FACTS.md` (2026-07-10, per Preet's explicit instruction, reversing Spec Block v3 §8's original non-goal) — closes `open_questions.md` #1; zero cell disputes | 2026-07-09 → 2026-07-10 | `ledger/worklog/claim_004_episode1_beta_range.md` |
+| `claim_005_volume_event_study_tcs500d` | A (Preet's designation, approved by Claude #3) | ADMITTED to `VERIFIED_FACTS.md` as a **non-reproduction** — both implementations agree gamma is negative and p≫0.05 for TCS abnormal volume in [-20,-1] before the admitted 2021-12-31 boundary; does not close `open_questions.md` #18 | 2026-07-12 | `ledger/worklog/claim_005_volume_event_study_tcs500d.md` |
 
 ## Tier B — Working Questions
 

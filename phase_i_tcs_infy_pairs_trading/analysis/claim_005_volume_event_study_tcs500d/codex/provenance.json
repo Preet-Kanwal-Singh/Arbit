@@ -75,7 +75,13 @@
     "significance_threshold": 0.05,
     "zero_volume_rule": "After event-window identification, drop any merged row where TCS_Volume == 0 or NSEI_Volume == 0 and report exact dates."
   },
-  "git_commit": "c4b24437d5c562dd064e1c2e5235a55fe88f0920",
+  "git_commit": "83e8fedce564c0afa4dc14cfe4eb3f46a4427871",
+  "git_commit_correction": {
+    "corrected_by": "Desktop Claude A (Ledger Keeper)",
+    "corrected_on": "2026-07-12",
+    "original_self_reported_value": "c4b24437d5c562dd064e1c2e5235a55fe88f0920",
+    "reason": "Original value was HEAD at script run time, before this claim's output directory was committed (git_status_short_at_run below shows it untracked at that moment). Corrected to the commit that actually contains this output tree, confirmed against .git/logs/HEAD and .git/refs/heads/main, per Preet's explicit instruction to correct in-file rather than only annotate downstream in VERIFIED_FACTS.md."
+  },
   "git_status_short_at_run": "?? phase_i_tcs_infy_pairs_trading/analysis/claim_005_volume_event_study_tcs500d/",
   "implementation": "independent",
   "individual_result": {

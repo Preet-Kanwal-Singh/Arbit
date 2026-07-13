@@ -26,7 +26,7 @@ outputs, not the pre-run HEAD. See Phase I's
 `ledger/worklog/claim_004_episode1_beta_range.md` (2026-07-09/10 entries)
 for the full detail behind each instance.
 
-## 2. Branch staleness — `main` had never received a merge (resolved 2026-07-11)
+## 2. Branch staleness — `main` had never received a merge (resolved 2026-07-11, recurred 2026-07-12)
 
 Surfaced during Phase II Tier C work (env scaffolding v0), confirmed
 directly against `.git/logs/HEAD` and `.git/refs/heads/main`, not taken on
@@ -77,6 +77,16 @@ this as its own finding, related to entry #1 but not its explanation.
 from recurring on the next feature branch. Whether merges to `main` should
 happen automatically per task, or stay a periodic manual step, is open —
 Preet's call.
+
+**Recurred, 2026-07-12, exactly as predicted above.** Confirmed directly
+against `.git/refs/heads/main`: `main` is still at
+`83e8fedce564c0afa4dc14cfe4eb3f46a4427871` (the `claim_005` commit) while
+three new commits exist on `feat/phase2_tier_c_eg_p_trend` (Phase II's
+`eg_p_trend` feature work), unreached by `main`. I can detect this pattern
+but can't fix it this time — I have read access to `.git/logs/HEAD` and
+`.git/refs/*` via the filesystem tool, but no git-execution tool in this
+environment, so merging `main` forward requires someone else's action.
+Full detail in `phase_ii_rl_agent_tcs_infy/PHASE_CONTEXT.md`.
 
 ## 3. Path citations may not survive phase restructuring — checked 2026-07-11, one confirmed instance
 

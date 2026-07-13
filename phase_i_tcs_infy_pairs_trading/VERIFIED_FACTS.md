@@ -330,3 +330,106 @@ the commit-timing check, and the isolation-scope gap.
 
 **Admitted:** 2026-07-10 by Desktop Claude A, per Preet's explicit
 instruction.
+
+---
+
+## claim_005_volume_event_study_tcs500d
+
+**Claim:** Does TCS.NS exhibit statistically significant abnormal log trading
+volume — controlling for ^NSEI log volume and day-of-week effects — in the
+20 trading days immediately preceding 2021-12-31 (the **admitted**
+500d-core boundary from `claim_002`)? Per Spec Block v2 (approved by
+Claude #3), a positive result would carry the permanent label
+`REPRODUCED-ADJACENT-WINDOW`, not plain `REPRODUCED` — this window was
+chosen because it's adjacent to a different, unadmitted window that showed a
+strong result in an earlier Tier B pass (`open_questions.md` #18, still
+open), which the spec itself treats as a look-elsewhere problem, not a
+blind draw.
+
+**Value: does not reproduce.** Both implementations independently find
+gamma **negative** (Codex −0.157533, Opus −0.156259 — difference 0.00127,
+within the pre-declared ≤0.03 tolerance) with finite HC3 standard errors
+(0.068048 / 0.068244) and one-sided p-values (H1: gamma>0) of 0.9897 and
+0.9890 respectively — nowhere near the 0.05 threshold. Per Spec Block v2's
+own outcome rules, this is plain "claim does not reproduce," not a dispute
+(the two implementations agree closely) and not `REPRODUCED-ADJACENT-WINDOW`
+(neither reaches p<0.05). n_obs=1907 in both. This is a real negative
+result: it directly narrows what the adjacent, unadmitted Tier B finding
+(`wq_volume_signal_test_tier_b_v2`, window ending 2022-01-31) can be used to
+argue — that finding remains open and untested by this claim, per the
+spec's non-goals, but a nearby, better-anchored window shows no such effect.
+
+**Required limitation (per spec, reproduced here as instructed):** this
+claim tests a window anchored to `claim_002`'s admitted boundary, not the
+window the prior Tier B pass actually tested. The two prior exploratory runs
+do not constitute prior replication of this specific result, and the window
+was chosen adjacent to a result that had already been seen — a
+look-elsewhere selection. This factored into why a positive result would
+have been labeled `REPRODUCED-ADJACENT-WINDOW` rather than `REPRODUCED`; it
+doesn't change how a negative result should be read.
+
+**A real, unreconciled specification gap — does not affect this outcome:**
+the spec's "[day-of-week dummies]" line didn't pin down which days get a
+dummy. Codex used baseline=Monday with 5 dummies including Saturday (an
+essentially-unidentified coefficient, SE=48, consistent with rare special
+Saturday trading sessions); Opus used baseline=Friday with 4 dummies, no
+Saturday category at all. Same n_obs (1907) in both, so this is a
+specification difference, not a data one — R² differs (0.18694 vs 0.18083)
+as a direct, expected consequence. Gamma agrees within tolerance regardless
+of this difference, so it doesn't block this admission, but the spec should
+pin this down precisely before this model is reused for 730d or INFY, the
+same way the zero-volume-drop rule was pinned down here.
+
+**Codex:** `analysis/claim_005_volume_event_study_tcs500d/codex/run_claim_005.py`
+— originally self-reported git_commit `c4b24437d5c562dd064e1c2e5235a55fe88f0920`.
+Codex's own `git_status_short_at_run` field showed the entire claim
+directory as untracked (`??`) at that moment — that commit could not
+contain the output. **Corrected in-file** (not just annotated here) to
+`83e8fedce564c0afa4dc14cfe4eb3f46a4427871` ("Claim 005 volume tcs 500d"),
+confirmed as `main`'s current tip — per Preet's explicit instruction, since
+this is the value the claim is actually being admitted against. The
+original self-reported value is preserved, not deleted, in a new
+`git_commit_correction` field in both `provenance.json` files, dated and
+attributed. This is a deviation from how `claim_002`/`003`/`004` handled
+the same pattern (original citation left untouched, correction only
+annotated in this ledger) — done this way for `claim_005` specifically at
+Preet's direction. Sixth occurrence of the underlying
+provenance-stamps-pre-commit-HEAD pattern at `process_notes.md` #1. Output:
+`regression_results.csv`, `data_quality_report.csv`,
+`dropped_zero_volume_dates.csv`, `event_window_dates.csv`, `summary.md` —
+sha256 self-reported in `provenance.json`, not independently recomputed.
+
+**Antigravity/Opus:** `analysis/claim_005_volume_event_study_tcs500d/opus_tier_a/run_claim_005.py`
+— same original stale self-reported commit, same in-file correction to
+`83e8fedce564c0afa4dc14cfe4eb3f46a4427871`, same preserved-original pattern.
+Output: same five files, sha256 self-reported per-file in CSV headers and
+in `provenance.json`, not independently recomputed.
+
+**Sequencing:** Opus's `execution_timestamp_utc` (2026-07-12T09:58:27Z)
+precedes Codex's `timestamp_utc` (2026-07-12T14:20:13Z) — the reverse of
+every prior claim's ordering. I cannot independently confirm what either
+operator saw before running, same standing limitation as always; flagging
+the reversed order rather than assuming it's immaterial.
+
+**Dropped-date reconciliation (required by spec before any coefficient
+comparison):** event-window dates (20/20) and zero-volume-dropped dates
+(23/23) identical between implementations, same order, both confirming zero
+overlap between the two. Inner-join TCS-only drops: both report count=7
+(spec only requires a count here); Codex's `provenance.json` additionally
+lists the 7 dates explicitly, Opus's does not.
+
+**Snapshots:** `tcs_infy_v2_2026-07-11` (ohlcv sha256 `28d1ef41...`) and
+`nifty_it_benchmark_v1_2026-07-11` (ohlcv sha256 `fb842bcc...`) — identical
+snapshot IDs and hashes cited by both candidates.
+
+**Note, resolved:** the stale-commit citation traced to a commit titled
+"Second implementation by Codex," on branch
+`codex/phase-i-volume-signal-independent`. Preet confirmed directly: this is
+old Tier B context, not substantively related to `claim_005` — the commit
+just happened to be `main`'s HEAD at the moment both scripts ran, before
+either's output was committed. Not investigated further.
+
+Full detail: `ledger/worklog/claim_005_volume_event_study_tcs500d.md`.
+
+**Admitted:** 2026-07-12 by Desktop Claude A, as a non-reproduction per
+Spec Block v2's own outcome rules.

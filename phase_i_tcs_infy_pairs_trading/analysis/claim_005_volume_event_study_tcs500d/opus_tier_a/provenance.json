@@ -3,7 +3,13 @@
   "tcs_snapshot_sha256": "28d1ef414f5973be6171649aebb0a2d3cf0dc3968564fc77961984b5b9c65ebd",
   "nsei_snapshot_id": "nifty_it_benchmark_v1_2026-07-11",
   "nsei_snapshot_sha256": "fb842bcc8ed7dacf7533bc64789e0638181c8bc062095d92ae2154b53d9c542c",
-  "git_commit": "c4b24437d5c562dd064e1c2e5235a55fe88f0920",
+  "git_commit": "83e8fedce564c0afa4dc14cfe4eb3f46a4427871",
+  "git_commit_correction": {
+    "corrected_by": "Desktop Claude A (Ledger Keeper)",
+    "corrected_on": "2026-07-12",
+    "original_self_reported_value": "c4b24437d5c562dd064e1c2e5235a55fe88f0920",
+    "reason": "Original value was HEAD at script run time, before this claim's output directory was committed. Corrected to the commit that actually contains this output tree, confirmed against .git/logs/HEAD and .git/refs/heads/main, per Preet's explicit instruction to correct in-file rather than only annotate downstream in VERIFIED_FACTS.md."
+  },
   "script_path": "phase_i_tcs_infy_pairs_trading\\analysis\\claim_005_volume_event_study_tcs500d\\opus_tier_a\\run_claim_005.py",
   "execution_timestamp_utc": "2026-07-12T09:58:27.737545+00:00",
   "python_version": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]",
