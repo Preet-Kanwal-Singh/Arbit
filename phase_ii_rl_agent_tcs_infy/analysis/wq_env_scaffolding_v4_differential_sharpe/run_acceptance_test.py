@@ -27,7 +27,7 @@ EXPECTED_BOUNDARIES = {
 }
 
 ETA = 0.01
-EPSILON = 1e-8
+EPSILON = 1e-6
 
 
 @dataclass
@@ -125,9 +125,10 @@ def run_episode(core_id: str, policy: str, seed: int = 42) -> RunSummary:
             ratios.add(round(reward_dsr / reward_pnl, 5))
 
         # Check fallback correctness
-        denominator = (B_prev - A_prev**2) ** 1.5
+        # Check fallback correctness
+        variance_est = B_prev - A_prev**2
         
-        if denominator <= EPSILON:
+        if variance_est <= EPSILON:
             if not math.isclose(reward_dsr, R_t, rel_tol=1e-9, abs_tol=1e-12):
                 raise AssertionError(f"Fallback failed at step {steps}: reward {reward_dsr} != R_t {R_t}")
             warmup_steps += 1

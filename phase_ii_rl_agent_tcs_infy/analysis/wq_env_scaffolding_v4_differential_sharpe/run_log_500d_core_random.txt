@@ -1,5 +1,5 @@
 # env_scaffolding_v4_differential_sharpe acceptance run
-# generated_at_utc: 2026-07-13T15:15:55.137615+00:00
+# generated_at_utc: 2026-07-14T04:04:06.263108+00:00
 # snapshot_id: tcs_infy_v4_2026-07-13
 core_id: 500d_core
 policy: random

@@ -32,6 +32,9 @@ def compute_cost_adjusted_pnl(ctx: RewardContext) -> float:
 
 
 def compute_differential_sharpe(ctx: RewardContext) -> float:
+    """Mutates ctx.dsr_A / ctx.dsr_B in place to persist EMA state to the
+    caller — unlike compute_cost_adjusted_pnl, this is not a pure function.
+    Calling it twice on the same ctx will not produce the same output twice."""
     R_t = compute_cost_adjusted_pnl(ctx)
     
     A_prev = ctx.dsr_A
@@ -43,12 +46,12 @@ def compute_differential_sharpe(ctx: RewardContext) -> float:
     A_t = A_prev + ctx.dsr_eta * delta_A
     B_t = B_prev + ctx.dsr_eta * delta_B
     
-    denominator = (B_prev - A_prev**2) ** 1.5
+    variance_est = B_prev - A_prev**2
     
-    if denominator <= ctx.dsr_epsilon:
+    if variance_est <= ctx.dsr_epsilon:
         reward = R_t
     else:
-        reward = (B_prev * delta_A - 0.5 * A_prev * delta_B) / denominator
+        reward = (B_prev * delta_A - 0.5 * A_prev * delta_B) / variance_est ** 1.5
         
     ctx.dsr_A = A_t
     ctx.dsr_B = B_t
