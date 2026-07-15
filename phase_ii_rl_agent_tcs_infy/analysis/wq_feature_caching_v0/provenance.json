@@ -1,0 +1,20 @@
+{
+  "claim_id": "wq_feature_caching_v0",
+  "phase": "phase_ii_rl_agent_tcs_infy",
+  "tier": "C",
+  "snapshot_id": "tcs_infy_v4_2026-07-13",
+  "script_path": "phase_ii_rl_agent_tcs_infy/analysis/wq_feature_caching_v0/run_acceptance_test.py",
+  "git_commit": "b7216461ca5fc77d5904f0c8971ecda4b8ddfb80",
+  "stamped_at_utc": "2026-07-15T10:05:45.395699+00:00",
+  "note": "commit hash recorded after outputs were committed, not pre-run HEAD",
+  "outputs": [
+    {
+      "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_feature_caching_v0/summary.md",
+      "sha256": "89d0acb57ffd1de908e27830aa7e1ea90fe70f3829444d610400f37a149195a7"
+    },
+    {
+      "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_feature_caching_v0/output_new.json",
+      "sha256": "07dfd0d229b2fdbead86200068d08043130f1a1fba4e30c84f6f1797d768a37a"
+    }
+  ]
+}
