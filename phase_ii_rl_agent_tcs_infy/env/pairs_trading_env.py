@@ -24,6 +24,7 @@ class _StepContext:
     timestamp: pd.Timestamp
     beta_lookback_span: str
     eg_lookback_span: str
+    eg_p_cache: dict[tuple, float]
 
 
 @dataclass
@@ -92,6 +93,7 @@ class PairsTradingEnv:
         self._dsr_A = 0.0
         self._dsr_B = 0.0
         self._dsr_step_count = 0
+        self._eg_p_cache: dict[tuple, float] = {}
 
     @property
     def episode_start(self) -> pd.Timestamp:
@@ -114,6 +116,7 @@ class PairsTradingEnv:
             timestamp=timestamp,
             beta_lookback_span=self.core.beta_lookback_span,
             eg_lookback_span=self.core.eg_lookback_span,
+            eg_p_cache=self._eg_p_cache,
         )
 
     def reset(self, *, seed: int | None = None) -> tuple[np.ndarray, dict[str, Any]]:

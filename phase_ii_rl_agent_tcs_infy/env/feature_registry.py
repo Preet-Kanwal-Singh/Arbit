@@ -20,6 +20,7 @@ class FeatureContext(Protocol):
     timestamp: pd.Timestamp
     beta_lookback_span: str
     eg_lookback_span: str
+    eg_p_cache: dict[tuple, float]
 
 
 FeatureFn = Callable[[FeatureContext], float]
@@ -62,12 +63,9 @@ def compute_beta(ctx: FeatureContext) -> float:
 
 
 def _compute_eg_pvalue_at(ctx: FeatureContext, timestamp: pd.Timestamp) -> float:
-    if not hasattr(ctx, "_eg_cache"):
-        ctx._eg_cache = {}
-        
-    cache_key = (timestamp, ctx.eg_lookback_span)
-    if cache_key in ctx._eg_cache:
-        return ctx._eg_cache[cache_key]
+    cache_key = (timestamp, ctx.eg_lookback_span, ctx.y_ticker, ctx.x_ticker)
+    if cache_key in ctx.eg_p_cache:
+        return ctx.eg_p_cache[cache_key]
 
     from statsmodels.tsa.stattools import coint
 
@@ -82,7 +80,7 @@ def _compute_eg_pvalue_at(ctx: FeatureContext, timestamp: pd.Timestamp) -> float
     _, p_value, _ = coint(y, x, trend="c", autolag="aic")
     
     result = float(p_value)
-    ctx._eg_cache[cache_key] = result
+    ctx.eg_p_cache[cache_key] = result
     return result
 
 
