@@ -1,0 +1,33 @@
+{
+  "claim_id": "wq_env_scaffolding_v4_differential_sharpe",
+  "phase": "phase_ii_rl_agent_tcs_infy",
+  "tier": "C",
+  "snapshot_id": "tcs_infy_v4_2026-07-13",
+  "snapshot_rationale": "tcs_infy_v4_2026-07-13 used to satisfy the eg_p_trend lookback buffer established in wq_env_scaffolding_v2_extended_history; carried forward from that work's snapshot choice, not a fresh substitution.",
+  "script_path": "phase_ii_rl_agent_tcs_infy/analysis/wq_env_scaffolding_v4_differential_sharpe/run_acceptance_test.py",
+  "git_commit": "7ecc56890cf7bbeda4b0623a37bb31c407db5358",
+  "stamped_at_utc": "2026-07-15T04:39:36.043299+00:00",
+  "note": "commit hash recorded after outputs were committed, not pre-run HEAD",
+  "outputs": [
+    {
+      "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_env_scaffolding_v4_differential_sharpe/run_log_500d_core_noop.txt",
+      "sha256": "533404775750129047b35ff91e4304d38690acfee80db0dcc2b2312fea64b28b"
+    },
+    {
+      "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_env_scaffolding_v4_differential_sharpe/run_log_500d_core_random.txt",
+      "sha256": "ef03c6eff7ae897e4a54c2834a292ea394905a5cda008aa07980e6600ad1ecee"
+    },
+    {
+      "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_env_scaffolding_v4_differential_sharpe/run_log_730d_core_noop.txt",
+      "sha256": "86cf3a3491141b80e63e0ca605da8abafa84315dacfd3fd59a0442e9dd3cd654"
+    },
+    {
+      "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_env_scaffolding_v4_differential_sharpe/run_log_730d_core_random.txt",
+      "sha256": "40861f8ba572e50cf50b7f3668f6ea229bc102e6a3482691b55fe4690dfb5859"
+    },
+    {
+      "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_env_scaffolding_v4_differential_sharpe/run_log_summary.txt",
+      "sha256": "c3029fd18c8c8f4d9210c32a15697357efc7833b8058245db2fa6ec782ad51dd"
+    }
+  ]
+}

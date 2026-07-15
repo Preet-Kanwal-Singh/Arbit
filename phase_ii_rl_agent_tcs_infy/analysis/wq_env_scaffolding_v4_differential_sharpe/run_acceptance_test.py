@@ -27,7 +27,8 @@ EXPECTED_BOUNDARIES = {
 }
 
 ETA = 0.01
-EPSILON = 1e-6
+EPSILON = 1e-12
+WARMUP_STEPS = 100
 
 
 @dataclass
@@ -59,7 +60,8 @@ def run_episode(core_id: str, policy: str, seed: int = 42) -> RunSummary:
     # Run differential_sharpe
     env_dsr = PairsTradingEnv(
         core_id=core_id, snapshot_id=SNAPSHOT_ID, bar_frequency="1d",
-        cost_rate=0.0, reward_name="differential_sharpe", dsr_epsilon=EPSILON
+        cost_rate=0.0, reward_name="differential_sharpe",
+        dsr_epsilon=EPSILON, dsr_warmup_steps=WARMUP_STEPS,
     )
     # Run baseline cost_adjusted_pnl
     env_pnl = PairsTradingEnv(
@@ -93,6 +95,7 @@ def run_episode(core_id: str, policy: str, seed: int = 42) -> RunSummary:
     
     A_prev = 0.0
     B_prev = 0.0
+    step_count = 0.
 
     ratios = set()
 
@@ -124,20 +127,20 @@ def run_episode(core_id: str, policy: str, seed: int = 42) -> RunSummary:
         if abs(reward_pnl) > 1e-8:
             ratios.add(round(reward_dsr / reward_pnl, 5))
 
-        # Check fallback correctness
-        # Check fallback correctness
+        # Check fallback correctness (mirrors env's step_count + epsilon gate,
+        # see env/reward_registry.py compute_differential_sharpe docstring)
         variance_est = B_prev - A_prev**2
-        
-        if variance_est <= EPSILON:
+
+        if step_count < WARMUP_STEPS or variance_est <= EPSILON:
             if not math.isclose(reward_dsr, R_t, rel_tol=1e-9, abs_tol=1e-12):
                 raise AssertionError(f"Fallback failed at step {steps}: reward {reward_dsr} != R_t {R_t}")
             warmup_steps += 1
         else:
-            # Post-warm-up sanity
             is_nan, is_inf = _is_bad(float(reward_dsr))
             if is_nan or is_inf:
                 raise AssertionError(f"Post-warmup sanity failed at step {steps}: reward {reward_dsr} is invalid")
             post_warmup_steps += 1
+        step_count += 1
 
         # Track manual state for next step
         delta_A = R_t - A_prev
