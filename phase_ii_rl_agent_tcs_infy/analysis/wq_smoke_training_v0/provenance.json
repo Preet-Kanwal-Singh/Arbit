@@ -1,0 +1,21 @@
+{
+  "claim_id": "wq_smoke_training_v0",
+  "phase": "phase_ii_rl_agent_tcs_infy",
+  "tier": "C",
+  "snapshot_id": "tcs_infy_v4_2026-07-13",
+  "snapshot_rationale": "Used v4 for proper pre-episode history support.",
+  "script_path": "phase_ii_rl_agent_tcs_infy/analysis/wq_smoke_training_v0/train.py",
+  "git_commit": "31c4856f3a21c18a0474615717b80d0c4b551953",
+  "stamped_at_utc": "2026-07-15T08:44:02.253501+00:00",
+  "note": "commit hash recorded after outputs were committed, not pre-run HEAD",
+  "outputs": [
+    {
+      "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_smoke_training_v0/summary.md",
+      "sha256": "5af006619d823c6ecfeea000b2a730fa61745104bd22b6727c5e4a89c0ac7acf"
+    },
+    {
+      "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_smoke_training_v0/tb/PPO_1/events.out.tfevents.1784098382.Pyre.5636.0",
+      "sha256": "b7a4ae25e59ad766a92e509d8dbfd4fc812be728a8373d88861c4cbea2b10f6f"
+    }
+  ]
+}
