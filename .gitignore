@@ -1,8 +1,6 @@
 # Local Python environments
 .venv/
 venv/
-env/
-ENV/
 
 # Python caches and build output
 __pycache__/
