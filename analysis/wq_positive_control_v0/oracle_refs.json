@@ -1,0 +1,6 @@
+{
+  "oracle_mean_episode_pnl": 27.286860402149095,
+  "pnl_p99_threshold": 0.799539171117815,
+  "oracle_mean_episode_dsr": 8.146148896456083,
+  "dsr_p99_threshold": 2.834754062700252
+}

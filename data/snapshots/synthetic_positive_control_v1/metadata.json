@@ -1,0 +1,13 @@
+{
+  "snapshot_id": "synthetic_positive_control_v1",
+  "synthetic": true,
+  "dgp": {
+    "type": "AR(1) mean-reverting",
+    "kappa": 0.1,
+    "sigma": 0.3,
+    "master_seed": 20260101,
+    "length": 51000,
+    "formula_initial": "spread_0 ~ N(0, sigma_stationary^2) where sigma_stationary^2 = sigma^2 / (1 - (1-kappa)^2)",
+    "formula_step": "spread_{t+1} = (1 - kappa) * spread_t + sigma * eps_t, eps_t ~ N(0, 1) iid"
+  }
+}
