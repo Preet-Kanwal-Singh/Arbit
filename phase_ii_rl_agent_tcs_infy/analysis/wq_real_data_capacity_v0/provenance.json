@@ -1,0 +1,19 @@
+{
+    "claim_id": "wq_real_data_capacity_v0",
+    "phase": "phase_ii_rl_agent_tcs_infy",
+    "tier": "B",
+    "snapshot_id": "tcs_infy_v4_2026-07-13",
+    "synthetic": false,
+    "script_path": "phase_ii_rl_agent_tcs_infy/analysis/wq_real_data_capacity_v0/train_real_data.py",
+    "git_commit": "1e69bac04f299b1a4ef3479838a16b980ba2e6bb",
+    "stamped_at_utc": "2026-07-17T13:52:07.495990+00:00",
+    "note": "commit hash recorded after outputs were committed",
+    "outputs": [
+        "phase_ii_rl_agent_tcs_infy/analysis/wq_real_data_capacity_v0/temp_results.json",
+        "phase_ii_rl_agent_tcs_infy/analysis/wq_real_data_capacity_v0/summary.md",
+        "phase_ii_rl_agent_tcs_infy/analysis/wq_real_data_capacity_v0/stamp_provenance.py",
+        "phase_ii_rl_agent_tcs_infy/analysis/wq_real_data_capacity_v0/train_real_data.py",
+        "phase_ii_rl_agent_tcs_infy/analysis/wq_real_data_capacity_v0/tb_real/PPO_1/events.out.tfevents.1784288300.Pyre.15656.0",
+        "phase_ii_rl_agent_tcs_infy/analysis/wq_real_data_capacity_v0/best_model.zip"
+    ]
+}
