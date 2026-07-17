@@ -13,9 +13,15 @@
     "length": 51000
   },
   "script_path": "phase_ii_rl_agent_tcs_infy/analysis/wq_positive_control_v0/run_oracle.py",
-  "git_commit": "b1ba4bbfaa7c8c9fceb780b5864d9b07111bb615",
+  "git_commit": "c779e56d18330928325799acccacffea6428335b",
   "stamped_at_utc": "2026-07-16T13:13:56.368570+00:00",
   "note": "commit hash recorded after outputs were committed, not pre-run HEAD",
+  "provenance_correction": {
+    "corrected_at_utc": "2026-07-17",
+    "corrected_by": "Desktop Claude B, at Preet's request",
+    "original_git_commit": "b1ba4bbfaa7c8c9fceb780b5864d9b07111bb615",
+    "reason": "Original commit was rewritten via 'git commit --amend' immediately after this file was stamped (same session, next reflog entry). b1ba4bb is no longer reachable from main's history; c779e56d is main's current tip and is the commit that actually contains these output files. This edit updates git_commit to match; it has not yet been committed to git as of this correction."
+  },
   "oracle_refs": {
     "oracle_mean_episode_pnl": 27.286860402149095,
     "pnl_p99_threshold": 0.799539171117815,
