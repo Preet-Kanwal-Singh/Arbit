@@ -2,7 +2,7 @@
   "claim_id": "wq_positive_control_v1_pc2",
   "phase": "phase_ii_rl_agent_tcs_infy",
   "tier": "C",
-  "snapshot_id": "synthetic_positive_control_v2",
+  "snapshot_id": "synthetic_pair_v1",
   "synthetic": true,
   "synthetic_dgp": {
     "process": "AR(1) mean-reverting spread, Random Walk log(X_t)",
@@ -15,24 +15,24 @@
     "master_seed": 20260101,
     "length": 2800
   },
-  "script_path": "phase_ii_rl_agent_tcs_infy/analysis/wq_positive_control_v1_feature_pipeline/train_pc2b.py",
-  "git_commit": "da6822c5cc48a3f4b4ce8458b568fa90d7080dde",
-  "stamped_at_utc": "2026-07-17T07:17:15.817839+00:00",
+  "script_path": "phase_ii_rl_agent_tcs_infy/analysis/wq_positive_control_v1_feature_pipeline/train_pc2a.py, phase_ii_rl_agent_tcs_infy/analysis/wq_positive_control_v1_feature_pipeline/train_pc2b.py",
+  "git_commit": "8a4f998fcf36057c60024dae886745c8d0fd9636",
+  "stamped_at_utc": "2026-07-17T10:48:46.049689+00:00",
   "note": "commit hash recorded after outputs were committed",
   "oracle_refs": {
-    "oracle_mean_episode_pnl": 28.093577442496787,
+    "oracle_mean_episode_pnl": 28.24257744249679,
     "pnl_p99_threshold": 0.7936952608673464,
-    "oracle_mean_episode_dsr": 298.5513976091542,
-    "dsr_p99_threshold": 6.236274114167763
+    "oracle_mean_episode_dsr": 187.82152814567328,
+    "dsr_p99_threshold": 4.082527788250316
   },
   "outputs": [
     {
       "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_positive_control_v1_feature_pipeline/oracle_refs.json",
-      "sha256": "2855cc532dda6c17dd7f0d784f02cefd3b671b413d66fe03a0ac75e2f98c6bb3"
+      "sha256": "6540213da1400bcb333add21437c0bff35a15c59b34289c911b09a155cea1f21"
     },
     {
       "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_positive_control_v1_feature_pipeline/summary.md",
-      "sha256": "3a6f64bbb21b03444230a7c62d68a57c4a17e91dab1cc1520930c54685ba0890"
+      "sha256": "ff626d4a0bd2e339472be9ac3f4d24ab5fecf6cb431458f94c126f9a7eec1633"
     },
     {
       "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_positive_control_v1_feature_pipeline/generate_synthetic_pair.py",
@@ -40,23 +40,31 @@
     },
     {
       "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_positive_control_v1_feature_pipeline/gym_pc2_wrapper.py",
-      "sha256": "a3fd4134dabe1303f5383c5f817fe03742b1085706c90e6ba391e7823363e547"
+      "sha256": "56f69542fb5c57dc7b5f4f6a0083fc213b9e895d1cedc49feb07aa23b7555f68"
     },
     {
       "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_positive_control_v1_feature_pipeline/run_oracle.py",
-      "sha256": "163e14a03afedf8e755320e3acb6e76fa97111fabd3064a6de203338fadf491b"
+      "sha256": "af20dfaf8b92b534c81bf09fc6f2e890318c0c0453822c98d91f27abcd9cee0d"
     },
     {
       "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_positive_control_v1_feature_pipeline/stamp_provenance.py",
-      "sha256": "d194cc5460559153ef4c05065d46e1fc2ecd8edcf1e5472360cd76819a6fe5c3"
+      "sha256": "86e0addc6914138740373cf350bc493d7141d39539b928a999e7a74f0d6e519f"
     },
     {
       "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_positive_control_v1_feature_pipeline/train_pc2a.py",
-      "sha256": "ebb3aaa6c69482ee6397d6bdc1d06c61cf961f8d0dd7d189b70e06b17e5cb0eb"
+      "sha256": "6075499080b4aed89ce5c98bccd4b5335e5db70c46f250213c3c9ba56ea8d213"
     },
     {
       "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_positive_control_v1_feature_pipeline/train_pc2b.py",
-      "sha256": "acb5e8861c212dbea43f4070d9958c79639e91416150895d804d9a8d652d3ae8"
+      "sha256": "9159178351d6226630b7f22256621b6fb53da42f8d59f6095b4461476a70b9f5"
+    },
+    {
+      "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_positive_control_v1_feature_pipeline/tb_pc2a/PPO_1/events.out.tfevents.1784283174.Pyre.19348.0",
+      "sha256": "4afcb673b03fe7ac494aaede0e556b741f7742f52ef2e30bc721c8e3cab31709"
+    },
+    {
+      "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_positive_control_v1_feature_pipeline/tb_pc2b/PPO_1/events.out.tfevents.1784284132.Pyre.18104.0",
+      "sha256": "6419efa3b2909a55caf419100ce1ce95937868431a70e0654806c07d43173052"
     }
   ]
 }
