@@ -75,11 +75,11 @@ def main():
                     current_spread=spread[t_next],
                     previous_position=prev_pos,
                     position=pos,
-                    cost_rate=0.0010,
+                    cost_rate=0.0,
                     dsr_A=dsr_A,
                     dsr_B=dsr_B,
-                    dsr_eta=1/252,
-                    dsr_epsilon=1e-6,
+                    dsr_eta=0.01,
+                    dsr_epsilon=1e-12,
                     dsr_warmup_steps=0,
                     dsr_step_count=dsr_step
                 )

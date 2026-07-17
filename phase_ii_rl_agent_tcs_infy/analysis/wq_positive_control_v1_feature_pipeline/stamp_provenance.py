@@ -42,20 +42,22 @@ def main() -> None:
     oracle_refs = json.loads((OUT_DIR / "oracle_refs.json").read_text())
 
     output_files = sorted(OUT_DIR.glob("*.json")) + sorted(OUT_DIR.glob("*.md")) + sorted(OUT_DIR.glob("*.py"))
+    output_files += sorted(OUT_DIR.glob("tb_pc2a/**/events.out.tfevents.*"))
+    output_files += sorted(OUT_DIR.glob("tb_pc2b/**/events.out.tfevents.*"))
     output_files = [f for f in output_files if f.name != "provenance.json"]
 
     provenance = {
         "claim_id": "wq_positive_control_v1_pc2",
         "phase": "phase_ii_rl_agent_tcs_infy",
         "tier": "C",
-        "snapshot_id": SNAPSHOT_ID,
+        "snapshot_id": "synthetic_pair_v1",
         "synthetic": True,
         "synthetic_dgp": {
             "process": "AR(1) mean-reverting spread, Random Walk log(X_t)",
             "formula": "spread_{t+1} = (1-kappa)*spread_t + sigma*eps_t; log(Y_t) = beta*log(X_t) + spread_t",
             **DGP_PARAMS,
         },
-        "script_path": str((OUT_DIR / "train_pc2b.py").relative_to(ROOT)).replace("\\", "/"),
+        "script_path": "phase_ii_rl_agent_tcs_infy/analysis/wq_positive_control_v1_feature_pipeline/train_pc2a.py, phase_ii_rl_agent_tcs_infy/analysis/wq_positive_control_v1_feature_pipeline/train_pc2b.py",
         "git_commit": git_commit(),
         "stamped_at_utc": datetime.now(timezone.utc).isoformat(),
         "note": "commit hash recorded after outputs were committed",

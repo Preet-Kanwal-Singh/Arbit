@@ -77,8 +77,8 @@ class PC2GymPairsTradingEnv(gym.Env):
             low=-np.inf, high=np.inf, shape=(3,), dtype=np.float64
         )
         
-        self._current_env_idx = 0
-        self._current_env = self.envs[self._current_env_idx]
+        self._current_env_idx = -1
+        self._current_env = None
 
     def reset(self, *, seed: int | None = None, options: dict | None = None):
         super().reset(seed=seed)

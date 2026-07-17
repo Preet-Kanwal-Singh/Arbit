@@ -18,9 +18,9 @@ We implemented `PC2GymPairsTradingEnv` that wraps the real environment.
 - A collision guard asserts that the injected keys do not already exist.
 
 ## Results
-- **Oracle PnL threshold (35%):** 9.83
-- **PC-2a (cost_adjusted_pnl reward):** Reached a maximum eval_cost_adjusted_pnl of ~11.8 (exceeding 35% of oracle).
-- **PC-2b (differential_sharpe reward):** Reached a maximum eval_cost_adjusted_pnl of ~12.5 (exceeding 35% of oracle).
+- **Oracle PnL threshold (35%):** ~9.88 (35% of oracle_mean_episode_pnl: 28.24)
+- **PC-2a (cost_adjusted_pnl reward):** Average eval_cost_adjusted_pnl over the final 5 of 25 passes (last 10,000 steps) was ~0.35. (Failed to meet 35% threshold)
+- **PC-2b (differential_sharpe reward):** Average eval_cost_adjusted_pnl over the final 5 of 25 passes (last 10,000 steps) was ~-0.07. (Failed to meet 35% threshold)
 - **Cache Hit Rate:** >98% hit rate on `eg_p` cache across 50,000 steps, demonstrating that caching correctly persists across episodes and windows.
 
-Both PC-2a and PC-2b successfully crossed the 35% oracle threshold, validating that the real `feature_registry.py` preserves the signal structure well enough for the agent to learn.
+Both PC-2a and PC-2b failed to maintain the 35% oracle threshold at the end of training. While individual evaluation spikes were observed mid-training, the converged policy average over the final 5 passes fell significantly short of the bar.

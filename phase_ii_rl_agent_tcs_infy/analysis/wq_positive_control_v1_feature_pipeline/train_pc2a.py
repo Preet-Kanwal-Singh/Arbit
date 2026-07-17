@@ -101,6 +101,7 @@ def main() -> None:
         learning_rate=3e-4,
         seed=42,
         verbose=1,
+        tensorboard_log=str(out_dir / "tb_pc2a"),
     )
     
     model.learn(total_timesteps=50000, callback=callback)
