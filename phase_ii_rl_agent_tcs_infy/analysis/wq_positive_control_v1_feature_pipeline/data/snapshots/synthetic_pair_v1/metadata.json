@@ -1,0 +1,18 @@
+{
+  "snapshot_id": "synthetic_pair_v1",
+  "start_date": "2100-01-01",
+  "end_date": "2110-09-25",
+  "tickers": [
+    "SYN.X",
+    "SYN.Y"
+  ],
+  "synthetic_dgp": {
+    "master_seed": 20260101,
+    "kappa": 0.1,
+    "sigma": 0.3,
+    "beta": 0.7,
+    "sigma_x": 0.015,
+    "variance_x": 0.000225,
+    "n_bars": 2800
+  }
+}
