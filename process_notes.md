@@ -121,3 +121,68 @@ citation. Treating this as resolved for the four existing Phase I claims.
 Worth keeping in mind for Phase II/III: if a claim's working directory ever
 get renamed after `VERIFIED_FACTS.md` cites it, the citation goes stale
 silently — nothing currently checks this automatically.
+
+## 4. `env/` was gitignored — Phase II source history is incomplete before 2026-07-16
+
+Found while updating `phase_ii_rl_agent_tcs_infy/PHASE_CONTEXT.md` at
+Preet's request, after B flagged that file as stale. Confirmed directly
+against `.git/logs/HEAD`: commit
+`94393d55ca82fd4007c9e1daaec32075be94bec8`, "fix(phase2): remove env/ from
+.gitignore, add previously-untracked env source files," made directly on
+`main` (not a feature branch) at 2026-07-16 06:20:13 UTC (converted from
+the reflog's epoch myself, not read off a label).
+
+This is a different, more severe category of gap than #1 above. #1 is a
+commit citing the wrong hash for content that exists *somewhere* in git
+history. This is `phase_ii_rl_agent_tcs_infy/env/*.py` — every file
+implementing the environment, feature registry, and reward registry — not
+being tracked by git **at all** until this one commit. My evidence is the
+commit message's own words ("add previously-untracked env source files")
+plus the timeline; I don't have a git-log-for-path or git-show tool to
+independently confirm zero prior history file-by-file, so I'm reporting
+what the self-report and timeline support, not an exhaustive diff audit.
+
+**Compounding this: the feature branch created for this exact window of
+work was never actually used.** `feat/phase2_tier_c_positive_control_v1`
+was checked out repeatedly between 2026-07-15 14:16 UTC and 2026-07-16
+05:47 UTC (roughly 15.5 hours), but the reflog shows zero commits landing
+on it in that entire span — its branch pointer never moved from the commit
+it was created at. Every commit from `94393d55` onward (the gitignore fix,
+two PC-1-provenance fix commits including one `git commit --amend`, and a
+final correction commit dated 2026-07-17) was made directly on `main`, no
+branch involved. So for this window, both this project's usual
+branch-then-merge convention and (independently) `env/`'s trackability were
+bypassed at the same time.
+
+**What this means for Phase II `PHASE_CONTEXT.md` entries 1, 3, 4, 5, 6 (as
+currently numbered), all dated before 2026-07-16 06:20 UTC:** each cites a
+specific commit as where a described `env/*.py` change landed, based on
+commit messages and the code-commit-then-provenance-stamp timing pattern.
+Those commits almost certainly do not actually contain the `env/*.py`
+diffs their messages describe, because `git add` (whatever form it took)
+would have silently skipped everything under `env/` the entire time. What I
+reported as "confirmed in the current code" in each of those entries is
+still accurate — I read the live working tree, which reflects reality as of
+when I read it — but the specific commit citations attached to those
+observations are very likely broken in the way #1 describes, just
+categorically worse: not mistimed, absent. I have not gone back and
+re-verified each of those five entries' citations individually; that would
+need a git-show/diff tool I don't have. Flagging the scope and mechanism
+here rather than asserting a fix for each entry — see the notice added to
+the top of `PHASE_CONTEXT.md` itself.
+
+**One more loose end, not yet resolved, flagged rather than fixed by me:**
+`wq_positive_control_v0/provenance.json` contains a `git_commit_correction`
+note (attributed to Desktop Claude B) stating the corrected git_commit "has
+not yet been committed to git as of this correction." That's no longer
+accurate — I checked `.git/refs/heads/main`, and it's now
+`4b07cca32a9eaec66a1274f39d952d4c6d9d41c2`, the exact commit the correction
+points to. The correction was committed; the note saying otherwise wasn't
+updated afterward. Not editing another Claude instance's attributed note
+without being asked — flagging it for B or Preet to close out.
+
+**Not yet fixed as a process:** nothing currently prevents a similarly
+broad `.gitignore` pattern from silently excluding a real source directory
+again, and nothing currently prevents a created feature branch from being
+quietly bypassed in favor of committing straight to `main`. Both are
+workflow gaps, not one-off mistakes.

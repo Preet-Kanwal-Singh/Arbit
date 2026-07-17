@@ -55,7 +55,7 @@ def generate_synthetic_pair():
     })
 
     # Save outputs
-    out_dir = Path(__file__).resolve().parent / "data" / "snapshots" / "synthetic_pair_v1"
+    out_dir = Path(__file__).resolve().parents[3] / "data" / "snapshots" / "synthetic_pair_v1"
     out_dir.mkdir(parents=True, exist_ok=True)
     
     df.to_csv(out_dir / "adjusted_close.csv", index=False)

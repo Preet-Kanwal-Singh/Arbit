@@ -5,4 +5,79 @@ completed work. Cross-cutting tooling/process gaps that aren't specific to
 this phase's research belong in the project-root `process_notes.md`
 instead, not here.
 
-No open questions logged yet.
+**Currency notice, added 2026-07-17:** this file and
+`PHASE_CONTEXT.md` had gone two work sessions without an update before
+today — an empty section here before this date doesn't mean nothing
+happened, it means neither file had caught up yet. Check `analysis/` and
+`.git/logs/HEAD` directly if this matters for what you're doing.
+
+## 1. PC-2 — does the real feature pipeline preserve embedded structure? **Answered: no, not under these conditions.**
+
+Was conditional and not-yet-specced when I first wrote this section. It has
+since been run (`analysis/wq_positive_control_v1_feature_pipeline/`, logged
+in `PHASE_CONTEXT.md` entry 10) — I did not review a Spec Block for it
+beforehand the way I did for PC-1, so I can't say whether the acceptance
+bar was pre-declared before results existed; flagged as an open concern in
+entry 10, not resolved here.
+
+**Result: both legs failed.** PC-2a (`cost_adjusted_pnl`) realized ~1.2% of
+oracle P&L against a 35% bar. PC-2b (`differential_sharpe`) realized
+*negative* P&L — worse than doing nothing — against the same bar. This is a
+real, substantive negative result, not a process gap.
+
+This closes the original PC-2 question but opens the ones that actually
+matter now:
+
+- **Is this a feature problem, a training problem, or both?** One seed
+  each, no hyperparameter tuning, PPO defaults carried over from a
+  different (simpler, 1-dimensional) observation space in PC-1. A single
+  failed run under minimal-effort training conditions doesn't distinguish
+  "the features destroy the signal" from "PPO wasn't given a fair shot at
+  this observation space." Worth a multi-seed and/or lightly-tuned rerun
+  before treating "the features are the problem" as established.
+
+  **Sharper now that I've seen the actual spec (added 2026-07-17):** the
+  spec called for PPO `n_steps=2000`; the run that produced the FAIL used
+  `n_steps=500`, a real, checked deviation (see `PHASE_CONTEXT.md` entry
+  10's 2026-07-17 update), not a hypothetical one. This gives the
+  "training problem" side of this question a concrete, specific candidate
+  cause, not just a generic "maybe it needed more tuning." A rerun at the
+  spec's actual `n_steps=2000` seems like the more targeted next step than
+  an unfocused multi-seed sweep.
+- **Should real-data training (TCS/INFY) proceed at all before this is
+  resolved?** If the feature pipeline can't recover a clean, strong,
+  by-construction signal in a synthetic control, a negative result on real
+  TCS/INFY data (where Phase I already found the underlying relationship
+  unstable — `claim_003`) would be uninterpretable: no way to tell whether
+  silence means "no real edge" or "the harness still can't see it." This
+  seems like the more urgent open question than PC-2's original framing
+  suggested it would be.
+- **Does `differential_sharpe` landing negative (worse than the
+  `cost_adjusted_pnl` leg) mean anything specific about that reward's
+  shape**, or is it noise from a single seed? Worth knowing before
+  `differential_sharpe` is trusted as the primary training signal anywhere
+  else in this phase.
+
+None of these are specced. Recording them here rather than answering them
+myself — not my role to decide the next experiment, only to record what
+completed work establishes and what it leaves open.
+
+## 2. Two provenance-integrity questions from `process_notes.md` #4 that touch this phase's own record, not just process
+
+Not research questions in the usual sense, but they affect how much weight
+to put on Phase II's git citations specifically, so recording here rather
+than leaving them purely in `process_notes.md`:
+
+- Given `env/` was gitignored until 2026-07-16, is there any actual
+  behavioral drift between what a given `PHASE_CONTEXT.md` entry described
+  and what really shipped, or was the working tree always the accurate
+  record and only the git citations are broken? I have no evidence of
+  drift, but I also don't have a git-show/diff tool to positively rule it
+  out for entries 1, 3, 4, 5, 6.
+- Should Phase II's already-written `PHASE_CONTEXT.md` entries 1–6 be
+  individually corrected (citations replaced or annotated per-entry, the
+  way `claim_003`'s path citation was handled in Phase I), or is the single
+  top-of-file notice sufficient? I defaulted to the notice since I can't
+  verify what each historical commit actually contains without a git tool
+  — an individual correction would need to assert a specific replacement
+  citation I don't have. Preet's call.

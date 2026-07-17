@@ -49,11 +49,9 @@ class PC2GymPairsTradingEnv(gym.Env):
         super().__init__()
         
         # Load the synthetic data
-        repo_root = Path(__file__).resolve().parent
         self.loader = SnapshotDataLoader.from_snapshot(
             snapshot_id="synthetic_pair_v1",
-            bar_frequency="1d",
-            repo_root=repo_root
+            bar_frequency="1d"
         )
         
         _inject_synthetic_cores(self.loader)

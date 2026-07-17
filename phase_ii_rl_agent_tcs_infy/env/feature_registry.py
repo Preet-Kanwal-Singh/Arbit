@@ -62,10 +62,34 @@ def compute_beta(ctx: FeatureContext) -> float:
     return float(coeffs[1])
 
 
+_eg_cache_hits = 0
+_eg_cache_misses = 0
+
+def get_eg_cache_stats() -> dict[str, object]:
+    global _eg_cache_hits, _eg_cache_misses
+    total = _eg_cache_hits + _eg_cache_misses
+    rate = _eg_cache_hits / total if total > 0 else 0.0
+    return {
+        "hits": _eg_cache_hits,
+        "misses": _eg_cache_misses,
+        "total": total,
+        "hit_rate": rate
+    }
+
+def reset_eg_cache_stats():
+    global _eg_cache_hits, _eg_cache_misses
+    _eg_cache_hits = 0
+    _eg_cache_misses = 0
+
+
 def _compute_eg_pvalue_at(ctx: FeatureContext, timestamp: pd.Timestamp) -> float:
+    global _eg_cache_hits, _eg_cache_misses
     cache_key = (timestamp, ctx.eg_lookback_span, ctx.y_ticker, ctx.x_ticker)
     if cache_key in ctx.eg_p_cache:
+        _eg_cache_hits += 1
         return ctx.eg_p_cache[cache_key]
+    
+    _eg_cache_misses += 1
 
     from statsmodels.tsa.stattools import coint
 
