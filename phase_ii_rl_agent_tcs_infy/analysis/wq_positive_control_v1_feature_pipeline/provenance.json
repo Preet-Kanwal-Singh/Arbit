@@ -1,0 +1,62 @@
+{
+  "claim_id": "wq_positive_control_v1_pc2",
+  "phase": "phase_ii_rl_agent_tcs_infy",
+  "tier": "C",
+  "snapshot_id": "synthetic_positive_control_v2",
+  "synthetic": true,
+  "synthetic_dgp": {
+    "process": "AR(1) mean-reverting spread, Random Walk log(X_t)",
+    "formula": "spread_{t+1} = (1-kappa)*spread_t + sigma*eps_t; log(Y_t) = beta*log(X_t) + spread_t",
+    "kappa": 0.1,
+    "sigma": 0.3,
+    "beta": 0.7,
+    "sigma_x": 0.015,
+    "eps_x_t": "~ N(0, 0.000225)",
+    "master_seed": 20260101,
+    "length": 2800
+  },
+  "script_path": "phase_ii_rl_agent_tcs_infy/analysis/wq_positive_control_v1_feature_pipeline/train_pc2b.py",
+  "git_commit": "da6822c5cc48a3f4b4ce8458b568fa90d7080dde",
+  "stamped_at_utc": "2026-07-17T07:17:15.817839+00:00",
+  "note": "commit hash recorded after outputs were committed",
+  "oracle_refs": {
+    "oracle_mean_episode_pnl": 28.093577442496787,
+    "pnl_p99_threshold": 0.7936952608673464,
+    "oracle_mean_episode_dsr": 298.5513976091542,
+    "dsr_p99_threshold": 6.236274114167763
+  },
+  "outputs": [
+    {
+      "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_positive_control_v1_feature_pipeline/oracle_refs.json",
+      "sha256": "2855cc532dda6c17dd7f0d784f02cefd3b671b413d66fe03a0ac75e2f98c6bb3"
+    },
+    {
+      "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_positive_control_v1_feature_pipeline/summary.md",
+      "sha256": "3a6f64bbb21b03444230a7c62d68a57c4a17e91dab1cc1520930c54685ba0890"
+    },
+    {
+      "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_positive_control_v1_feature_pipeline/generate_synthetic_pair.py",
+      "sha256": "a2188c70a8a6ac36e500fcd75269e10dedc73f58b53955276e71b6edc2c61b33"
+    },
+    {
+      "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_positive_control_v1_feature_pipeline/gym_pc2_wrapper.py",
+      "sha256": "a3fd4134dabe1303f5383c5f817fe03742b1085706c90e6ba391e7823363e547"
+    },
+    {
+      "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_positive_control_v1_feature_pipeline/run_oracle.py",
+      "sha256": "163e14a03afedf8e755320e3acb6e76fa97111fabd3064a6de203338fadf491b"
+    },
+    {
+      "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_positive_control_v1_feature_pipeline/stamp_provenance.py",
+      "sha256": "d194cc5460559153ef4c05065d46e1fc2ecd8edcf1e5472360cd76819a6fe5c3"
+    },
+    {
+      "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_positive_control_v1_feature_pipeline/train_pc2a.py",
+      "sha256": "ebb3aaa6c69482ee6397d6bdc1d06c61cf961f8d0dd7d189b70e06b17e5cb0eb"
+    },
+    {
+      "path": "phase_ii_rl_agent_tcs_infy/analysis/wq_positive_control_v1_feature_pipeline/train_pc2b.py",
+      "sha256": "acb5e8861c212dbea43f4070d9958c79639e91416150895d804d9a8d652d3ae8"
+    }
+  ]
+}
