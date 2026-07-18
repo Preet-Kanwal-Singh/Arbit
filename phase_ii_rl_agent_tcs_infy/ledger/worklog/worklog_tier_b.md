@@ -85,3 +85,16 @@ to check later.
 
 **Tier:** B, per spec and per `provenance.json`. No `VERIFIED_FACTS.md`
 admission — correctly none intended.
+
+## 2026-07-18 — `wq_zscore_block_bootstrap_v0`: Z-score block-bootstrap check
+
+**Directory:** `analysis/wq_zscore_block_bootstrap_v0/`.
+
+**Setup:** Evaluated the deterministic Z-score rule (expanding mean/std, 10-step flat warm-up guard, `clip(-z, -1, 1)`, `cost_rate=0.0`) on circular block-bootstrapped resamples of the `730d_core` real data spread sequence (snapshot `tcs_infy_v4_2026-07-13`). `B=2000` resamples per block length. `seed=42`.
+
+**Results:**
+- **L=10:** Mean PnL = 1.8885 | Std = 0.2555 | p-value (Fraction $\ge$ 0.3909) = 1.0000
+- **L=20 (Primary):** Mean PnL = 1.1914 | Std = 0.2062 | p-value (Fraction $\ge$ 0.3909) = 1.0000
+- **L=40:** Mean PnL = 0.8322 | Std = 0.1780 | p-value (Fraction $\ge$ 0.3909) = 0.9990
+
+**Note:** No threshold was set because none was needed at this tier. The bootstrapped null distribution produces systematically higher PnL than the original path. If this is ever promoted to Tier A, the threshold and comparison family must be fixed before the promoted run.
