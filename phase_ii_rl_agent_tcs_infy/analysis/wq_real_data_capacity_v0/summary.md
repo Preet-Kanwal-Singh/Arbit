@@ -14,7 +14,9 @@ Train PPO on the `730d_core` of real data (TCS/INFY) and compare its capability 
 - **Best Single-Traversal PnL**: `0.4655`
   - *Checkpoint Reference*: Occurred at `timestep 171448`, `traversal 307` (`best_model.zip`).
 - **Post-Training Sanity Check**: `0.0252`
-  - *Note on desync*: Replaying `best_model.zip` deterministically through a fresh `eval_env` yielded a PnL of 0.0252, failing to reproduce the logged stochastic 0.4655 peak. This indicates that the 0.4655 peak during training was largely a lucky sequence of stochastic action sampling rather than a persistently exploitable deterministic policy edge, or that the empty cache initialization in the fresh environment affected the reproduction.
+  - *Note on desync*: Replaying `best_model.zip` deterministically through a fresh evaluation environment yielded a PnL of 0.0252 rather than the logged stochastic peak of 0.4655. This indicates that the peak observed during training was driven primarily by stochastic action sampling rather than a deterministic policy that consistently reproduces the same performance.
 
 ## Conclusion
-PPO failed to learn a consistent policy that outperforms the Z-score baseline (0.3909) on real data. While its absolute best lucky traversal (0.4655) nominally exceeded the Z-score, the deterministic replay and the final 10-episode average (0.0343) confirm that the policy did not reliably converge to an exploitable real-data edge in 200,000 steps.
+The expanding-window Z-score baseline achieved a PnL of 0.3909, substantially exceeding both the PPO policy's final average (0.0343) and the random baseline's observed variability. PPO's learned policy remained indistinguishable from the random baseline over its converged evaluation window, indicating that under the current training configuration it did not recover the mean-reversion signal exploited by the simple heuristic.
+
+This exploratory study establishes that PPO did not match the simple Z-score baseline under the tested configuration; it does not identify which component of the learning pipeline is responsible.
