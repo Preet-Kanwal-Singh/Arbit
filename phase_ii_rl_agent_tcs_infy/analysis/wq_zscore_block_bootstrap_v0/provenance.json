@@ -1,0 +1,17 @@
+{
+    "claim_id": "wq_zscore_block_bootstrap_v0",
+    "phase": "phase_ii_rl_agent_tcs_infy",
+    "tier": "B",
+    "snapshot_id": "tcs_infy_v4_2026-07-13",
+    "synthetic": false,
+    "script_path": "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_block_bootstrap_v0/zscore_bootstrap.py",
+    "git_commit": "8b4111c82a7b710daf25388f5b5447e9074fed65",
+    "stamped_at_utc": "2026-07-18T15:30:52.429848+00:00",
+    "note": "commit hash recorded after outputs were committed",
+    "outputs": [
+        "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_block_bootstrap_v0/bootstrap_results.json",
+        "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_block_bootstrap_v0/summary.md",
+        "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_block_bootstrap_v0/stamp_provenance.py",
+        "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_block_bootstrap_v0/zscore_bootstrap.py"
+    ]
+}
