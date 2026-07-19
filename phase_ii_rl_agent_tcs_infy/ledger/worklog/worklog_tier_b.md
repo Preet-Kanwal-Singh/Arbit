@@ -144,3 +144,22 @@ Loaded the existing `seams_raw.csv` and derived a precise block `seam_index = ro
 - **Index 6+:** `n`=44,000, `mean`=0.02537, `SE`=0.00016
 
 **Note:** The results firmly disconfirm the noisy-early-mean hypothesis. If the artifact was driven by early unstable estimates, Index 1 should show the highest elevation. Instead, Index 1 is strictly *lower* than 6+ and well outside its standard error bound. The elevation effect does not decay; it actually grows stronger as the running mean stabilizes over time.
+
+## 2026-07-19 — `wq_zscore_seam_diagnostics_v0` (AR(1) Joint-Fit Refit)
+
+**Directory:** `analysis/wq_zscore_seam_diagnostics_v0/`.
+
+**Setup:** 
+Zero-cost recomputation. Using the target bootstrap ratios (4.8312 at L=10, 3.0480 at L=20, 2.1291 at L=40) and the formula $Ratio(L, \phi) = (L-1)/L + 1/(L(1-\phi))$, solved for the single $\phi \in [0.90, 0.999]$ that minimizes the sum-of-squared residuals (SSR) across all three points simultaneously.
+
+**Results:**
+- **Optimal joint-fit $\phi$:** 0.975088 (SSR: 0.037817)
+- **CI Check:** This optimal $\phi$ falls **inside** the previously reported 95% OLS confidence interval `[0.9370, 0.9828]`.
+- **Residuals (Predicted - Observed):**
+  - **L=10:** +0.0829 (Pred: 4.9141, Obs: 4.8312)
+  - **L=20:** -0.0909 (Pred: 2.9571, Obs: 3.0480)
+  - **L=40:** -0.1506 (Pred: 1.9785, Obs: 2.1291)
+
+**Note:** A systematic residual pattern remains — the joint-fit overpredicts L=10 while increasingly underpredicting L=20 and L=40. The lack of a flat, near-zero residual across all three block lengths argues that the gap is not just a mis-set $\phi$, but rather that the theoretical ratio model itself does not fully capture the artifact's structural dynamics.
+
+**Worklog Correction:** The previously-reported 53–62%-explained figures were computed against the $\phi$ point estimate (0.9599), not this joint-fit value, and should be read as superseded/caveated by this recomputation. A future reader should not cite the old percentages as final.
