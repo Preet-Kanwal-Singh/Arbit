@@ -5,12 +5,14 @@
     "snapshot_id": "tcs_infy_v4_2026-07-13",
     "synthetic": false,
     "script_path": "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_seam_diagnostics_v0/seam_diagnostics.py",
-    "git_commit": "c99f2116d6aba2e2a2bf751826d00bb0124c4770",
-    "stamped_at_utc": "2026-07-19T04:32:24.888706+00:00",
+    "git_commit": "4384b04f517bb3ed808bfb7c2a4664bfe802d9c3",
+    "stamped_at_utc": "2026-07-19T14:45:48.734801+00:00",
     "note": "commit hash recorded after outputs were committed",
     "outputs": [
         "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_seam_diagnostics_v0/seam_results.json",
+        "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_seam_diagnostics_v0/phi_joint_fit.md",
         "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_seam_diagnostics_v0/summary.md",
+        "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_seam_diagnostics_v0/phi_joint_fit.py",
         "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_seam_diagnostics_v0/seam_diagnostics.py",
         "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_seam_diagnostics_v0/stamp_provenance.py"
     ]
