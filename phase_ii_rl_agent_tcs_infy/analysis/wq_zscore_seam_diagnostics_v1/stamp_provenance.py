@@ -1,4 +1,4 @@
-"""Provenance stamper for Tier B Z-score seam diagnostics v1."""
+"""Provenance stamper for Tier B Z-score seam index reanalysis."""
 
 import json
 import subprocess
@@ -19,12 +19,12 @@ def main():
     output_files = [f for f in output_files if f.name != "provenance.json"]
 
     provenance = {
-        "claim_id": "wq_zscore_seam_diagnostics_v1",
+        "claim_id": "wq_zscore_seam_diagnostics_v1_reanalysis",
         "phase": "phase_ii_rl_agent_tcs_infy",
         "tier": "B",
         "snapshot_id": "tcs_infy_v4_2026-07-13",
         "synthetic": False,
-        "script_path": str((OUT_DIR / "seam_diagnostics_v1.py").relative_to(ROOT)).replace("\\", "/"),
+        "script_path": str((OUT_DIR / "seam_index_reanalysis.py").relative_to(ROOT)).replace("\\", "/"),
         "git_commit": git_commit(),
         "stamped_at_utc": datetime.now(timezone.utc).isoformat(),
         "note": "commit hash recorded after outputs were committed",

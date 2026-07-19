@@ -127,3 +127,20 @@ Same underlying logic as `v0` (L=20, B=2000, `cost_rate=0.0`), but saved exactly
   - Q1 (0-25%): 0.02227 | Q2 (25-50%): 0.02514 | Q3 (50-75%): 0.02549 | Q4 (75-100%): 0.02538
 
 **Note:** The difference between regime-crossing and within-regime seams is statistically indistinguishable from zero, and both groups have large sample sizes. Furthermore, the quartile stratification reveals the seam reward is completely flat across Q2-Q4 rather than decaying. This debunks the hypothesis that the artifact is purely driven by early finite-sample noise in the running mean, pointing instead to the inherent structural nature of the per-event reward at the disjoint boundary.
+
+## 2026-07-19 — `wq_zscore_seam_diagnostics_v1` (Seam-index Reanalysis)
+
+**Directory:** `analysis/wq_zscore_seam_diagnostics_v1/`.
+
+**Setup:** 
+Loaded the existing `seams_raw.csv` and derived a precise block `seam_index = round(position_in_path * T / L)`. Tracked granular `n`, `mean`, and `SE` exactly at seams 1 through 5, and pooled 6+.
+
+**Results:**
+- **Index 1:** `n`=2,000, `mean`=0.01584, `SE`=0.00094
+- **Index 2:** `n`=2,000, `mean`=0.02228, `SE`=0.00084
+- **Index 3:** `n`=2,000, `mean`=0.02273, `SE`=0.00079
+- **Index 4:** `n`=2,000, `mean`=0.02229, `SE`=0.00078
+- **Index 5:** `n`=2,000, `mean`=0.02449, `SE`=0.00077
+- **Index 6+:** `n`=44,000, `mean`=0.02537, `SE`=0.00016
+
+**Note:** The results firmly disconfirm the noisy-early-mean hypothesis. If the artifact was driven by early unstable estimates, Index 1 should show the highest elevation. Instead, Index 1 is strictly *lower* than 6+ and well outside its standard error bound. The elevation effect does not decay; it actually grows stronger as the running mean stabilizes over time.
