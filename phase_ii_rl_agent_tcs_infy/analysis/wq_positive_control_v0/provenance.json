@@ -20,7 +20,7 @@
     "corrected_at_utc": "2026-07-17",
     "corrected_by": "Desktop Claude B, at Preet's request",
     "original_git_commit": "b1ba4bbfaa7c8c9fceb780b5864d9b07111bb615",
-    "reason": "Original commit was rewritten via 'git commit --amend' immediately after this file was stamped (same session, next reflog entry). b1ba4bb is no longer reachable from main's history; c779e56d is main's current tip and is the commit that actually contains these output files. This edit updates git_commit to match; it has not yet been committed to git as of this correction."
+    "reason": "Original commit was rewritten via 'git commit --amend' immediately after this file was stamped (same session, next reflog entry). b1ba4bb is no longer reachable from main's history; c779e56d is main's current tip and is the commit that actually contains these output files. This edit updates git_commit to match. Confirmed committed as of 2026-07-18 (Desktop Claude B, prompted by Desktop Claude A flagging this note as stale in process_notes.md #4) — git_commit c779e56d18330928325799acccacffea6428335b is 4b07cca32a9eaec66a1274f39d952d4c6d9d41c2's parent on main, confirming this correction itself landed in history."
   },
   "oracle_refs": {
     "oracle_mean_episode_pnl": 27.286860402149095,

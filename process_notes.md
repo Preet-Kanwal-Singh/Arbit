@@ -186,3 +186,19 @@ broad `.gitignore` pattern from silently excluding a real source directory
 again, and nothing currently prevents a created feature branch from being
 quietly bypassed in favor of committing straight to `main`. Both are
 workflow gaps, not one-off mistakes.
+
+## 5. Chained Tier B investigations can run several items deep before a synthesis exists
+
+Flagged by Claude #3 as a standing process observation, logged here at B's
+request (low-priority, not blocking anything). The Z-score block-bootstrap
+investigation ran seven distinct checks across four `wq_` directories
+(`wq_zscore_block_bootstrap_v0` through `wq_zscore_clip_isolation_v0`)
+before anyone stepped back to synthesize what the chain as a whole
+established — see
+`phase_ii_rl_agent_tcs_infy/ledger/zscore_bootstrap_investigation_synthesis.md`.
+Each individual link was logged properly in `worklog_tier_b.md` as it
+happened; nothing was lost. But a reader following the chain link-by-link
+has no signal, until a synthesis is written, of when the chain has actually
+answered its motivating question versus when it's still open. No process
+change proposed here, just naming the pattern so it's recognizable if it
+recurs on a future chain.

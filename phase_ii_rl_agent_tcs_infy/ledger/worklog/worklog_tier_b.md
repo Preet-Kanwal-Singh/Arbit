@@ -177,3 +177,11 @@ Re-ran the L=20, B=2000 circular block bootstrap exactly as before. At each bloc
 - **Unclipped:** mean 0.03389, SE 0.00023
 
 **Note:** The clip operation does not account for the observed elevation. In fact, removing the clip *increases* the average seam reward by nearly 40% (0.03389 vs 0.02466). The clip acts merely as a bound that structurally attenuates the massive raw tail-expectation produced at the seam boundary. This rules out the clip operation as the primary source of the artifact, narrowing the search space to the remaining nonlinearities (such as the path-dependence itself).
+
+---
+
+**This chain does not end here.** The seven checks above (`wq_zscore_block_bootstrap_v0` through this entry) are synthesized, with every numerical claim independently re-derived, at
+`ledger/zscore_bootstrap_investigation_synthesis.md`. That file also carries
+a correction to an implied-φ sign error from an earlier review pass and
+B's recommendation on whether to continue this chain — read it before
+authorizing any further work in this specific investigation.
