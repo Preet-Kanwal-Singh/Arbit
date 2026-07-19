@@ -98,3 +98,15 @@ admission — correctly none intended.
 - **L=40:** Mean PnL = 0.8322 | Std = 0.1780 | p-value (Fraction $\ge$ 0.3909) = 0.9990
 
 **Note:** No threshold was set because none was needed at this tier. The bootstrapped null distribution produces systematically higher PnL than the original path. If this is ever promoted to Tier A, the threshold and comparison family must be fixed before the promoted run.
+
+## 2026-07-19 — `wq_zscore_seam_diagnostics_v0`: Z-score seam diagnostics + 730d_core φ estimate
+
+**Directory:** `analysis/wq_zscore_seam_diagnostics_v0/`.
+
+**Setup:** 
+- **Part A:** Fit an AR(1) OLS model on the full `730d_core` original spread sequence to estimate $\phi$.
+- **Part B:** Re-ran `B=2000` circular block bootstraps at `L=20` tracking the original indices to detect and characterize the artificial boundaries ("seams"), including classification around the `2022-08-30` sub-regime split.
+
+**Results:**
+- **Part A:** The fresh OLS estimate over the entire series is **$\phi$ = 0.9599** (95% CI: [0.9370, 0.9828]). This generated dilution ratios of 3.39 (L=10), 2.20 (L=20), and 1.60 (L=40), which land remarkably close to the back-of-the-envelope `~0.975` estimate that was obtained by working backward from observed bootstrap ratios.
+- **Part B (Seam Rewards):** The jump artifact strictly localized at the block seams accounts for the vast majority of the inflated PnL. The average reward precisely at the seam (distance 0) was `0.02466`, whereas distances 1-19 were completely flat, averaging just `~0.00101`. There were no meaningful differences when comparing seam-adjacent vs mid-block crossing boundaries inside or across regimes.
