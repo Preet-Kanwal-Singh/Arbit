@@ -1,17 +1,19 @@
 {
-    "claim_id": "wq_zscore_seam_diagnostics_v1",
+    "claim_id": "wq_zscore_seam_diagnostics_v1_reanalysis",
     "phase": "phase_ii_rl_agent_tcs_infy",
     "tier": "B",
     "snapshot_id": "tcs_infy_v4_2026-07-13",
     "synthetic": false,
-    "script_path": "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_seam_diagnostics_v1/seam_diagnostics_v1.py",
-    "git_commit": "d74e0dc0dd360f6f62ff712a9e0d0d66b5de8646",
-    "stamped_at_utc": "2026-07-19T04:52:02.911607+00:00",
+    "script_path": "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_seam_diagnostics_v1/seam_index_reanalysis.py",
+    "git_commit": "f5308ad53f54df8a326a967bc71c4a2e4a863a14",
+    "stamped_at_utc": "2026-07-19T05:17:10.298202+00:00",
     "note": "commit hash recorded after outputs were committed",
     "outputs": [
         "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_seam_diagnostics_v1/seam_results_v1.json",
+        "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_seam_diagnostics_v1/seam_index_reanalysis.md",
         "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_seam_diagnostics_v1/summary.md",
         "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_seam_diagnostics_v1/seam_diagnostics_v1.py",
+        "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_seam_diagnostics_v1/seam_index_reanalysis.py",
         "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_seam_diagnostics_v1/stamp_provenance.py",
         "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_seam_diagnostics_v1/seams_raw.csv"
     ]
