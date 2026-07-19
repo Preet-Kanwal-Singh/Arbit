@@ -163,3 +163,17 @@ Zero-cost recomputation. Using the target bootstrap ratios (4.8312 at L=10, 3.04
 **Note:** A systematic residual pattern remains — the joint-fit overpredicts L=10 while increasingly underpredicting L=20 and L=40. The lack of a flat, near-zero residual across all three block lengths argues that the gap is not just a mis-set $\phi$, but rather that the theoretical ratio model itself does not fully capture the artifact's structural dynamics.
 
 **Worklog Correction:** The previously-reported 53–62%-explained figures were computed against the $\phi$ point estimate (0.9599), not this joint-fit value, and should be read as superseded/caveated by this recomputation. A future reader should not cite the old percentages as final.
+
+## 2026-07-19 — `wq_zscore_clip_isolation_v0`: Clip-isolation test
+
+**Directory:** `analysis/wq_zscore_clip_isolation_v0/`.
+
+**Setup:** 
+Re-ran the L=20, B=2000 circular block bootstrap exactly as before. At each block seam (distance 0), logged both the actual clipped reward (`reward_actual`) and the hypothetical unclipped reward (`reward_unclipped = ((mean - s_A) / std) * (s_B - s_A)`), holding the path-dependent running statistics strictly fixed to isolate solely the marginal contribution of the `clip(-z, -1, 1)` operation.
+
+**Results:**
+- **Number of observations (`n`):** 54,000
+- **Actual (Clipped):** mean 0.02466, SE 0.00015
+- **Unclipped:** mean 0.03389, SE 0.00023
+
+**Note:** The clip operation does not account for the observed elevation. In fact, removing the clip *increases* the average seam reward by nearly 40% (0.03389 vs 0.02466). The clip acts merely as a bound that structurally attenuates the massive raw tail-expectation produced at the seam boundary. This rules out the clip operation as the primary source of the artifact, narrowing the search space to the remaining nonlinearities (such as the path-dependence itself).
