@@ -1,0 +1,18 @@
+{
+    "claim_id": "wq_zscore_clip_isolation_v0",
+    "phase": "phase_ii_rl_agent_tcs_infy",
+    "tier": "B",
+    "snapshot_id": "tcs_infy_v4_2026-07-13",
+    "synthetic": false,
+    "script_path": "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_clip_isolation_v0/clip_isolation.py",
+    "git_commit": "a1e108bc25a327a0ef8e4541b69d3fd77e4e4b79",
+    "stamped_at_utc": "2026-07-19T14:48:06.117120+00:00",
+    "note": "commit hash recorded after outputs were committed",
+    "outputs": [
+        "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_clip_isolation_v0/clip_isolation_results.json",
+        "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_clip_isolation_v0/summary.md",
+        "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_clip_isolation_v0/clip_isolation.py",
+        "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_clip_isolation_v0/stamp_provenance.py",
+        "phase_ii_rl_agent_tcs_infy/analysis/wq_zscore_clip_isolation_v0/clip_raw.csv"
+    ]
+}
