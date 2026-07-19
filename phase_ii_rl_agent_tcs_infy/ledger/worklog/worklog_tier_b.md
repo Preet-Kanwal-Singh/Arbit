@@ -110,3 +110,20 @@ admission — correctly none intended.
 **Results:**
 - **Part A:** The fresh OLS estimate over the entire series is **$\phi$ = 0.9599** (95% CI: [0.9370, 0.9828]). This generated dilution ratios of 3.39 (L=10), 2.20 (L=20), and 1.60 (L=40), which land remarkably close to the back-of-the-envelope `~0.975` estimate that was obtained by working backward from observed bootstrap ratios.
 - **Part B (Seam Rewards):** The jump artifact strictly localized at the block seams accounts for the vast majority of the inflated PnL. The average reward precisely at the seam (distance 0) was `0.02466`, whereas distances 1-19 were completely flat, averaging just `~0.00101`. There were no meaningful differences when comparing seam-adjacent vs mid-block crossing boundaries inside or across regimes.
+
+## 2026-07-19 — `wq_zscore_seam_diagnostics_v1`: Z-score seam diagnostics (per-seam rerun)
+
+**Directory:** `analysis/wq_zscore_seam_diagnostics_v1/`.
+
+**Setup:** 
+Same underlying logic as `v0` (L=20, B=2000, `cost_rate=0.0`), but saved exactly one raw record per seam crossing (distance 0) containing the `reward_at_dist0`, `position_in_path`, and `is_regime_crossing` status into a flat CSV (54,000 observations).
+
+**Results:**
+- **Regime Comparison:** 
+  - Regime-Crossing (`n`=20,827): mean 0.02450, SE 0.00023
+  - Within-Regime (`n`=33,173): mean 0.02476, SE 0.00019
+  - Difference: mean -0.00026, SE 0.00030
+- **Path Stratification (Quartiles):**
+  - Q1 (0-25%): 0.02227 | Q2 (25-50%): 0.02514 | Q3 (50-75%): 0.02549 | Q4 (75-100%): 0.02538
+
+**Note:** The difference between regime-crossing and within-regime seams is statistically indistinguishable from zero, and both groups have large sample sizes. Furthermore, the quartile stratification reveals the seam reward is completely flat across Q2-Q4 rather than decaying. This debunks the hypothesis that the artifact is purely driven by early finite-sample noise in the running mean, pointing instead to the inherent structural nature of the per-event reward at the disjoint boundary.
